@@ -1,0 +1,174 @@
+{
+	"_version": "1.5.0",
+	"sap.app": {
+		"id": "de.htwberlin.adbkt.basic1",
+		"resources": "resources.json",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "hanatemplates.basicSAPUI5ApplicationProject",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"orderMan": {
+				"uri": "https://hanaicla3.f4.htw-berlin.de:50000/odata/orderman/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "de.htwberlin.adbkt.basic1.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "de.htwberlin.adbkt.basic1.i18n.i18n"
+				}
+			},
+			"orderMan": {
+				"dataSource": "orderMan",
+				"preload": true,
+				"settings": {
+					"synchronizationMode": "None"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "de.htwberlin.adbkt.basic1.view",
+				"controlAggregation": "pages",
+				"controlId": "app"
+			},
+			"routes": [{
+					"pattern": "",
+					"name": "main",
+					"target": "main"
+				}, {
+					"pattern": "hello",
+					"name": "hello",
+					"target": "hello"
+				}, {
+					"pattern": "mvc",
+					"name": "mvc",
+					"target": "mvc"
+				}, {
+					"pattern": "geo",
+					"name": "geo",
+					"target": "geo"
+				}, {
+					"pattern": "service",
+					"name": "service",
+					"target": "service"
+				}, {
+					"pattern": "orderMan",
+					"name": "orderMan",
+					"target": "orderMan"
+				}, {
+					"pattern": "outbound",
+					"name": "outbound",
+					"target": "outbound"
+				},
+				{
+					"pattern": "db",
+					"name": "db",
+					"target": "db"
+				}
+
+			],
+			"targets": {
+				"main": {
+					"viewId": "main",
+					"viewName": "Main",
+					"viewLevel": 1
+				},
+				"hello": {
+					"viewId": "hello",
+					"viewName": "Hello",
+					"viewLevel": 1
+				},
+				"mvc": {
+					"viewId": "mvc",
+					"viewName": "Mvc",
+					"viewLevel": 1
+				},
+				"geo": {
+					"viewId": "geo",
+					"viewName": "Geo",
+					"viewLevel": 1
+				},
+				"service": {
+					"viewId": "service",
+					"viewName": "Service",
+					"viewLevel": 1
+				},
+				"orderMan": {
+					"viewId": "orderMan",
+					"viewName": "OrderMan",
+					"viewLevel": 1
+				},
+				"outbound": {
+					"viewId": "outbound",
+					"viewName": "Outbound",
+					"viewLevel": 1
+				},
+				"db": {
+					"viewId": "db",
+					"viewName": "Db",
+					"viewLevel": 1
+				}
+			}
+		}
+	}
+}

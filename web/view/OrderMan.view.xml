@@ -1,0 +1,14 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.OrderMan" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.commons" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page id="orderMan" title="{i18n>orderManTitle}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<VBox>
+				<HBox>
+					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMCustNew" type="XML"/>
+					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMCustTable" type="XML"/>
+				</HBox>
+				<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMOrderTable" type="XML"/>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

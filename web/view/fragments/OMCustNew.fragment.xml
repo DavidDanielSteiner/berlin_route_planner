@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Panel headerText="Kundenerfassung" class="sapUiResponsiveMargin">
+		<content>
+			<Label text="KID" labelFor="iKID"/>
+			<Input id="iKID" type="Text" class="sapUiSmallMarginBottom" value="{c>/KID}"/>
+			<Label text="Name" labelFor="iName"/>
+			<Input id="iName" type="Text" class="sapUiSmallMarginBottom" value="{c>/Name}"/>
+			<Button text="Anlegen" press="onCreateUser"/>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

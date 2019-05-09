@@ -1,0 +1,9 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.Hello" xmlns="sap.m" xmlns:l="sap.ui.layout"
+  xmlns:c="sap.ui.commons" xmlns:mvc="sap.ui.core.mvc">
+  <Page id="hello" title="{i18n>helloTitle}" class="sapUiResponsiveContentPadding" showNavButton="true"
+    navButtonPress="onNavBack">
+    <content>
+    	<Text text="Hallo"/>
+    </content>
+  </Page>
+</mvc:View>

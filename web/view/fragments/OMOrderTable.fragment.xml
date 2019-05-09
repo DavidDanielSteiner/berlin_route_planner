@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Panel headerText="Bestelltabelle" class="sapUiResponsiveMargin" width="auto">
+    <content>
+      <Table id="tableOrders" growing="true" growingThreshold="6"
+        items="{
+          path: 'orderMan>/Bestellungen',
+          parameters : {
+        	$$operationMode : 'Server'
+          },
+          filters : { 
+                path : 'KID_KID',
+                operator : 'EQ',
+                value : 'none'
+          },
+		  sorter: {
+				path: 'BID'
+		  }
+        }">
+        <columns>
+          <Column id="bidColumn">
+            <Text text="BID" />
+          </Column>
+          <Column id="dateColumn">
+            <Text text="Bestelldatum" />
+          </Column>
+          <Column id="kidColumn1">
+            <Text text="KID" />
+          </Column>
+          <Column id="sidColumn">
+            <Text text="SID" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{orderMan>BID}" />
+            </cells>
+            <cells>
+              <Text text="{orderMan>Bestelldatum}" />
+            </cells>
+            <cells>
+              <Text text="{orderMan>KID_KID}" />
+            </cells>
+            <cells>
+              <ComboBox items="{path: 'orderMan>/Statusn', templateShareable:false}" selectedKey="{orderMan>SID_SID}"
+                >
+                <core:Item key="{orderMan>SID}" text="{orderMan>Status}" />
+              </ComboBox>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Panel>
+</core:FragmentDefinition>

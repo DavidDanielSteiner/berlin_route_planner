@@ -1,0 +1,10 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.Geo" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.commons"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page id="geo1" title="{i18n>geoTitle}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<VBox fitContainer="true">
+				<HBox id="map" fitContainer="true" height="500px" />
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Panel headerText="Kundentabelle" class="sapUiResponsiveMargin" width="auto">
+		<content>
+			<Table 
+				id="tableCustomers" 
+				growing="true" 
+				growingThreshold="4" 
+				items="{
+				  path: 'orderMan>/Kunden',
+                  parameters : {
+        	        $$operationMode : 'Server'
+                  },
+		          sorter: { path: 'KID' }
+				}" 
+				mode="SingleSelectLeft"
+				selectionChange="onCustomerSelectionChange">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Button 
+								id="refreshUserButton" 
+								icon="sap-icon://refresh" 
+								tooltip="Refresh"
+								press="onRefreshUser"/>
+							<Button 
+								id="deleteUserButton" 
+								icon="sap-icon://delete" 
+								tooltip="Delete"
+								press="onDeleteUser"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="kidColumn">
+						<Text text="KID"/>
+					</Column>
+					<Column id="nameColumn">
+						<Text text="Name"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Inactive">
+						<cells>
+							<Text text="{orderMan>KID}"/>
+						</cells>
+						<cells>
+							<Input value="{orderMan>Name}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,20 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.Service" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.commons"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page id="hello" title="{i18n>serviceTitle}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<Panel headerText="Node Service Test - Multiplication">
+				<List width="400px">
+					<InputListItem label="num1">
+						<Input id="num1" value="{nums>/num1}" liveChange="onLiveChange1"/>
+					</InputListItem>
+					<InputListItem label="num2">
+						<Input id="num2" value="{nums>/num2}" liveChange="onLiveChange2"/>
+					</InputListItem>
+					<InputListItem label="result">
+						<Text id="result" text="{nums>/result}"/>
+					</InputListItem>
+				</List>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

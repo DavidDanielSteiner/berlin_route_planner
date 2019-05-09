@@ -1,0 +1,13 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.Mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+  xmlns:c="sap.ui.commons" xmlns:mvc="sap.ui.core.mvc">
+  <Page id="mvc" title="{i18n>mvcTitle}" class="sapUiResponsiveContentPadding" showNavButton="true"
+    navButtonPress="onNavBack">
+    <content>
+      <l:VerticalLayout class="sapUiContentPadding">
+        <Text id="tvFname1" text="{mvc>/value}"></Text>
+        <Input id="tfFname1" width="80px" value="{mvc>/value}" enabled="{mvc>/enabled}"></Input>
+        <CheckBox id="chk1" selected="{mvc>/enabled}" ></CheckBox>
+      </l:VerticalLayout>
+    </content>
+  </Page>
+</mvc:View>

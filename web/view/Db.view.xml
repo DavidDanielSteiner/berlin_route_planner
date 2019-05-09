@@ -1,0 +1,12 @@
+<mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.Db" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.commons"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<Page id="outbound" title="Read from DB" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<VBox>
+				<Button text="Read from DB" press="onButton1Press"/>
+				<Input id="dbid" width="80px" value="1"/>
+				<TextArea id="log" value="leer" width="12cm" rows="15"/>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>
