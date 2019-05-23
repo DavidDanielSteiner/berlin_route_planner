@@ -24,7 +24,7 @@ Algorithmus
 
 --Aufgabenverteilung--
 Webscraping Ubahndaten und als CSV ausgeben [David]
-Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David]
+Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
 Graph erstellen [Arthur]
 Neue App/View erstellen (UI) / Userinterface erstellen [Arthur]
 Textmining [Hanna]
