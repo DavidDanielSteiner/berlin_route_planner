@@ -27,8 +27,8 @@ Algorithmus
 2. Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
 3. Graph erstellen [Arthur]
 4. Neue App/View erstellen (UI) / Userinterface erstellen [Arthur]
-Textmining [Hanna]
-Spatial Distance zur Ubahn Station (wie in Outbound) [David]
-Output ausgeben [Hanna]
+5. Textmining [Hanna]
+6. Spatial Distance zur Ubahn Station (wie in Outbound) [David]
+7. Output ausgeben [Hanna]
 
 
