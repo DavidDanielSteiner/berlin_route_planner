@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sap/hana-client": "^2.4.126",
+    "@sap/hana-client": "^2.4.139",
     "csv-parse": "^4.4.1",
-    "express": "^4.16.4",
+    "express": "^4.17.0",
     "install": "^0.12.2",
     "npm": "^6.9.0",
     "request": "^2.88.0",

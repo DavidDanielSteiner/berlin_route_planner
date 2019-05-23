@@ -22,9 +22,15 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController"], function 
 		onPressOutbound: function (oEvent) {
 			this.getRouter().navTo("outbound");
 		},
+		onPressOutboundHDB: function (oEvent) {
+			this.getRouter().navTo("outboundHDB");
+		},
 		onPressDb: function (oEvent) {
 			this.getRouter().navTo("db");
 		},
+		onImportPress: function (oEvent) {
+			this.getRouter().navTo("import");
+		}
 
 	});
 
