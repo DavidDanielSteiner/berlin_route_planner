@@ -23,10 +23,10 @@ Algorithmus
 
 
 --Aufgabenverteilung--
-Webscraping Ubahndaten und als CSV ausgeben [David]
-Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
-Graph erstellen [Arthur]
-Neue App/View erstellen (UI) / Userinterface erstellen [Arthur]
+1. Webscraping Ubahndaten und als CSV ausgeben [David]
+2. Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
+3. Graph erstellen [Arthur]
+4. Neue App/View erstellen (UI) / Userinterface erstellen [Arthur]
 Textmining [Hanna]
 Spatial Distance zur Ubahn Station (wie in Outbound) [David]
 Output ausgeben [Hanna]
