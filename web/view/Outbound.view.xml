@@ -20,22 +20,10 @@
 						<Input id="distance" placeholder="5" value="5"/>
 					</InputListItem>
 					<InputListItem label="Suche">
-						<Button text="Los!" press="onFindButtonPress"/>
+						<Button text="Los aus HDB" press="onFindButtonPress_Re"/>
+						
+						<Button text="Los aus web" press="onFindButtonPress"/>
 					</InputListItem>
-
-                    <!-- Aufgabe 2.1 -->
-                    <InputListItem label="Import">
-                        <Button text="Importiere Testdaten" press="onImportTestDataButtonPress"/>
-                    </InputListItem>
-					<!-- Aufgabe 2.2 -->
-                    <InputListItem label="Import">
-                        <Button text="Importiere Tankstellen" press="onImportStationsButtonPress"/>
-                    </InputListItem>
-					<!-- Aufgabe 2.3 -->
-					<InputListItem label="Spartial Search">
-						<Button text="Suche Neu" press="onFindButtonPress"/>
-					</InputListItem>
-
 				</List>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
 				<!-- Here Map Container -->
