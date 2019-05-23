@@ -5,12 +5,16 @@ Created on Thu May 23 15:31:52 2019
 @author: David
 """
 
-
 import mysql.connector
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
+
+def convert_dms_to_decimal(dms):
+    decimal = (((int(dms[2]) /60) + int(dms[1]))/60 + int(dms[0]))
+    return decimal
+
 
 url = 'https://de.wikipedia.org/wiki/Liste_der_Berliner_U-Bahnh%C3%B6fe'
 resp = requests.get(url)
@@ -52,6 +56,4 @@ df2= df.dropna()
 
 df.to_csv (r'C:\Users\David\Desktop\all_stations.csv', index = None, header=True) 
 
-def convert_dms_to_decimal(dms):
-    decimal = (((int(dms[2]) /60) + int(dms[1]))/60 + int(dms[0]))
-    return decimal
+
