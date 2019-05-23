@@ -9,6 +9,8 @@
 				<Button width="5cm" text="OrderMan" press="onPressOrderMan"/>
 				<Button width="5cm" text="Outbound" press="onPressOutbound"/>
 				<Button width="5cm" text="DB" press="onPressDb"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin" press="onPressDb"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin Pro" press="onPressDb"/>
 			</VBox>
 		</content>
 	</Page>
