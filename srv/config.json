@@ -2,7 +2,7 @@
     "hdb": {
         "host": "hanaicla.f4.htw-berlin.de",
         "port": 39013,
-        "uid": "u556414",
+        "uid": "u556741",
         "pwd": "Bcdefgh1",
         "databaseName": "HXE"
     },

@@ -8,9 +8,11 @@
 				<Button width="5cm" text="Service" press="onPressService"/>
 				<Button width="5cm" text="OrderMan" press="onPressOrderMan"/>
 				<Button width="5cm" text="Outbound" press="onPressOutbound"/>
+				<Button width="5cm" text="Outbound HDB" press="onPressOutboundHDB"/>
 				<Button width="5cm" text="DB" press="onPressDb"/>
-				<Button width="5cm" text="U-Bahn Netz Berlin" press="onPressDb"/>
-				<Button width="5cm" text="U-Bahn Netz Berlin Pro" press="onPressDb"/>
+				<Button width="5cm" text="Import" press="onImportPress"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin" press="onImportPress"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin Pro" press="onImportPress"/>
 			</VBox>
 		</content>
 	</Page>

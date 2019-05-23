@@ -16,7 +16,7 @@
 		},
 		"dataSources": {
 			"orderMan": {
-				"uri": "https://hanaicla3.f4.htw-berlin.de:50000/odata/orderman/",
+				"uri": "https://hanaicla3.f4.htw-berlin.de:51071/odata/orderman/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "4.0"
@@ -121,9 +121,19 @@
 					"target": "outbound"
 				},
 				{
+					"pattern": "outboundHDB",
+					"name": "outboundHDB",
+					"target": "outboundHDB"
+				},
+				{
 					"pattern": "db",
 					"name": "db",
 					"target": "db"
+				},
+				{
+					"pattern": "import",
+					"name": "import",
+					"target": "import"
 				}
 
 			],
@@ -163,9 +173,19 @@
 					"viewName": "Outbound",
 					"viewLevel": 1
 				},
+				"outboundHDB": {
+					"viewId": "outboundHDB",
+					"viewName": "OutboundHDB",
+					"viewLevel": 1
+				},
 				"db": {
 					"viewId": "db",
 					"viewName": "Db",
+					"viewLevel": 1
+				},
+				"import": {
+					"viewId": "import",
+					"viewName": "Import",
 					"viewLevel": 1
 				}
 			}
