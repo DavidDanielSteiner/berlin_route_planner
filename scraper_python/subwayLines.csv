@@ -1,0 +1,171 @@
+station_name,station_id,line_name
+Warschauer Straße,11,U1
+Schlesisches Tor,12,U1
+Görlitzer Bahnhof,13,U1
+Kottbusser Tor,14,U1
+Prinzenstraße,15,U1
+Hallesches Tor,16,U1
+Möckernbrücke,17,U1
+Gleisdreieck,18,U1
+Kurfürstenstraße,19,U1
+Nollendorfplatz,110,U1
+Wittenbergplatz,111,U1
+Kurfürstendamm,112,U1
+Uhlandstraße,113,U1
+Pankow,21,U2
+Vinetastraße,22,U2
+Schönhauser Allee,23,U2
+Eberswalder Straße,24,U2
+Senefelderplatz,25,U2
+Rosa-Luxemburg-Platz,26,U2
+Alexanderplatz,27,U2
+Klostertunnel,28,U2
+Klosterstraße,29,U2
+Märkisches Museum,210,U2
+Spittelmarkt,211,U2
+Hausvogteiplatz,212,U2
+Stadtmitte,213,U2
+Mohrenstraße,214,U2
+Potsdamer Platz,215,U2
+Mendelssohn-Bartholdy-Park,216,U2
+Gleisdreieck,217,U2
+Bülowstraße,218,U2
+Nollendorfplatz,219,U2
+Wittenbergplatz,220,U2
+Zoologischer Garten,221,U2
+Ernst-Reuter-Platz,222,U2
+Deutsche Oper,223,U2
+Bismarckstraße,224,U2
+Sophie-Charlotte-Platz,225,U2
+Kaiserdamm,226,U2
+Theodor-Heuss-Platz,227,U2
+Neu-Westend,228,U2
+Olympia-Stadion,229,U2
+Ruhleben,230,U2
+Warschauer Straße,31,U3
+Schlesisches Tor,32,U3
+Görlitzer Bahnhof,33,U3
+Kottbusser Tor,34,U3
+Prinzenstraße,35,U3
+Hallesches Tor,36,U3
+Möckernbrücke,37,U3
+Gleisdreieck,38,U3
+Kurfürstenstraße,39,U3
+Nollendorfplatz,310,U3
+Wittenbergplatz,311,U3
+Augsburger Straße,312,U3
+Nürnberger Platz,313,U3
+Spichernstraße,314,U3
+Hohenzollernplatz,315,U3
+Fehrbelliner Platz,316,U3
+Heidelberger Platz,317,U3
+Rüdesheimer Platz,318,U3
+Breitenbachplatz,319,U3
+Podbielskiallee,320,U3
+Dahlem-Dorf,321,U3
+Freie Universität (Thielplatz),322,U3
+Oskar-Helene-Heim,323,U3
+Onkel Toms Hütte,324,U3
+Krumme Lanke,325,U3
+Nollendorfplatz,41,U4
+Viktoria-Luise-Platz,42,U4
+Bayerischer Platz,43,U4
+Rathaus Schöneberg,44,U4
+Innsbrucker Platz,45,U4
+Hönow,51,U5
+Louis-Lewin-Straße,52,U5
+Hellersdorf,53,U5
+Cottbusser Platz,54,U5
+Kienberg (Gärten der Welt),55,U5
+Kaulsdorf-Nord,56,U5
+Wuhletal,57,U5
+Elsterwerdaer Platz,58,U5
+Biesdorf-Süd,59,U5
+Tierpark,510,U5
+Friedrichsfelde,511,U5
+Lichtenberg,512,U5
+Magdalenenstraße,513,U5
+Frankfurter Allee,514,U5
+Samariterstraße,515,U5
+Frankfurter Tor,516,U5
+Weberwiese,517,U5
+Strausberger Platz,518,U5
+Schillingstraße,519,U5
+Alexanderplatz,520,U5
+Alt-Tegel,61,U6
+Borsigwerke,62,U6
+Holzhauser Straße,63,U6
+Otisstraße,64,U6
+Scharnweberstraße,65,U6
+Kurt-Schumacher-Platz,66,U6
+Afrikanische Straße,67,U6
+Rehberge,68,U6
+Seestraße,69,U6
+U9,610,U6
+Leopoldplatz,611,U6
+Wedding,612,U6
+Reinickendorfer Straße,613,U6
+Schwartzkopffstraße,614,U6
+Naturkundemuseum,615,U6
+Oranienburger Tor,616,U6
+Friedrichstraße,617,U6
+Unter den Linden,618,U6
+Französische Straße,619,U6
+Stadtmitte,620,U6
+Kochstraße,621,U6
+Hallesches Tor,622,U6
+U7,623,U6
+Mehringdamm,624,U6
+U7,625,U6
+Platz der Luftbrücke,626,U6
+Paradestraße,627,U6
+Tempelhof,628,U6
+Alt-Tempelhof,629,U6
+Kaiserin-Augusta-Straße,630,U6
+Ullsteinstraße,631,U6
+Westphalweg,632,U6
+Alt-Mariendorf,633,U6
+Wilmersdorfer Straße,72,U7
+Wittenau,81,U8
+Rathaus Reinickendorf,82,U8
+Karl-Bonhoeffer-Nervenklinik,83,U8
+Lindauer Allee,84,U8
+Paracelsus-Bad,85,U8
+Residenzstraße,86,U8
+Franz-Neumann-Platz,87,U8
+Osloer Straße,89,U8
+Pankstraße,810,U8
+Gesundbrunnen,811,U8
+Voltastraße,812,U8
+Bernauer Straße,813,U8
+Rosenthaler Platz,814,U8
+Weinmeisterstraße,815,U8
+Alexanderplatz,816,U8
+Jannowitzbrücke,817,U8
+Waisentunnel,818,U8
+Heinrich-Heine-Straße,819,U8
+Moritzplatz,820,U8
+Kottbusser Tor,821,U8
+Schönleinstraße,822,U8
+Hermannplatz,824,U8
+Boddinstraße,825,U8
+Leinestraße,826,U8
+Hermannstraße,827,U8
+Osloer Straße,91,U9
+Nauener Platz,93,U9
+Leopoldplatz,95,U9
+Amrumer Straße,96,U9
+Westhafen,97,U9
+Birkenstraße,98,U9
+Turmstraße,99,U9
+Hansaplatz,910,U9
+Zoologischer Garten,911,U9
+Kurfürstendamm,912,U9
+Spichernstraße,913,U9
+Güntzelstraße,914,U9
+Berliner Straße,916,U9
+Bundesplatz,917,U9
+Friedrich-Wilhelm-Platz,918,U9
+Walther-Schreiber-Platz,919,U9
+Schloßstraße,920,U9
+Rathaus Steglitz,921,U9

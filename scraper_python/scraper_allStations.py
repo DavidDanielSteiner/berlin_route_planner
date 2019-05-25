@@ -54,6 +54,6 @@ for num, element in enumerate(stationTable_rows, start =0):
 df=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','line_name','district_name', 'station_link'])  
 df2= df.dropna()
 
-df.to_csv (r'C:\Users\David\Desktop\all_stations.csv', index = None, header=True) 
+df.to_csv (r'C:\Users\David\Desktop\allStations.csv', index = None, header=True) 
 
 
