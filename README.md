@@ -23,6 +23,7 @@ Algorithmus
 
 
 --Aufgabenverteilung--
+
 [x] 1. Webscraping Ubahndaten und als CSV ausgeben [David]
 
 [] 2. Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
