@@ -55,7 +55,7 @@ for num, element in enumerate(stationTable_rows, start =0):
 
 #df=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','line_name','district_name', 'station_link'])  
 df_allStations=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','district_name', 'station_link'])  
-df_allStations.dropna()
+df_allStations = df_allStations.dropna()
 df_allStations.drop_duplicates(subset ="station_name", keep = 'first', inplace = True) 
 
 df_allStations.to_csv (r'C:\Users\David\Desktop\station_data.csv', index = None, header=True) 
