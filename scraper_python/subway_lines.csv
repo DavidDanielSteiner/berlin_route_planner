@@ -28,10 +28,7 @@ Stadtmitte,213,U2
 Mohrenstraße,214,U2
 Potsdamer Platz,215,U2
 Mendelssohn-Bartholdy-Park,216,U2
-Gleisdreieck,217,U2
 Bülowstraße,218,U2
-Nollendorfplatz,219,U2
-Wittenbergplatz,220,U2
 Zoologischer Garten,221,U2
 Ernst-Reuter-Platz,222,U2
 Deutsche Oper,223,U2
@@ -42,17 +39,6 @@ Theodor-Heuss-Platz,227,U2
 Neu-Westend,228,U2
 Olympia-Stadion,229,U2
 Ruhleben,230,U2
-Warschauer Straße,31,U3
-Schlesisches Tor,32,U3
-Görlitzer Bahnhof,33,U3
-Kottbusser Tor,34,U3
-Prinzenstraße,35,U3
-Hallesches Tor,36,U3
-Möckernbrücke,37,U3
-Gleisdreieck,38,U3
-Kurfürstenstraße,39,U3
-Nollendorfplatz,310,U3
-Wittenbergplatz,311,U3
 Augsburger Straße,312,U3
 Nürnberger Platz,313,U3
 Spichernstraße,314,U3
@@ -63,11 +49,10 @@ Rüdesheimer Platz,318,U3
 Breitenbachplatz,319,U3
 Podbielskiallee,320,U3
 Dahlem-Dorf,321,U3
-Freie Universität (Thielplatz),322,U3
+Freie Universität,322,U3
 Oskar-Helene-Heim,323,U3
 Onkel Toms Hütte,324,U3
 Krumme Lanke,325,U3
-Nollendorfplatz,41,U4
 Viktoria-Luise-Platz,42,U4
 Bayerischer Platz,43,U4
 Rathaus Schöneberg,44,U4
@@ -76,7 +61,7 @@ Hönow,51,U5
 Louis-Lewin-Straße,52,U5
 Hellersdorf,53,U5
 Cottbusser Platz,54,U5
-Kienberg (Gärten der Welt),55,U5
+Kienberg,55,U5
 Kaulsdorf-Nord,56,U5
 Wuhletal,57,U5
 Elsterwerdaer Platz,58,U5
@@ -91,7 +76,6 @@ Frankfurter Tor,516,U5
 Weberwiese,517,U5
 Strausberger Platz,518,U5
 Schillingstraße,519,U5
-Alexanderplatz,520,U5
 Alt-Tegel,61,U6
 Borsigwerke,62,U6
 Holzhauser Straße,63,U6
@@ -111,12 +95,9 @@ Oranienburger Tor,616,U6
 Friedrichstraße,617,U6
 Unter den Linden,618,U6
 Französische Straße,619,U6
-Stadtmitte,620,U6
 Kochstraße,621,U6
-Hallesches Tor,622,U6
 U7,623,U6
 Mehringdamm,624,U6
-U7,625,U6
 Platz der Luftbrücke,626,U6
 Paradestraße,627,U6
 Tempelhof,628,U6
@@ -125,7 +106,42 @@ Kaiserin-Augusta-Straße,630,U6
 Ullsteinstraße,631,U6
 Westphalweg,632,U6
 Alt-Mariendorf,633,U6
-Wilmersdorfer Straße,72,U7
+Kehranlage,71,U7
+Rathaus Spandau,72,U7
+Altstadt Spandau,73,U7
+Zitadelle,74,U7
+Haselhorst,75,U7
+Paulsternstraße,76,U7
+Rohrdamm,77,U7
+Siemensdamm,78,U7
+Halemweg,79,U7
+Jakob-Kaiser-Platz,710,U7
+Jungfernheide,711,U7
+Mierendorffplatz,712,U7
+Richard-Wagner-Platz,713,U7
+Wilmersdorfer Straße,715,U7
+Adenauerplatz,716,U7
+Konstanzer Straße,717,U7
+Blissestraße,719,U7
+Berliner Straße,720,U7
+Eisenacher Straße,722,U7
+Kleistpark,723,U7
+Yorckstraße,724,U7
+Gneisenaustraße,727,U7
+Südstern,728,U7
+Hermannplatz,729,U7
+Rathaus Neukölln,730,U7
+Karl-Marx-Straße,731,U7
+Neukölln,732,U7
+Grenzallee,733,U7
+Blaschkoallee,734,U7
+Parchimer Allee,735,U7
+Britz-Süd,736,U7
+Johannisthaler Chaussee,737,U7
+Lipschitzallee,738,U7
+Wutzkyallee,739,U7
+Zwickauer Damm,740,U7
+Rudow,741,U7
 Wittenau,81,U8
 Rathaus Reinickendorf,82,U8
 Karl-Bonhoeffer-Nervenklinik,83,U8
@@ -133,39 +149,30 @@ Lindauer Allee,84,U8
 Paracelsus-Bad,85,U8
 Residenzstraße,86,U8
 Franz-Neumann-Platz,87,U8
-Osloer Straße,89,U8
-Pankstraße,810,U8
-Gesundbrunnen,811,U8
-Voltastraße,812,U8
-Bernauer Straße,813,U8
-Rosenthaler Platz,814,U8
-Weinmeisterstraße,815,U8
-Alexanderplatz,816,U8
-Jannowitzbrücke,817,U8
-Waisentunnel,818,U8
-Heinrich-Heine-Straße,819,U8
-Moritzplatz,820,U8
-Kottbusser Tor,821,U8
-Schönleinstraße,822,U8
-Hermannplatz,824,U8
-Boddinstraße,825,U8
-Leinestraße,826,U8
-Hermannstraße,827,U8
-Osloer Straße,91,U9
-Nauener Platz,93,U9
-Leopoldplatz,95,U9
-Amrumer Straße,96,U9
-Westhafen,97,U9
-Birkenstraße,98,U9
-Turmstraße,99,U9
-Hansaplatz,910,U9
-Zoologischer Garten,911,U9
-Kurfürstendamm,912,U9
-Spichernstraße,913,U9
-Güntzelstraße,914,U9
-Berliner Straße,916,U9
-Bundesplatz,917,U9
-Friedrich-Wilhelm-Platz,918,U9
-Walther-Schreiber-Platz,919,U9
-Schloßstraße,920,U9
-Rathaus Steglitz,921,U9
+Osloer Straße,88,U8
+Pankstraße,89,U8
+Gesundbrunnen,810,U8
+Voltastraße,811,U8
+Bernauer Straße,812,U8
+Rosenthaler Platz,813,U8
+Weinmeisterstraße,814,U8
+Jannowitzbrücke,816,U8
+Waisentunnel,817,U8
+Heinrich-Heine-Straße,818,U8
+Moritzplatz,819,U8
+Schönleinstraße,821,U8
+Boddinstraße,823,U8
+Leinestraße,824,U8
+Hermannstraße,825,U8
+Nauener Platz,92,U9
+Amrumer Straße,94,U9
+Westhafen,95,U9
+Birkenstraße,96,U9
+Turmstraße,97,U9
+Hansaplatz,98,U9
+Güntzelstraße,912,U9
+Bundesplatz,914,U9
+Friedrich-Wilhelm-Platz,915,U9
+Walther-Schreiber-Platz,916,U9
+Schloßstraße,917,U9
+Rathaus Steglitz,918,U9

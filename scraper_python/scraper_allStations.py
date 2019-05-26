@@ -44,16 +44,20 @@ for num, element in enumerate(stationTable_rows, start =0):
             station_data.append(latitude)
             station_data.append(longitude)
         else:
-            station_data.append(element.getText())
+            station_name = element.getText()
+            station_name = re.sub(r'\([^)]*\)', '', station_name)
+            station_data.append(station_name.rstrip())
                 
-    station_data.append(td[1]['data-sort-value'])
+    #station_data.append(td[1]['data-sort-value'])
     station_data.append(td[4].getText())
     station_data.append('https://de.wikipedia.org' + td[0].find('a')['href']) 
     stations_data.append(station_data)
 
-df=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','line_name','district_name', 'station_link'])  
-df2= df.dropna()
+#df=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','line_name','district_name', 'station_link'])  
+df_allStations=pd.DataFrame(stations_data ,columns=['station_name','latitude','longitude','district_name', 'station_link'])  
+df_allStations.dropna()
+df_allStations.drop_duplicates(subset ="station_name", keep = 'first', inplace = True) 
 
-df.to_csv (r'C:\Users\David\Desktop\allStations.csv', index = None, header=True) 
+df_allStations.to_csv (r'C:\Users\David\Desktop\station_data.csv', index = None, header=True) 
 
 

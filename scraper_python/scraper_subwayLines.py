@@ -32,9 +32,11 @@ for i in range(1, 10):
         td = element.find_all('td')
         try:
             tmp = td[2].getText()  # == (WA)
-            if re.search('\(', tmp):
+            if(re.search('\(', tmp) or i == 7):
+                station_name = td[2].find('a').getText()
+                station_name = re.sub(r'\([^)]*\)', '', station_name)
+                station_data.append(station_name.rstrip()) #['title']) # == Warschauer Straße 
                 station_order +=1
-                station_data.append(td[2].find('a').getText()) #['title']) # == Warschauer Straße 
                 station_data.append(str(i) + str(station_order))
                 station_data.append('U' + str(i))
                 stations_data.append(station_data)
@@ -44,6 +46,10 @@ for i in range(1, 10):
             print("An exception occurred")
 
 df=pd.DataFrame(stations_data ,columns=['station_name','station_id','line_name'])  
-    
+df.drop_duplicates(subset ="station_name", keep = 'first', inplace = True)  
+   
 df.to_csv (r'C:\Users\David\Desktop\subway_lines.csv', index = None, header=True) 
-    
+
+#check which stations are missing 
+#df_new = pd.merge(df, df_allStations, on='station_name', how='inner')
+#df_new_2 = df[(~df.station_name.isin(df_new.station_name))&(~df.station_name.isin(df_new.station_name))]
