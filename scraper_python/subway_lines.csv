@@ -28,7 +28,10 @@ Stadtmitte,213,U2
 Mohrenstraße,214,U2
 Potsdamer Platz,215,U2
 Mendelssohn-Bartholdy-Park,216,U2
+Gleisdreieck,217,U2
 Bülowstraße,218,U2
+Nollendorfplatz,219,U2
+Wittenbergplatz,220,U2
 Zoologischer Garten,221,U2
 Ernst-Reuter-Platz,222,U2
 Deutsche Oper,223,U2
@@ -39,6 +42,17 @@ Theodor-Heuss-Platz,227,U2
 Neu-Westend,228,U2
 Olympia-Stadion,229,U2
 Ruhleben,230,U2
+Warschauer Straße,31,U3
+Schlesisches Tor,32,U3
+Görlitzer Bahnhof,33,U3
+Kottbusser Tor,34,U3
+Prinzenstraße,35,U3
+Hallesches Tor,36,U3
+Möckernbrücke,37,U3
+Gleisdreieck,38,U3
+Kurfürstenstraße,39,U3
+Nollendorfplatz,310,U3
+Wittenbergplatz,311,U3
 Augsburger Straße,312,U3
 Nürnberger Platz,313,U3
 Spichernstraße,314,U3
@@ -53,6 +67,7 @@ Freie Universität,322,U3
 Oskar-Helene-Heim,323,U3
 Onkel Toms Hütte,324,U3
 Krumme Lanke,325,U3
+Nollendorfplatz,41,U4
 Viktoria-Luise-Platz,42,U4
 Bayerischer Platz,43,U4
 Rathaus Schöneberg,44,U4
@@ -76,6 +91,7 @@ Frankfurter Tor,516,U5
 Weberwiese,517,U5
 Strausberger Platz,518,U5
 Schillingstraße,519,U5
+Alexanderplatz,520,U5
 Alt-Tegel,61,U6
 Borsigwerke,62,U6
 Holzhauser Straße,63,U6
@@ -95,9 +111,12 @@ Oranienburger Tor,616,U6
 Friedrichstraße,617,U6
 Unter den Linden,618,U6
 Französische Straße,619,U6
+Stadtmitte,620,U6
 Kochstraße,621,U6
+Hallesches Tor,622,U6
 U7,623,U6
 Mehringdamm,624,U6
+U7,625,U6
 Platz der Luftbrücke,626,U6
 Paradestraße,627,U6
 Tempelhof,628,U6
@@ -119,14 +138,19 @@ Jakob-Kaiser-Platz,710,U7
 Jungfernheide,711,U7
 Mierendorffplatz,712,U7
 Richard-Wagner-Platz,713,U7
+Bismarckstraße,714,U7
 Wilmersdorfer Straße,715,U7
 Adenauerplatz,716,U7
 Konstanzer Straße,717,U7
+Fehrbelliner Platz,718,U7
 Blissestraße,719,U7
 Berliner Straße,720,U7
+Bayerischer Platz,721,U7
 Eisenacher Straße,722,U7
 Kleistpark,723,U7
 Yorckstraße,724,U7
+Möckernbrücke,725,U7
+Mehringdamm,726,U7
 Gneisenaustraße,727,U7
 Südstern,728,U7
 Hermannplatz,729,U7
@@ -142,6 +166,7 @@ Lipschitzallee,738,U7
 Wutzkyallee,739,U7
 Zwickauer Damm,740,U7
 Rudow,741,U7
+Kehranlage,742,U7
 Wittenau,81,U8
 Rathaus Reinickendorf,82,U8
 Karl-Bonhoeffer-Nervenklinik,83,U8
@@ -156,21 +181,30 @@ Voltastraße,811,U8
 Bernauer Straße,812,U8
 Rosenthaler Platz,813,U8
 Weinmeisterstraße,814,U8
+Alexanderplatz,815,U8
 Jannowitzbrücke,816,U8
 Waisentunnel,817,U8
 Heinrich-Heine-Straße,818,U8
 Moritzplatz,819,U8
+Kottbusser Tor,820,U8
 Schönleinstraße,821,U8
+Hermannplatz,822,U8
 Boddinstraße,823,U8
 Leinestraße,824,U8
 Hermannstraße,825,U8
+Osloer Straße,91,U9
 Nauener Platz,92,U9
+Leopoldplatz,93,U9
 Amrumer Straße,94,U9
 Westhafen,95,U9
 Birkenstraße,96,U9
 Turmstraße,97,U9
 Hansaplatz,98,U9
+Zoologischer Garten,99,U9
+Kurfürstendamm,910,U9
+Spichernstraße,911,U9
 Güntzelstraße,912,U9
+Berliner Straße,913,U9
 Bundesplatz,914,U9
 Friedrich-Wilhelm-Platz,915,U9
 Walther-Schreiber-Platz,916,U9
