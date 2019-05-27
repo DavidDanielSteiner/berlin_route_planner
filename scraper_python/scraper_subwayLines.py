@@ -37,7 +37,7 @@ for i in range(1, 10):
                 station_name = re.sub(r'\([^)]*\)', '', station_name)
                 station_data.append(station_name.rstrip()) #['title']) # == Warschauer Straße 
                 station_order +=1
-                station_data.append(str(i) + str(station_order))
+                station_data.append(str(i) + str(station_order).zfill(2))
                 station_data.append('U' + str(i))
                 stations_data.append(station_data)
             else:
@@ -48,7 +48,7 @@ for i in range(1, 10):
 df=pd.DataFrame(stations_data ,columns=['station_name','station_id','line_name'])  
 #df.drop_duplicates(subset ="station_name", keep = 'first', inplace = True)  
    
-df.to_csv ('subway_lines.csv', index = None, header=True) 
+#df.to_csv ('subway_lines.csv', index = None, header=True) 
 
 #check which stations are missing 
 #df_new = pd.merge(df, df_allStations, on='station_name', how='inner')

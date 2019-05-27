@@ -1,26 +1,26 @@
 station_name,station_id,line_name
-Warschauer Straße,11,U1
-Schlesisches Tor,12,U1
-Görlitzer Bahnhof,13,U1
-Kottbusser Tor,14,U1
-Prinzenstraße,15,U1
-Hallesches Tor,16,U1
-Möckernbrücke,17,U1
-Gleisdreieck,18,U1
-Kurfürstenstraße,19,U1
+Warschauer Straße,101,U1
+Schlesisches Tor,102,U1
+Görlitzer Bahnhof,103,U1
+Kottbusser Tor,104,U1
+Prinzenstraße,105,U1
+Hallesches Tor,106,U1
+Möckernbrücke,107,U1
+Gleisdreieck,108,U1
+Kurfürstenstraße,109,U1
 Nollendorfplatz,110,U1
 Wittenbergplatz,111,U1
 Kurfürstendamm,112,U1
 Uhlandstraße,113,U1
-Pankow,21,U2
-Vinetastraße,22,U2
-Schönhauser Allee,23,U2
-Eberswalder Straße,24,U2
-Senefelderplatz,25,U2
-Rosa-Luxemburg-Platz,26,U2
-Alexanderplatz,27,U2
-Klostertunnel,28,U2
-Klosterstraße,29,U2
+Pankow,201,U2
+Vinetastraße,202,U2
+Schönhauser Allee,203,U2
+Eberswalder Straße,204,U2
+Senefelderplatz,205,U2
+Rosa-Luxemburg-Platz,206,U2
+Alexanderplatz,207,U2
+Klostertunnel,208,U2
+Klosterstraße,209,U2
 Märkisches Museum,210,U2
 Spittelmarkt,211,U2
 Hausvogteiplatz,212,U2
@@ -42,15 +42,15 @@ Theodor-Heuss-Platz,227,U2
 Neu-Westend,228,U2
 Olympia-Stadion,229,U2
 Ruhleben,230,U2
-Warschauer Straße,31,U3
-Schlesisches Tor,32,U3
-Görlitzer Bahnhof,33,U3
-Kottbusser Tor,34,U3
-Prinzenstraße,35,U3
-Hallesches Tor,36,U3
-Möckernbrücke,37,U3
-Gleisdreieck,38,U3
-Kurfürstenstraße,39,U3
+Warschauer Straße,301,U3
+Schlesisches Tor,302,U3
+Görlitzer Bahnhof,303,U3
+Kottbusser Tor,304,U3
+Prinzenstraße,305,U3
+Hallesches Tor,306,U3
+Möckernbrücke,307,U3
+Gleisdreieck,308,U3
+Kurfürstenstraße,309,U3
 Nollendorfplatz,310,U3
 Wittenbergplatz,311,U3
 Augsburger Straße,312,U3
@@ -67,20 +67,20 @@ Freie Universität,322,U3
 Oskar-Helene-Heim,323,U3
 Onkel Toms Hütte,324,U3
 Krumme Lanke,325,U3
-Nollendorfplatz,41,U4
-Viktoria-Luise-Platz,42,U4
-Bayerischer Platz,43,U4
-Rathaus Schöneberg,44,U4
-Innsbrucker Platz,45,U4
-Hönow,51,U5
-Louis-Lewin-Straße,52,U5
-Hellersdorf,53,U5
-Cottbusser Platz,54,U5
-Kienberg,55,U5
-Kaulsdorf-Nord,56,U5
-Wuhletal,57,U5
-Elsterwerdaer Platz,58,U5
-Biesdorf-Süd,59,U5
+Nollendorfplatz,401,U4
+Viktoria-Luise-Platz,402,U4
+Bayerischer Platz,403,U4
+Rathaus Schöneberg,404,U4
+Innsbrucker Platz,405,U4
+Hönow,501,U5
+Louis-Lewin-Straße,502,U5
+Hellersdorf,503,U5
+Cottbusser Platz,504,U5
+Kienberg,505,U5
+Kaulsdorf-Nord,506,U5
+Wuhletal,507,U5
+Elsterwerdaer Platz,508,U5
+Biesdorf-Süd,509,U5
 Tierpark,510,U5
 Friedrichsfelde,511,U5
 Lichtenberg,512,U5
@@ -92,15 +92,15 @@ Weberwiese,517,U5
 Strausberger Platz,518,U5
 Schillingstraße,519,U5
 Alexanderplatz,520,U5
-Alt-Tegel,61,U6
-Borsigwerke,62,U6
-Holzhauser Straße,63,U6
-Otisstraße,64,U6
-Scharnweberstraße,65,U6
-Kurt-Schumacher-Platz,66,U6
-Afrikanische Straße,67,U6
-Rehberge,68,U6
-Seestraße,69,U6
+Alt-Tegel,601,U6
+Borsigwerke,602,U6
+Holzhauser Straße,603,U6
+Otisstraße,604,U6
+Scharnweberstraße,605,U6
+Kurt-Schumacher-Platz,606,U6
+Afrikanische Straße,607,U6
+Rehberge,608,U6
+Seestraße,609,U6
 U9,610,U6
 Leopoldplatz,611,U6
 Wedding,612,U6
@@ -125,15 +125,15 @@ Kaiserin-Augusta-Straße,630,U6
 Ullsteinstraße,631,U6
 Westphalweg,632,U6
 Alt-Mariendorf,633,U6
-Kehranlage,71,U7
-Rathaus Spandau,72,U7
-Altstadt Spandau,73,U7
-Zitadelle,74,U7
-Haselhorst,75,U7
-Paulsternstraße,76,U7
-Rohrdamm,77,U7
-Siemensdamm,78,U7
-Halemweg,79,U7
+Kehranlage,701,U7
+Rathaus Spandau,702,U7
+Altstadt Spandau,703,U7
+Zitadelle,704,U7
+Haselhorst,705,U7
+Paulsternstraße,706,U7
+Rohrdamm,707,U7
+Siemensdamm,708,U7
+Halemweg,709,U7
 Jakob-Kaiser-Platz,710,U7
 Jungfernheide,711,U7
 Mierendorffplatz,712,U7
@@ -167,15 +167,15 @@ Wutzkyallee,739,U7
 Zwickauer Damm,740,U7
 Rudow,741,U7
 Kehranlage,742,U7
-Wittenau,81,U8
-Rathaus Reinickendorf,82,U8
-Karl-Bonhoeffer-Nervenklinik,83,U8
-Lindauer Allee,84,U8
-Paracelsus-Bad,85,U8
-Residenzstraße,86,U8
-Franz-Neumann-Platz,87,U8
-Osloer Straße,88,U8
-Pankstraße,89,U8
+Wittenau,801,U8
+Rathaus Reinickendorf,802,U8
+Karl-Bonhoeffer-Nervenklinik,803,U8
+Lindauer Allee,804,U8
+Paracelsus-Bad,805,U8
+Residenzstraße,806,U8
+Franz-Neumann-Platz,807,U8
+Osloer Straße,808,U8
+Pankstraße,809,U8
 Gesundbrunnen,810,U8
 Voltastraße,811,U8
 Bernauer Straße,812,U8
@@ -192,15 +192,15 @@ Hermannplatz,822,U8
 Boddinstraße,823,U8
 Leinestraße,824,U8
 Hermannstraße,825,U8
-Osloer Straße,91,U9
-Nauener Platz,92,U9
-Leopoldplatz,93,U9
-Amrumer Straße,94,U9
-Westhafen,95,U9
-Birkenstraße,96,U9
-Turmstraße,97,U9
-Hansaplatz,98,U9
-Zoologischer Garten,99,U9
+Osloer Straße,901,U9
+Nauener Platz,902,U9
+Leopoldplatz,903,U9
+Amrumer Straße,904,U9
+Westhafen,905,U9
+Birkenstraße,906,U9
+Turmstraße,907,U9
+Hansaplatz,908,U9
+Zoologischer Garten,909,U9
 Kurfürstendamm,910,U9
 Spichernstraße,911,U9
 Güntzelstraße,912,U9
