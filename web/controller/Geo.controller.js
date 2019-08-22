@@ -13,7 +13,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			});
 			map.setZoom(14);
 		},
-
+//test
 		onAfterRendering: function () {
 			//Step 1: initialize communication with the platform
 			var platform = new H.service.Platform({
