@@ -5,8 +5,8 @@ SAP Hana UI5 Project HTW Berlin Datenbankkonzepte
 Damit wir bei der debugging bzw. Code-Erweiterung nicht durcheinander gehen, müssen wir an kleinen Konventionen halten.
 Wenn ihr javascript code (Variablen Benennung) schreibt, dann bitte an folgende Regeln halten:
 
-- sId	        string
-- oDomRef	    object
+- sId	       - string
+- oDomRef	   - object
 - $DomRef	    jQuery object
 nCount	    int / number
 aEntries	  array
