@@ -7,15 +7,15 @@ Wenn ihr javascript code (Variablen Benennung) schreibt, dann bitte an folgende 
 
 - sId	       - string
 - oDomRef	   - object
-- $DomRef	    jQuery object
-nCount	    int / number
-aEntries	  array
-dToday	    date
-fDecimal	  float
-bEnabled	  boolean
-rPattern	  RegExp
-onFunction	function with Event
-vVariant	  variant types
+- $DomRef	   - jQuery object
+- nCount	   - int / number
+- aEntries	 - array
+- dToday	   - date
+- fDecimal	 - float
+- bEnabled	 - boolean
+- rPattern	 - RegExp
+- onFunction - function with Event
+- vVariant	 - variant types
 
 
 Aufgabe 3
