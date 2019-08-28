@@ -1,7 +1,7 @@
 # hanabasic-local
 SAP Hana UI5 Project HTW Berlin Datenbankkonzepte
 
-#Präambel
+# Präambel
 Damit wir bei der debugging bzw. Code-Erweiterung nicht durcheinander gehen, müssen wir an kleinen Konventionen halten.
 Wenn ihr javascript code (Variablen Benennung) schreibt, dann bitte an folgende Regeln halten:
 
