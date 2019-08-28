@@ -18,7 +18,7 @@ Wenn ihr javascript code (Variablen Benennung) schreibt, dann bitte an folgende 
 - vVariant	 - variant types
 
 
-Aufgabe 3
+# Aufgabe 3
 Algorithmus
 
 1. Geodaten der Ubahnstationen in DB einfügen
@@ -38,7 +38,7 @@ Algorithmus
 3.1 Ergebnis in View ausgeben mit Json
 
 
---Aufgabenverteilung--
+# Aufgabenverteilung
 
 [x] 1. Webscraping Ubahndaten und als CSV ausgeben [David]
 
