@@ -5,7 +5,9 @@ const port = 3000
 const config = require('./config');
 const db = require('./db');
 const request = require('request');
-
+const ta =require('@sap/textanalysis'); // Check: https://help.sap.com/viewer/62e301bb1872437cbb2a8c4209f74a65/2.0.00/en-US/acb990628a8045ff850e69fe2f13f4d1.html
+//const hdbext = require('@sap/hdbext'); 
+const async = require('async');// ??????
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -29,6 +31,39 @@ app.get('/db', (req, res, next) => {
 app.get('/mult', (req, res, next) => {
     res.send(`${req.query.num1 * req.query.num2}`);
 });
+
+// VERSION_NR1
+
+ app.get('/performTextAnalysis', (req, res, next) => {
+    //Get data from form
+    var sGetText = req.query.input_text;
+    var addressFrom = '';
+    var addressTo = '';
+    var params_daten =[];
+    var oJSON={};
+    const sSQLStatementTATableResult = "CALL TA_ANALYZE (DOCUMENT_TEXT=>?, LANGUAGE_CODE=>?, MIME_TYPE =>?, LANGUAGE_DETECTION =>'EN, DE', CONFIGURATION=>?, RETURN_PLAINTEXT=>1, TA_ANNOTATIONS => 'MY_TABLE', PLAINTEXT => ? );";
+    params_daten.push(sGetText);
+    params_daten.push('DE');
+    params_daten.push('text/plain');
+    params_daten.push('EXTRACTION_CORE');
+    console.log(params_daten);
+    //ADDRESS1 where OFFSET is kleiner
+
+    // run sql statement and send rows to view
+    db.readFromHdb(
+        config.hdb,
+        sSQLStatementTATableResult,
+        params_daten,
+        rows => {
+        oJSON = JSON.stringify(rows);
+        console.log("Ausgabe: ", oJSON.length);
+        res.type('text/plain').send(oJSON)
+        },
+        info => console.log(info));
+        //res.type('application/json').send(JSON.stringify(oJSON));
+    });
+
+    
 
 app.get('/import', (req, res, next) => {
     const parse = require('csv-parse');
@@ -57,7 +92,6 @@ app.get('/import', (req, res, next) => {
     //get data from url and parse into json -> write into hdb
     request(url).pipe(parser); 
 });
-
 app.get('/outbound', (req, res, next) => {
     /**
      * Before: to be done in SQL Editor

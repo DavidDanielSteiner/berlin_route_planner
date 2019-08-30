@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@sap/hana-client": "^2.4.139",
+    "@sap/textanalysis": "^1.1.0",
+    "@sap/textmining": "^1.1.6",
     "csv-parse": "^4.4.1",
     "express": "^4.17.0",
     "install": "^0.12.2",
-    "npm": "^6.9.0",
+    "npm": "^6.11.2",
     "request": "^2.88.0",
     "requests": "^0.2.2",
     "xmlhttprequest": "^1.8.0"

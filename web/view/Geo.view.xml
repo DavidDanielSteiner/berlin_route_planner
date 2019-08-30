@@ -3,6 +3,13 @@
 	<Page id="geo1" title="{i18n>geoTitle}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
 		<content>
 			<VBox fitContainer="true">
+			<InputListItem label="Search">
+						<Input id="request_path_berlin" placeholder="Request" value="Ich möchte von der Güntzelstr. 10 in die Treskowallee 8"/>
+			</InputListItem>
+			<InputListItem>
+						<Button text="Search" press="onFindButtonPress"/>
+			</InputListItem>
+			<TextArea id="log" value="leer" width="10cm" rows="8"/>
 				<HBox id="map" fitContainer="true" height="500px" />
 			</VBox>
 		</content>
