@@ -22,11 +22,11 @@ Wenn ihr javascript code (Variablen Benennung) schreibt, dann bitte an folgende 
 Algorithmus
 
 1. Geodaten der Ubahnstationen in DB einfügen
-1.1 Geodaten in Graph umwandeln
+  1.1 Geodaten in Graph umwandeln
 
 1. Text Mining
 -"Ich will von der Treskovallee in die Friedrichsstraße"
-1.1 Start und Zieladresse als String extrahieren
+  1.1 Start und Zieladresse als String extrahieren
 
 
 2. Spatial Distance (wie in Outbound)
