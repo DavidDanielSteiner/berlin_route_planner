@@ -35,33 +35,72 @@ app.get('/mult', (req, res, next) => {
 // VERSION_NR1
 
  app.get('/performTextAnalysis', (req, res, next) => {
-    //Get data from form
+     //Get data from form
     var sGetText = req.query.input_text;
-    var addressFrom = '';
-    var addressTo = '';
-    var params_daten =[];
-    var oJSON={};
-    const sSQLStatementTATableResult = "CALL TA_ANALYZE (DOCUMENT_TEXT=>?, LANGUAGE_CODE=>?, MIME_TYPE =>?, LANGUAGE_DETECTION =>'EN, DE', CONFIGURATION=>?, RETURN_PLAINTEXT=>1, TA_ANNOTATIONS => 'MY_TABLE', PLAINTEXT => ? );";
-    params_daten.push(sGetText);
-    params_daten.push('DE');
-    params_daten.push('text/plain');
-    params_daten.push('EXTRACTION_CORE');
-    console.log(params_daten);
+    var aParameters =[];
+    var oJSONFromTo={};
+    const sSQLStatementTATableResult = "CALL TA_ANALYZE (DOCUMENT_TEXT=>?, LANGUAGE_CODE=>?, MIME_TYPE =>?, LANGUAGE_DETECTION =>'EN, DE', CONFIGURATION=>?, RETURN_PLAINTEXT=>1, TA_ANNOTATIONS => ?, PLAINTEXT => ? );";
+    
+    aParameters.push(sGetText);
+    aParameters.push('DE');
+    aParameters.push('text/plain');
+    aParameters.push('EXTRACTION_CORE');
+
+    var myTA_Analyze_Callback = function(data) {
+        var nOffset=0;
+        for(var myKey in data) {
+            if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
+            {
+                oJSONFromTo['FROM']=data[myKey]['TOKEN'];
+                nOffset = data[myKey]['OFFSET']; 
+            } 
+            else if (data[myKey]['TYPE']=='ADDRESS1' && nOffset!=0)
+            {
+                oJSONFromTo['TO'] = data[myKey]['TOKEN'];
+            } 
+            else continue;
+        }
+        res.type('text/plain').send(oJSONFromTo);
+      };
+      
+    
     //ADDRESS1 where OFFSET is kleiner
 
     // run sql statement and send rows to view
-    db.readFromHdb(
+    var oJSON_TA_ANALYZE = function(callback) { 
+        db.readFromHdbSync(
         config.hdb,
         sSQLStatementTATableResult,
-        params_daten,
+        aParameters,
         rows => {
-        oJSON = JSON.stringify(rows);
-        console.log("Ausgabe: ", oJSON.length);
-        res.type('text/plain').send(oJSON)
+            console.log(rows);
+            callback(rows);
         },
-        info => console.log(info));
-        //res.type('application/json').send(JSON.stringify(oJSON));
-    });
+        info => console.log(info),
+        myTA_Analyze_Callback
+        );      
+    }
+    oJSON_TA_ANALYZE(myTA_Analyze_Callback);
+    //GET TA ANALYZE
+    //oJSON= JSON.stringify(oJSON_TA_ANALYZE(myTA_Analyze_Callback));    
+    //res.type('application/json').send(JSON.stringify(oJSON));
+    /** console.log(oJSON.hasOwnProperty('ADDRESS1'));
+
+        for(var myKey in oJSON_TA_ANALYZE(myTA_Analyze_Callback).hasOwnProperty('ADDRESS1')) {
+            console.log("key:"+myKey+", value:"+oJSON_TA_ANALYZE(myTA_Analyze_Callback)[myKey]);
+            }
+
+        if(oJSON_TA_ANALYZE(myTA_Analyze_Callback).hasOwnProperty('ADDRESS1')){
+            //do something if the key exist
+            console.log('true');
+        }
+var myJson = {'key':'value'};
+//new element
+myJson.key2 = 'value2';
+//or
+myJson[key3] = 'value3';
+*/
+}); 
 
     
 
@@ -92,6 +131,7 @@ app.get('/import', (req, res, next) => {
     //get data from url and parse into json -> write into hdb
     request(url).pipe(parser); 
 });
+
 app.get('/outbound', (req, res, next) => {
     /**
      * Before: to be done in SQL Editor
