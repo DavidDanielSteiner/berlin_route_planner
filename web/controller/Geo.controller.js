@@ -51,24 +51,16 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 		},
 
-		onFindButtonPress: function (oEvent) {
-			sap.m.MessageToast.show('Es wird nach bestmöglicher Verbindung gesucht.. ');
-			self = this;
-			self.performTextAnalysisHDB(this.getView().byId('request_path_berlin').getValue());	
-			//var fueltype = this.getView().byId('fueltype').getSelectedKey();
-			/** var address = this.getView().byId('address').getValue();
-			var distance = this.getView().byId('distance').getValue();
-
-			self = this;
-
-			//Geocoding
+		performGeocoding: function (sAddress) {
+			var log= self.getView().byId('log');
+				
 			$.ajax({
 				url: 'https://geocoder.api.here.com/6.2/geocode.json',
 				type: 'GET',
 				dataType: 'jsonp',
 				jsonp: 'jsoncallback',
 				data: {
-					searchtext: address,
+					searchtext: sAddress,
 					app_id: Cred.getHereAppId(),
 					app_code: Cred.getHereAppCode(),
 					gen: '9'
@@ -76,13 +68,25 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				success: function (data) {
 					var lat = data.Response.View["0"].Result["0"].Location.DisplayPosition.Latitude;
 					var lng = data.Response.View["0"].Result["0"].Location.DisplayPosition.Longitude;
-
-					self.requestTankDataFromHDB(lat, lng, distance)
+					//self.requestTankDataFromHDB(lat, lng, distance)
+					log.setValue('Address: '+ sAddress +' - '+lat+' : '+lng);
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
 				}
-			});*/
+			});
+		},
+
+		onFindButtonPress: function (oEvent) {
+			sap.m.MessageToast.show('Es wird nach bestmöglicher Verbindung gesucht.. ');
+			self = this;
+			self.performTextAnalysisHDB(this.getView().byId('request_path_berlin').getValue());	
+			/** var log = this.getView().byId('log').getValue();
+			console.log(log);*/
+			//self.performGeocoding (this.getView().byId('from').getValue());
+			self.performGeocoding ('Treskowallee 8');
+
+			
 		},
 
 		performTextAnalysisHDB: function (input_text) {
@@ -94,15 +98,17 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					input_text: input_text,    
 				},
 				success: function (data) {
-					var log = self.getView().byId('log');
-
-					log.setValue("HANNA: "+data); 
+					var from = self.getView().byId('from');
+					var to = self.getView().byId('to');
+					//var log= self.getView().byId('log');
+					//log.setValue(JSON.stringify(data));
+					from.setValue(data['FROM']); 
+					to.setValue(data['TO']);
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
 				}
 			});
-		},
+		}
 	});
-
 });

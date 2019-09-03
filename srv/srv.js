@@ -39,7 +39,8 @@ app.get('/mult', (req, res, next) => {
     var sGetText = req.query.input_text;
     var aParameters =[];
     var oJSONFrom_To={};
-    const sSQLStatementTATableResult = "CALL TA_ANALYZE (DOCUMENT_TEXT=>?, LANGUAGE_CODE=>?, MIME_TYPE =>?, LANGUAGE_DETECTION =>'EN, DE', CONFIGURATION=>?, RETURN_PLAINTEXT=>1, TA_ANNOTATIONS => ?, PLAINTEXT => ? );";
+    
+    var sSQLStatementTATableResult = "CALL TA_ANALYZE (DOCUMENT_TEXT=>?, LANGUAGE_CODE=>?, MIME_TYPE =>?, LANGUAGE_DETECTION =>'EN, DE', CONFIGURATION=>?, RETURN_PLAINTEXT=>1, TA_ANNOTATIONS => ?, PLAINTEXT => ? );";
     
     aParameters.push(sGetText);
     aParameters.push('DE');
@@ -47,6 +48,7 @@ app.get('/mult', (req, res, next) => {
     aParameters.push('EXTRACTION_CORE');
 
     var myTA_Analyze_Callback = function(data) {
+        
         var nOffset=0;
         for(var myKey in data) {
             if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
@@ -59,11 +61,16 @@ app.get('/mult', (req, res, next) => {
             {
                 oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
                 console.log(oJSONFrom_To['TO']);
-                res.type('text/plain').send(oJSONFrom_To);
+                //res.type('text/plain').send(oJSONFrom_To);
+                //res.setHeader('Content-Type', 'application/json');
+                //res.send(JSON.stringify(oJSONFrom_To));
+                //res.send(oJSONFrom_To);
+                //res.type('application/json').send(oJSONFrom_To)
+                res.json(oJSONFrom_To);
             } 
             else continue;
-        }
-        //res.type('text/plain').send(oJSONFrom_To);
+        } 
+        //res.type('text/plain').send('text');
       };
       
     
@@ -76,7 +83,7 @@ app.get('/mult', (req, res, next) => {
         sSQLStatementTATableResult,
         aParameters,
         rows => {
-            callback(rows);
+           callback(rows);
         },
         info => console.log(info),
         myTA_Analyze_Callback

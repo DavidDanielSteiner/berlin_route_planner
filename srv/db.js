@@ -3,7 +3,7 @@ const connection = hanaClient.createConnection();
 
 module.exports = {
 
-    readFromHdbSync: function (hdb, sql, params, handleRows, infoHandler,callback) {
+    readFromHdbSync: function (hdb, sql, params, handleRows, infoHandler, callback) {
         setTimeout(
             () => {
                 callback(
