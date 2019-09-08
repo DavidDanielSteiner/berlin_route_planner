@@ -9,9 +9,6 @@
 			<InputListItem>
 						<Button text="Search" press="onFindButtonPress"/>
 			</InputListItem>
-			<TextArea id="log" value="leer" width="10cm" rows="8"/>
-			<TextArea id="from" value="leer" width="10cm" rows="1"/>
-			<TextArea id="to" value="leer" width="10cm" rows="1"/>
 				<HBox id="map" fitContainer="true" height="500px" />
 			</VBox>
 		</content>
