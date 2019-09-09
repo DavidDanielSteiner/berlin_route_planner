@@ -47,9 +47,17 @@ app.get('/mult', (req, res, next) => {
     aParameters.push('text/plain');
     aParameters.push('EXTRACTION_CORE');
 
-    var myTA_Analyze_Callback = function(data) {
-        console.log(JSON.stringify(data));
+    
+    async function runTextAnalysis () {
         var nOffset=0;
+
+        var data = await db.readFromHdbSync(
+            config.hdb,
+            sSQLStatementTATableResult,
+            aParameters,
+            info => console.log(info)); 
+        
+        console.log(data);
         
         for(var myKey in data) {
             if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
@@ -66,26 +74,9 @@ app.get('/mult', (req, res, next) => {
 
             } else continue;
         }
-
-      };
-      
     
-    //ADDRESS1 where OFFSET is kleiner
-
-    // run sql statement and send rows to view
-   var oJSON_TA_ANALYZE = function(callback) { 
-        db.readFromHdbSync(
-        config.hdb,
-        sSQLStatementTATableResult,
-        aParameters,
-        rows => {
-           callback(rows);
-        },
-        info => console.log(info),
-        myTA_Analyze_Callback
-        );      
-    }
-    oJSON_TA_ANALYZE(myTA_Analyze_Callback);
+    }   
+      runTextAnalysis ();
 }); 
 
     
