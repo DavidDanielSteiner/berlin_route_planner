@@ -134,6 +134,16 @@
 					"pattern": "import",
 					"name": "import",
 					"target": "import"
+				},
+				{
+					"pattern": "unetz",
+					"name": "unetz",
+					"target": "unetz"
+				},
+				{
+					"pattern": "unetzPro",
+					"name": "unetzPro",
+					"target": "unetzPro"
 				}
 
 			],
@@ -186,6 +196,16 @@
 				"import": {
 					"viewId": "import",
 					"viewName": "Import",
+					"viewLevel": 1
+				},
+				"unetz": {
+					"viewId": "unetz",
+					"viewName": "UBahnNetzBerlin",
+					"viewLevel": 1
+				},
+				"unetzPro": {
+					"viewId": "unetzPro",
+					"viewName": "UBahnNetzBerlinPro",
 					"viewLevel": 1
 				}
 			}

@@ -26,8 +26,7 @@
 					</InputListItem>
 				</List>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
-				<!-- Here Map Container -->
-				<HBox id="map" fitContainer="true" height="500px"></HBox>
+			
 			</VBox>
 		</content>
 	</Page>

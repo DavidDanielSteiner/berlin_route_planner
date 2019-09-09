@@ -39,8 +39,9 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			ppi: pixelRatio === 1 ? undefined : 320
 		});
 		var pixelRatio = window.devicePixelRatio || 1;
+		var oMap = this.getView().byId("map");
 		let map = new H.Map(
-			document.getElementById("__component0---geo--map"), 
+		document.getElementById("__component0---geo--map"), 
 			defaultLayers.normal.map, 
 			{
 				zoom: 14,
@@ -190,25 +191,23 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 
 		performTextAnalysisHDB: function (input_text, callback) {
-							$.ajax({
-								url: 'http://localhost:3000/performTextAnalysis',
-								type: 'GET',
-								data: {
-									input_text: input_text,    
-								},
-								success: function (data) {
-									callback(data);
-									/** var from = self.getView().byId('from');
-									var to = self.getView().byId('to');
-									from.setValue(data['FROM']); 
-									to.setValue(data['TO']);*/					
-								},
-								error: function (jqXHR, textStatus, errorThrown) {
-									sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
-								}
-							});
-				
-			
+			$.ajax({
+				url: 'http://localhost:3000/performTextAnalysis',
+				type: 'GET',
+				data: {
+					input_text: input_text,    
+				},
+				success: function (data) {
+					callback(data);
+					/** var from = self.getView().byId('from');
+					var to = self.getView().byId('to');
+					from.setValue(data['FROM']); 
+					to.setValue(data['TO']);*/					
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+				}
+			});
 		}
 	});
 });

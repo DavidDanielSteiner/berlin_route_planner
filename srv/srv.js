@@ -134,15 +134,67 @@ app.get('/outbound', (req, res, next) => {
     var sGetDistance = req.query.distance;
     //Define SQL Statement
     const sSQLStatement = "SELECT * FROM Tankstellendaten where (shape_4326.st_distance(NEW ST_Point('Point ('|| ? ||' '|| ?||')',4326),'kilometer'))<?;";
-
-    
-    
     var params_daten =[];
     
     //Fill in required data for sql statement
     params_daten.push(sGetLat);
     params_daten.push(sGetLon);
     params_daten.push(sGetDistance);
+    
+    console.log(params_daten);
+
+    // run sql statement and send rows to view
+    db.readFromHdb(
+        config.hdb,
+        sSQLStatement,
+        params_daten,
+        rows => res.type('application/json').send(rows),
+        info => console.log(info));
+});
+
+app.get('/unetz', (req, res, next) => {
+    //Get data from form
+    var sGetLon = req.query.lng;
+    var sGetLat = req.query.lat;
+    var sGetDistance = req.query.distance;
+    //Define SQL Statement
+    const sSQLStatement = "SELECT STATION_NAME as STATION_NAME, LINE_NAME, LATITUDE, LONGITUDE, "
+    + "PREMISE_4326.st_distance(NEW ST_Point('Point ('|| ?||' '|| ? ||')',4326),'meter') as Distance "  
+    + "FROM U556741.U_STATIONS where (PREMISE_4326.st_distance(NEW ST_Point('Point ('|| ? ||' '|| ? ||')',4326),'kilometer')) < ? order by Distance;";
+    
+    var params_daten =[];
+    
+    //Fill in required data for sql statement
+    params_daten.push(sGetLat);
+    params_daten.push(sGetLon);
+    params_daten.push(sGetLat);
+    params_daten.push(sGetLon);
+    params_daten.push(sGetDistance);
+
+    console.log(params_daten);
+
+    // run sql statement and send rows to view
+    db.readFromHdb(
+        config.hdb,
+        sSQLStatement,
+        params_daten,
+        rows => res.type('application/json').send(rows),
+        info => console.log(info));
+});
+
+app.get('/short_path', (req, res, next) => {
+   
+    //Get data from form
+    var sStart = req.query.start;
+    var sEnd= req.query.end;
+    //Define SQL Statement
+    const sSQLStatement = "CALL U556741.NEAREST_WAY( STARTV => ?, ENDV => ?, ROUTING => ?);";
+    
+    var params_daten =[];
+    
+    //Fill in required data for sql statement
+    params_daten.push(sStart);
+    params_daten.push(sEnd);
     
     console.log(params_daten);
 

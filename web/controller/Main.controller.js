@@ -25,6 +25,12 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController"], function 
 		onPressOutboundHDB: function (oEvent) {
 			this.getRouter().navTo("outboundHDB");
 		},
+		onPressUNetzBerlin: function (oEvent) {
+			this.getRouter().navTo("unetz");
+		},
+		onPressUNetzBerlinPro: function (oEvent) {
+			this.getRouter().navTo("unetzPro");
+		},
 		onPressDb: function (oEvent) {
 			this.getRouter().navTo("db");
 		},

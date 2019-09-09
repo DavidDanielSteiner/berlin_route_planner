@@ -11,8 +11,8 @@
 				<Button width="5cm" text="Outbound HDB" press="onPressOutboundHDB"/>
 				<Button width="5cm" text="DB" press="onPressDb"/>
 				<Button width="5cm" text="Import" press="onImportPress"/>
-				<Button width="5cm" text="U-Bahn Netz Berlin" press="onPressOutboundHDB"/>
-				<Button width="5cm" text="U-Bahn Netz Berlin Pro" press="onPressOutboundHDB"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin" press="onPressUNetzBerlin"/>
+				<Button width="5cm" text="U-Bahn Netz Berlin Pro" press="onPressUNetzBerlinPro"/>
 			</VBox>
 		</content>
 	</Page>

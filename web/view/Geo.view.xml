@@ -2,15 +2,19 @@
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page id="geo1" title="{i18n>geoTitle}" class="sapUiResponsiveContentPadding" showNavButton="true" navButtonPress="onNavBack">
 		<content>
-			<VBox fitContainer="true">
+			<VBox fitContainer="false">
 			<InputListItem label="Search">
 						<Input id="request_path_berlin" placeholder="Request" value="Ich möchte von der Güntzelstr. 10 in die Treskowallee 8"/>
 			</InputListItem>
 			<InputListItem>
 						<Button text="Search" press="onFindButtonPress"/>
 			</InputListItem>
-				<HBox id="map" fitContainer="true" height="500px" />
 			</VBox>
+			<Panel id="pan" >
+				<HBox id="map" fitContainer="true" height="500px" />
+			</Panel>
+
+			
 		</content>
 	</Page>
 </mvc:View>
