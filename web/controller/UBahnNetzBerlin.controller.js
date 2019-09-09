@@ -114,11 +114,11 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		
 		getStartAndEnd: async function (sAdressFrom,sAddressTo) {
 			var oStart = await this.getLanLng(sAdressFrom);
-			sap.m.MessageToast.show("Inside: getStartAndEnd- start finished")
+			//sap.m.MessageToast.show("Inside: getStartAndEnd- start finished")
 			var oEnd = await this.getLanLng(sAddressTo);
 			this.moveMapToLatLng(this.oMap,oStart.LAT,oStart.LNG);
 			this.moveMapToLatLng(this.oMap,oEnd.LAT,oEnd.LNG);
-			sap.m.MessageToast.show("Inside: getStartAndEnd- end finished")
+			//sap.m.MessageToast.show("Inside: getStartAndEnd- end finished")
 			this.requestStationsDataFromHDB(oStart, oEnd);
 		},
 		
