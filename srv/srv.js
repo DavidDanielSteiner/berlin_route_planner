@@ -48,7 +48,7 @@ app.get('/mult', (req, res, next) => {
     aParameters.push('EXTRACTION_CORE');
 
     var myTA_Analyze_Callback = function(data) {
-        
+        console.log(data);
         var nOffset=0;
         for(var myKey in data) {
             if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)

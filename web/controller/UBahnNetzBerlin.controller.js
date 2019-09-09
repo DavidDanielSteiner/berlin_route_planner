@@ -94,7 +94,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				dataType: 'jsonp',
 				jsonp: 'jsoncallback',
 				data: {
-					searchtext: sAdress,
+					searchtext: sAdress + " Berlin",
 					app_id: Cred.getHereAppId(),
 					app_code: Cred.getHereAppCode(),
 					city: 'Berlin',
@@ -276,7 +276,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 						if (data[i].LINE_NAME !== data[i - 1].LINE_NAME) {
 							
 							str = str + data[i].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i].START + " \n";
-							str = str + "Umsteigen" + " \n";
+							str = str + "Umsteigen\n";
 						}
 						if (i === (data.length - 1)) {
 							var endsegment = data.length + 1;
