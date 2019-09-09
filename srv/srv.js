@@ -48,8 +48,9 @@ app.get('/mult', (req, res, next) => {
     aParameters.push('EXTRACTION_CORE');
 
     var myTA_Analyze_Callback = function(data) {
-        console.log(data);
+        console.log(JSON.stringify(data));
         var nOffset=0;
+        
         for(var myKey in data) {
             if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
             {
@@ -61,23 +62,18 @@ app.get('/mult', (req, res, next) => {
             {
                 oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
                 console.log(oJSONFrom_To['TO']);
-                //res.type('text/plain').send(oJSONFrom_To);
-                //res.setHeader('Content-Type', 'application/json');
-                //res.send(JSON.stringify(oJSONFrom_To));
-                //res.send(oJSONFrom_To);
-                //res.type('application/json').send(oJSONFrom_To)
                 res.json(oJSONFrom_To);
-            } 
-            else continue;
-        } 
-        //res.type('text/plain').send('text');
+
+            } else continue;
+        }
+
       };
       
     
     //ADDRESS1 where OFFSET is kleiner
 
     // run sql statement and send rows to view
-    var oJSON_TA_ANALYZE = function(callback) { 
+   var oJSON_TA_ANALYZE = function(callback) { 
         db.readFromHdbSync(
         config.hdb,
         sSQLStatementTATableResult,
