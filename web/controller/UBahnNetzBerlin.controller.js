@@ -270,10 +270,12 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				},
 				success: function (data) {
 					var log = self.getView().byId('log');
-					var str = "Einsteigen \n ";
+					var str = "Einsteigen \n";
 					for (var i = 1; i < data.length; i++) {
 						str = str + data[i - 1].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i - 1].START + " \n";
 						if (data[i].LINE_NAME !== data[i - 1].LINE_NAME) {
+							
+							str = str + data[i].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i].START + " \n";
 							str = str + "Umsteigen" + " \n";
 						}
 						if (i === (data.length - 1)) {
