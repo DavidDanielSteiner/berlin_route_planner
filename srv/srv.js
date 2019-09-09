@@ -50,30 +50,34 @@ app.get('/mult', (req, res, next) => {
     
     async function runTextAnalysis () {
         var nOffset=0;
-
-        var data = await db.readFromHdbSync(
-            config.hdb,
-            sSQLStatementTATableResult,
-            aParameters,
-            info => console.log(info)); 
         
-        console.log(data);
-        
-        for(var myKey in data) {
-            if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
-            {
-                oJSONFrom_To['FROM']=data[myKey]['TOKEN'];
-                nOffset = data[myKey]['OFFSET']; 
-                console.log(oJSONFrom_To['FROM']);
-            } 
-            else if (data[myKey]['TYPE']=='ADDRESS1' && nOffset!=0)
-            {
-                oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
-                console.log(oJSONFrom_To['TO']);
-                res.json(oJSONFrom_To);
+        try {
+                var data = await db.readFromHdbSync(
+                    config.hdb,
+                    sSQLStatementTATableResult,
+                    aParameters,
+                    info => console.log(info)); 
+                
+                console.log(data);
+                
+                for(var myKey in data) {
+                    if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
+                    {
+                        oJSONFrom_To['FROM']=data[myKey]['TOKEN'];
+                        nOffset = data[myKey]['OFFSET']; 
+                        console.log(oJSONFrom_To['FROM']);
+                    } 
+                    else if (data[myKey]['TYPE']=='ADDRESS1' && nOffset!=0)
+                    {
+                        oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
+                        console.log(oJSONFrom_To['TO']);
 
-            } else continue;
-        }
+                    } else continue;
+                }
+                    res.json(oJSONFrom_To); 
+    } catch (err){
+        console.error(err.message);
+    }
     
     }   
       runTextAnalysis ();

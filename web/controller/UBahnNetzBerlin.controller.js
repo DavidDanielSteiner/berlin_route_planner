@@ -124,16 +124,22 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		
 
 		onFindButtonPress: function (oEvent) {
+			this.getView().byId('log').setValue("");
 			sap.m.MessageToast.show('Es wird nach bestmöglicher Verbindung gesucht.. ');
 			var sInput = this.getView().byId('request_path_berlin').getValue();
-			var sAdressFrom = '';
-			var sAdressTo = '';
+			var sAdressFrom = null;
+			var sAdressTo = null;
 			self = this;
 
 			self.performTextAnalysisHDB(sInput, function (callback) {
 				sAdressFrom = callback['FROM'];
 				sAdressTo = callback['TO'];
-				self.getStartAndEnd(sAdressFrom,sAdressTo);			
+				if (sAdressFrom == null || sAdressTo == null){
+					sap.m.MessageToast.show('Adresse existiert nicht oder wurde falsch eingetragen..');
+					return process.exit();
+				} else {
+					self.getStartAndEnd(sAdressFrom,sAdressTo);
+				}
 			})
 		},
 
