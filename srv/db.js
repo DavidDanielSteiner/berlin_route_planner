@@ -3,10 +3,8 @@ const connection = hanaClient.createConnection();
 
 module.exports = {
 
-    readFromHdbSync: function (hdb, sql, params, handleRows, infoHandler, callback) {
-        setTimeout(
-            () => {
-                callback(
+    readFromHdbSync: async function (hdb, sql, params, infoHandler) {
+        return new Promise(function(resolve, reject) {
                         connection.connect(hdb, (err) =>
                             {
                                 if (err) {
@@ -21,13 +19,12 @@ module.exports = {
                                         return console.error('SQL execute error:', err);
                                     }
 
-                                    handleRows(rows);
+                                    resolve(rows);
                                     infoHandler(`Query '${sql}' returned ${rows.length} items`);
                                 });
                                 })
-                        )
-                    },
-                    Math.floor(Math.random() * 100) + 1
+                        
+                    }
         )
     },
 
