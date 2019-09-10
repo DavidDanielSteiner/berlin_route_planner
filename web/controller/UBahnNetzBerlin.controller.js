@@ -119,6 +119,8 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			this.moveMapToLatLng(this.oMap,oStart.LAT,oStart.LNG);
 			this.moveMapToLatLng(this.oMap,oEnd.LAT,oEnd.LNG);
 			//sap.m.MessageToast.show("Inside: getStartAndEnd- end finished")
+			this.oCoordinates.startCoord = oStart;
+			this.oCoordinates.endCoord = oEnd;
 			this.requestStationsDataFromHDB(oStart, oEnd);
 		},
 		
@@ -135,9 +137,12 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				sAdressFrom = callback['FROM'];
 				sAdressTo = callback['TO'];
 				if (sAdressFrom == null || sAdressTo == null){
-					sap.m.MessageToast.show('Adresse existiert nicht oder wurde falsch eingetragen..');
-					return process.exit();
+					sap.m.MessageToast.show('Adresse wurde nicht erkannt. Bitte geben Sie Adresse neu an!');
+					//return process.exit();
+					console.log("Adresse wurde nicht erkannt!", "sAdressFrom: " + sAdressFrom + "\nsAdressTo: " + sAdressTo);
+					return ;
 				} else {
+					console.log("Adressen", "From: " + sAdressFrom + "\nTo: " + sAdressTo);
 					self.getStartAndEnd(sAdressFrom,sAdressTo);
 				}
 			})
@@ -174,19 +179,18 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				},
 				success: function (data) {
 					that.oCoordinates.oStart = data;
-					that.oCoordinates.oEnd = data;
-					console.log("requestStationsDataFromHDB", data);
+					console.log("from -> requestStationsDataFromHDB start: data", data);
 					$.ajax({
 						url: 'http://localhost:3000/unetz',
 						type: 'GET',
 						data: {
-							distance: 2,
+							distance: 3,
 							lat: end.LAT,
 							lng: end.LNG
 						},
 						success: function (data2) {		
 							that.oCoordinates.oEnd = data2;
-							console.log("requestStationsDataFromHDB", data2);
+							console.log("from -> requestStations end : data2", data2);
 							console.log("oCoordinates", that.oCoordinates);
 							that.requestShortestPathFromHDB(data[0].STATION_NAME, data2[0].STATION_NAME);
 						},
@@ -203,39 +207,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			});
 		},
 
-		/*	requestStationsDataFromHDB: function (lat, lng, tmp) {
-			//	sap.m.MessageToast.show(lat + '\n' + lng + '\n' + " wird gesucht im Umkreis von 2 km");
-				var that = this;
-				var oData;
-				$.ajax({
-					url: 'http://localhost:3000/unetz',
-					type: 'GET',
-					data: {
-						distance: 2,
-						lng: lng,
-						lat: lat,
-					},
-					success: function (data) {
-						//	var log = self.getView().byId('log');
-						//	log.setValue(JSON.stringify(data, null, 2));
-						if(tmp === "from"){
-							that.oCoordinates.oStart = data;
-						} else if(tmp === "to"){
-							that.oCoordinates.oEnd = data;
-						}
-					
-						oData = data;
-						console.log("requestStationsDataFromHDB" + tmp, oData);
-					//	return oData;
-					},
-					error: function (jqXHR, textStatus, errorThrown) {
-						sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
-						return;
-					}
-				});
-				return oData;
-			},*/
-
 
 		requestShortestPathFromHDB: function (start, end) {
 			self = this;
@@ -247,23 +218,23 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					end: end //'Jakob-Kaiser-Platz',
 				},
 				success: function (data) {
-					var log = self.getView().byId('log');
-					var str = "Einsteigen \n";
+					var oLogArrea = self.getView().byId('log');
+					var sLog = "Einsteigen \n";
 					for (var i = 1; i < data.length; i++) {
-						str = str + data[i - 1].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i - 1].START + " \n";
+						sLog = sLog + data[i - 1].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i - 1].START + " \n";
 						if (data[i].LINE_NAME !== data[i - 1].LINE_NAME) {
 							
-							str = str + data[i].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i].START + " \n";
-							str = str + "Umsteigen\n";
+							sLog = sLog + data[i].SEGMENT + ":   " + data[i - 1].LINE_NAME + " - " + data[i].START + " \n";
+							sLog = sLog + "Umsteigen\n";
 						}
 						if (i === (data.length - 1)) {
 							var endsegment = data.length + 1;
-							str = str + data[i].SEGMENT + ":   " + data[i].LINE_NAME + " - " + data[i].START + " \n";
-							str = str + endsegment + ":   " + data[i].LINE_NAME + " - " + data[i].END + " \n";
-							str = str + "Ziel ist erreicht!\n"
+							sLog = sLog + data[i].SEGMENT + ":   " + data[i].LINE_NAME + " - " + data[i].START + " \n";
+							sLog = sLog + endsegment + ":   " + data[i].LINE_NAME + " - " + data[i].END + " \n";
+							sLog = sLog + "Ziel ist erreicht!\n"
 						}
 					}
-					log.setValue(str);
+					oLogArrea.setValue(sLog);
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
