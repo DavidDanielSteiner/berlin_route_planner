@@ -7,27 +7,26 @@ module.exports = {
         setTimeout(
             () => {
                 callback(
-                        connection.connect(hdb, (err) =>
-                            {
-                                if (err) {
-                                    return console.error("Connection error", err);
-                                }
+                    connection.connect(hdb, (err) => {
+                        if (err) {
+                            return console.error("Connection error", err);
+                        }
 
-                                var stmt = connection.prepare(sql);
-                                stmt.exec(params, (err, rows) => {
-                                    connection.disconnect();
+                        var stmt = connection.prepare(sql);
+                        stmt.exec(params, (err, rows) => {
+                            connection.disconnect();
 
-                                    if (err) {
-                                        return console.error('SQL execute error:', err);
-                                    }
+                            if (err) {
+                                return console.error('SQL execute error:', err);
+                            }
 
-                                    handleRows(rows);
-                                    infoHandler(`Query '${sql}' returned ${rows.length} items`);
-                                });
-                                })
-                        )
-                    },
-                    Math.floor(Math.random() * 100) + 1
+                            handleRows(rows);
+                            infoHandler(`Query '${sql}' returned ${rows.length} items`);
+                        });
+                    })
+                )
+            },
+            Math.floor(Math.random() * 100) + 1
         )
     },
 
@@ -67,8 +66,8 @@ module.exports = {
                     });  */
 
                 if (err) {
-                        return console.error('SQL execute error:', err);
-                    }
+                    return console.error('SQL execute error:', err);
+                }
                 handleRows(rows);
                 infoHandler(`Query '${sql}' saved ${rows.length} items`);
                 /** connection.end(function(err){
@@ -76,7 +75,7 @@ module.exports = {
                     connection.disconnect();
 
                 });*/
-    
+
             });
         });
     },

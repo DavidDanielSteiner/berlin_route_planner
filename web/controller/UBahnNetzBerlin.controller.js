@@ -81,7 +81,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					to.setValue(data['TO']);*/
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
 				}
 			});
 		},
@@ -106,7 +106,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					oJSONLatLng(oJSON);
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
 				}
 			});
 		},
@@ -213,13 +213,13 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 							that.requestShortestPathFromHDB(data[0].STATION_NAME, data2[0].STATION_NAME);
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
-							sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+							sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
 							return;
 						}
 					});
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
 					return;
 				}
 			});
@@ -288,7 +288,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					log.setValue(str);
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
 					return;
 				}
 			});

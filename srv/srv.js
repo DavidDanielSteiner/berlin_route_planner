@@ -34,7 +34,7 @@ app.get('/mult', (req, res, next) => {
 
 // VERSION_NR1
 
- app.get('/performTextAnalysis', (req, res, next) => {
+app.get('/performTextAnalysis', (req, res, next) => {
      //Get data from form
     var sGetText = req.query.input_text;
     var aParameters =[];
@@ -158,8 +158,8 @@ app.get('/unetz', (req, res, next) => {
     var sGetLat = req.query.lat;
     var sGetDistance = req.query.distance;
     //Define SQL Statement
-    const sSQLStatement = "SELECT STATION_NAME as STATION_NAME, LINE_NAME, LATITUDE, LONGITUDE, "
-    + "PREMISE_4326.st_distance(NEW ST_Point('Point ('|| ?||' '|| ? ||')',4326),'meter') as Distance "  
+    const sSQLStatement = "SELECT STATION_NAME, LINE_NAME, LATITUDE, LONGITUDE, "
+    + "PREMISE_4326.st_distance(NEW ST_Point('Point ('|| ? ||' '|| ? ||')',4326),'meter') as Distance "  
     + "FROM U556741.U_STATIONS where (PREMISE_4326.st_distance(NEW ST_Point('Point ('|| ? ||' '|| ? ||')',4326),'kilometer')) < ? order by Distance;";
     
     var params_daten =[];
