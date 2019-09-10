@@ -47,49 +47,40 @@ app.get('/performTextAnalysis', (req, res, next) => {
     aParameters.push('text/plain');
     aParameters.push('EXTRACTION_CORE');
 
-    var myTA_Analyze_Callback = function(data) {
-        console.log(data);
-        var nOffset=0;
-        for(var myKey in data) {
-            if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
-            {
-                oJSONFrom_To['FROM']=data[myKey]['TOKEN'];
-                nOffset = data[myKey]['OFFSET']; 
-                console.log(oJSONFrom_To['FROM']);
-            } 
-            else if (data[myKey]['TYPE']=='ADDRESS1' && nOffset!=0)
-            {
-                oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
-                console.log(oJSONFrom_To['TO']);
-                //res.type('text/plain').send(oJSONFrom_To);
-                //res.setHeader('Content-Type', 'application/json');
-                //res.send(JSON.stringify(oJSONFrom_To));
-                //res.send(oJSONFrom_To);
-                //res.type('application/json').send(oJSONFrom_To)
-                res.json(oJSONFrom_To);
-            } 
-            else continue;
-        } 
-        //res.type('text/plain').send('text');
-      };
-      
     
-    //ADDRESS1 where OFFSET is kleiner
+    async function runTextAnalysis () {
+        var nOffset=0;
+        
+        try {
+                var data = await db.readFromHdbSync(
+                    config.hdb,
+                    sSQLStatementTATableResult,
+                    aParameters,
+                    info => console.log(info)); 
+                
+                console.log(data);
+                
+                for(var myKey in data) {
+                    if (data[myKey]['TYPE']=='ADDRESS1' && nOffset==0)
+                    {
+                        oJSONFrom_To['FROM']=data[myKey]['TOKEN'];
+                        nOffset = data[myKey]['OFFSET']; 
+                        console.log(oJSONFrom_To['FROM']);
+                    } 
+                    else if (data[myKey]['TYPE']=='ADDRESS1' && nOffset!=0)
+                    {
+                        oJSONFrom_To['TO'] = data[myKey]['TOKEN'];
+                        console.log(oJSONFrom_To['TO']);
 
-    // run sql statement and send rows to view
-    var oJSON_TA_ANALYZE = function(callback) { 
-        db.readFromHdbSync(
-        config.hdb,
-        sSQLStatementTATableResult,
-        aParameters,
-        rows => {
-           callback(rows);
-        },
-        info => console.log(info),
-        myTA_Analyze_Callback
-        );      
+                    } else continue;
+                }
+                    res.json(oJSONFrom_To); 
+    } catch (err){
+        console.error(err.message);
     }
-    oJSON_TA_ANALYZE(myTA_Analyze_Callback);
+    
+    }   
+      runTextAnalysis ();
 }); 
 
     

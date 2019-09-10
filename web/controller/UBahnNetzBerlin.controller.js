@@ -56,9 +56,10 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			map.setZoom(14);
 		},
 		moveMapToLatLng: function (map, lat, lng) {
-			sap.m.MessageToast.show('begin');
+			//sap.m.MessageToast.show('begin');
 			var coords = {
 				lat: lat,
+
 				lng: lng
 			};
 			var marker = new H.map.Marker(coords);
@@ -75,10 +76,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				},
 				success: function (data) {
 					callback(data);
-					/** var from = self.getView().byId('from');
-					var to = self.getView().byId('to');
-					from.setValue(data['FROM']); 
-					to.setValue(data['TO']);*/
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
 					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
@@ -86,85 +83,66 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			});
 		},
 
-		getLanLng: function (sAdress, oJSONLatLng) {
-			var oJSON = {};
-			$.ajax({
-				url: 'https://geocoder.api.here.com/6.2/geocode.json',
-				type: 'GET',
-				dataType: 'jsonp',
-				jsonp: 'jsoncallback',
-				data: {
-					searchtext: sAdress + " Berlin",
-					app_id: Cred.getHereAppId(),
-					app_code: Cred.getHereAppCode(),
-					city: 'Berlin',
-					gen: '9'
-				},
-				success: function (data) {
-					oJSON['LAT'] = data.Response.View["0"].Result["0"].Location.DisplayPosition.Latitude;
-					oJSON['LNG'] = data.Response.View["0"].Result["0"].Location.DisplayPosition.Longitude;
-					oJSONLatLng(oJSON);
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
-				}
+		getLanLng: async function (sAdress) {
+		
+			return new Promise(function(resolve, reject) {
+				var oJSON = {};
+				$.ajax({
+					url: 'https://geocoder.api.here.com/6.2/geocode.json',
+					type: 'GET',
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					data: {
+						searchtext: sAdress + " Berlin",
+						app_id: Cred.getHereAppId(),
+						app_code: Cred.getHereAppCode(),
+						city: 'Berlin',
+						gen: '9'
+					},
+					success: function (data) {
+						oJSON['LAT'] = data.Response.View["0"].Result["0"].Location.DisplayPosition.Latitude;
+						oJSON['LNG'] = data.Response.View["0"].Result["0"].Location.DisplayPosition.Longitude;
+						resolve(oJSON);
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					}
+			})
+				
 			});
 		},
+		
+		getStartAndEnd: async function (sAdressFrom,sAddressTo) {
+			var oStart = await this.getLanLng(sAdressFrom);
+			//sap.m.MessageToast.show("Inside: getStartAndEnd- start finished")
+			var oEnd = await this.getLanLng(sAddressTo);
+			this.moveMapToLatLng(this.oMap,oStart.LAT,oStart.LNG);
+			this.moveMapToLatLng(this.oMap,oEnd.LAT,oEnd.LNG);
+			//sap.m.MessageToast.show("Inside: getStartAndEnd- end finished")
+			this.requestStationsDataFromHDB(oStart, oEnd);
+		},
+		
 
 		onFindButtonPress: function (oEvent) {
+			this.getView().byId('log').setValue("");
 			sap.m.MessageToast.show('Es wird nach bestmöglicher Verbindung gesucht.. ');
 			var sInput = this.getView().byId('request_path_berlin').getValue();
-			var oJSONFromLatLng = null;
-			var oJSONToLatLng = null;
-			var sAdressFrom = '';
-			var sAdressTo = '';
+			var sAdressFrom = null;
+			var sAdressTo = null;
 			self = this;
-			var map1 = this.oMap;
 
 			self.performTextAnalysisHDB(sInput, function (callback) {
-				sap.m.MessageToast.show('drin');
-				//self.moveMapToLatLng(map1,'52.5200','13.4050');
 				sAdressFrom = callback['FROM'];
 				sAdressTo = callback['TO'];
-				//sap.m.MessageToast.show('drin'+sAdressFrom+sAdressTo);
-
-				self.getLanLng(sAdressFrom, function (oJSONLatLng) {
-						oJSONFromLatLng = oJSONLatLng;
-						self.oCoordinates.startCoord = oJSONFromLatLng;
-						self.moveMapToLatLng(map1, oJSONLatLng['LAT'], oJSONLatLng['LNG']);
-
-						//	self.oCoordinates.start = self.requestStationsDataFromHDB(oJSONLatLng['LAT'], oJSONLatLng['LNG'], " from");
-						console.log("oCoordinates from", oJSONFromLatLng);
-						
-						
-					}),
-					self.getLanLng(sAdressTo, function (oJSONLatLng) {
-						oJSONToLatLng = oJSONLatLng;
-						self.oCoordinates.endCoord = oJSONToLatLng;
-						self.moveMapToLatLng(map1, oJSONLatLng['LAT'], oJSONLatLng['LNG']);
-						console.log("oCoordinates to", oJSONToLatLng);
-						//	self.oCoordinates.end = self.requestStationsDataFromHDB(oJSONLatLng['LAT'], oJSONLatLng['LNG'], " to");
-						if(oJSONToLatLng !== null && oJSONFromLatLng !== null){
-							self.getStartAndEnd();
-						}
-					});
-					
+				if (sAdressFrom == null || sAdressTo == null){
+					sap.m.MessageToast.show('Adresse existiert nicht oder wurde falsch eingetragen..');
+					return process.exit();
+				} else {
+					self.getStartAndEnd(sAdressFrom,sAdressTo);
+				}
 			})
-			console.log("oCoordinates ", this.oCoordinates);
 		},
 
-
-		getStartAndEnd: function () {
-			var bAgain = true;
-			var oStart = this.oCoordinates.startCoord;
-			var oEnd = this.oCoordinates.endCoord;
-		//	while (bAgain) {
-		//		if (oStart !== null && oEnd !== null) {
-					bAgain = false;
-					this.requestStationsDataFromHDB(oStart, oEnd);
-		//		}
-		//	}
-		},
 
 		oCoordinates: {
 			startCoord: null,
