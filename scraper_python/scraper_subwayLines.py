@@ -48,9 +48,9 @@ for i in range(1, 10):
 df=pd.DataFrame(stations_data ,columns=['station_name','station_id','line_name'])  
 #df.drop_duplicates(subset ="station_name", keep = 'first', inplace = True)  
    
-df.to_csv ('subway_lines.csv', index = None, header=True) 
+df.to_csv ('C:/Users/David/Desktop/subway_lines.csv', index = None, header=True) 
 
 #check which stations are missing 
-df_new = pd.merge(df, df_allStations, on='station_name', how='inner')
+#df_new = pd.merge(df, df_allStations, on='station_name', how='inner')
 #df_new_2 = df[(~df.station_name.isin(df_new.station_name))&(~df.station_name.isin(df_new.station_name))]
-df_new.to_csv ('merged_data.csv', index = None, header=True) 
+#df_new.to_csv ('merged_data.csv', index = None, header=True) 

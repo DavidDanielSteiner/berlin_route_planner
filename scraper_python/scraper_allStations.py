@@ -5,7 +5,7 @@ Created on Thu May 23 15:31:52 2019
 @author: David
 """
 
-import mysql.connector
+#import mysql.connector
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -58,6 +58,6 @@ df_allStations=pd.DataFrame(stations_data ,columns=['station_name','latitude','l
 df_allStations = df_allStations.dropna()
 df_allStations.drop_duplicates(subset ="station_name", keep = 'first', inplace = True) 
 
-df_allStations.to_csv ('station_data.csv', index = None, header=True) 
+df_allStations.to_csv ('C:/Users/David/Desktop/station_data.csv', index = None, header=True) 
 
 
