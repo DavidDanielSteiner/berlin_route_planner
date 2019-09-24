@@ -13,16 +13,20 @@
 			<VBox>
 				<!-- Form zur User Eingabe -->
 				<List headerText="Aufgabe 4: ">
-					
-					<InputListItem label="Gib Dein Weg ein!">
-						<Input id="address" placeholder="Adresse" value="Treskowallee 8, Berlin"/>
+					<InputListItem label="Start:">
+						<Input id="address_start" placeholder="Adresse" value=""/>
+					</InputListItem>
+					<InputListItem label="Ziel:">
+						<Input id="address_target" placeholder="Adresse" value="Güntzelstr. 10, Berlin"/>
 					</InputListItem>
 					<InputListItem label="Suche">
-						<Button text="Los aus HDB" press="onFindButtonPress_Re"/>
+						<Button text="Suchen" press="onFindButtonPress"/>
 					</InputListItem>
 				</List>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
+				<Button text="CurrentLocation" press="moveMapToCurrentLocation"/>
 				<!-- Here Map Container -->
+				<Panel id="pan" >
 				<HBox id="map" fitContainer="true" height="500px"></HBox>
 			</VBox>
 		</content>
