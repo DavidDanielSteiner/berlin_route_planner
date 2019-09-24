@@ -4,8 +4,8 @@
 	xmlns:c="sap.ui.commons"
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:core="sap.ui.core">
-	<Page id="outboundHDB" 
-		title="{i18n>unetzProTeitle}" 
+	<Page id="unetzPro" 
+		title="{i18n>unetzProTitle}" 
 		class="sapUiResponsiveContentPadding" 
 		showNavButton="true" 
 		navButtonPress="onNavBack">
