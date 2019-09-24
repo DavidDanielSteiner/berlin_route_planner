@@ -1,23 +1,634 @@
-CREATE COLUMN TABLE "U556414"."ALLSTATIONS"(
-	"station_name" NVARCHAR(36) NOT NULL,
-	"line_name" NVARCHAR(10) NOT NULL,
-	"district_name" NVARCHAR(36),
-	"station_link" NVARCHAR(100),
-	"LATITUDE" DECIMAL(15, 8) CS_FIXED NOT NULL,
-	"LONGITUDE" DECIMAL(15, 8) CS_FIXED NOT NULL
+-- drop table "U556741"."U_STATIONS";
+CREATE COLUMN TABLE "U556741"."U_STATIONS" (
+	"STATION_ID" NVARCHAR(20),
+	"STATION_NAME" NVARCHAR(60),
+	"LINE_NAME" NVARCHAR(20),
+	"DISTRICT_NAME" NVARCHAR(60),
+	"LATITUDE" DECIMAL(15,8),
+	"LONGITUDE" DECIMAL(15,8),
+	"STATION_LINK" NVARCHAR(130),
+	"PREMISE_4326" ST_POINT (4326) CS_POINT,
+	PRIMARY KEY (
+		"STATION_NAME")
+);
+
+-- drop table "U556741"."U_LINES";
+CREATE COLUMN TABLE "U556741"."U_LINES"(
+	"LINE_ID" NVARCHAR(20),
+	"LINE_NAME" NVARCHAR(60),
+	"START" NVARCHAR(60) NOT NULL,
+	"END" NVARCHAR(60) NOT NULL,
+	"STATION_ID" NVARCHAR(20),
+	PRIMARY KEY (
+		"LINE_ID"
+	)
 )
 
-IMPORT FROM CSV FILE '/stationData/allStations.csv' INTO "U556414"."ALLSTATIONS" 
-   WITH RECORD DELIMITED BY '\n'
-   FIELD DELIMITED BY ',';
+ALTER TABLE "U556741"."U_LINES" ADD FOREIGN KEY ("START") REFERENCES "U556741"."U_STATIONS" ("STATION_NAME") ON UPDATE CASCADE ON DELETE CASCADE ENFORCED VALIDATED ;
+ALTER TABLE "U556741"."U_LINES" ADD FOREIGN KEY ("END") REFERENCES "U556741"."U_STATIONS" ("STATION_NAME") ON UPDATE CASCADE ON DELETE CASCADE ENFORCED VALIDATED ;
 
 
-CREATE COLUMN TABLE "U556414"."SUBWAYLINES"(
-	"station_name" NVARCHAR(36) NOT NULL,
-	"station_id" NVARCHAR(10) NOT NULL,
-	"line_name" NVARCHAR(10) NOT NULL
-)
 
-IMPORT FROM CSV FILE '/stationData/allStations.csv' INTO "U556414"."SUBWAYLINES" 
-   WITH RECORD DELIMITED BY '\n'
-   FIELD DELIMITED BY ',';
+INSERT INTO "U556741"."U_STATIONS" VALUES('101301','Warschauer Straße','U1, U3','Friedrichshain',52.50527777,13.44916666,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Warschauer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('102302','Schlesisches Tor','U1, U3','Kreuzberg',52.50083333,13.44166666,'https://de.wikipedia.org/wiki/U-Bahnhof_Schlesisches_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('103303','Görlitzer Bahnhof','U1, U3','Kreuzberg',52.49916666,13.42805555,'https://de.wikipedia.org/wiki/U-Bahnhof_G%C3%B6rlitzer_Bahnhof',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('104304820','Kottbusser Tor','U1, U3, U8','Kreuzberg',52.49916666,13.41805555,'https://de.wikipedia.org/wiki/U-Bahnhof_Kottbusser_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('106306622','Hallesches Tor','U1, U3, U6','Kreuzberg',52.49777777,13.39111111,'https://de.wikipedia.org/wiki/U-Bahnhof_Hallesches_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('107307725','Möckernbrücke','U1, U3, U7','Kreuzberg',52.49916666,13.38305555,'https://de.wikipedia.org/wiki/U-Bahnhof_M%C3%B6ckernbr%C3%BCcke',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('108217308','Gleisdreieck','U1, U2, U3','Kreuzberg',52.49833333,13.37527777,'https://de.wikipedia.org/wiki/U-Bahnhof_Gleisdreieck',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('109309','Kurfürstenstraße','U1, U3','Tiergarten',52.5,13.36194444,'https://de.wikipedia.org/wiki/U-Bahnhof_Kurf%C3%BCrstenstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('110219310401','Nollendorfplatz','U1, U2, U3, U4','Schöneberg',52.49944444,13.35361111,'https://de.wikipedia.org/wiki/U-Bahnhof_Nollendorfplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('111220311','Wittenbergplatz','U1, U2, U3','Schöneberg',52.50194444,13.34305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Wittenbergplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('112910','Kurfürstendamm','U1, U9','Charlottenburg',52.50416666,13.33305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Kurf%C3%BCrstendamm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('113','Uhlandstraße','U1','Charlottenburg',52.5025,13.32555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Uhlandstra%C3%9Fe_(Berlin)',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('201','Pankow','U2','Pankow',52.56666666,13.41111111,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Pankow',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('202','Vinetastraße','U2','Pankow',52.55916666,13.41333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Vinetastra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('203','Schönhauser Allee','U2','Prenzlauer Berg',52.54916666,13.41611111,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Sch%C3%B6nhauser_Allee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('204','Eberswalder Straße','U2','Prenzlauer Berg',52.54166666,13.41222222,'https://de.wikipedia.org/wiki/U-Bahnhof_Eberswalder_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('205','Senefelderplatz','U2','Prenzlauer Berg',52.5325,13.4125,'https://de.wikipedia.org/wiki/U-Bahnhof_Senefelderplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('206','Rosa-Luxemburg-Platz','U2','Mitte',52.52833333,13.41027777,'https://de.wikipedia.org/wiki/U-Bahnhof_Rosa-Luxemburg-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('207520815','Alexanderplatz','U2, U5, U8','Mitte',52.52138888,13.41333333,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Alexanderplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('209','Klosterstraße','U2','Mitte',52.51611111,13.41222222,'https://de.wikipedia.org/wiki/U-Bahnhof_Klosterstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('210','Märkisches Museum','U2','Mitte',52.51194444,13.40888888,'https://de.wikipedia.org/wiki/U-Bahnhof_M%C3%A4rkisches_Museum',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('211','Spittelmarkt','U2','Mitte',52.51111111,13.40361111,'https://de.wikipedia.org/wiki/U-Bahnhof_Spittelmarkt',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('212','Hausvogteiplatz','U2','Mitte',52.51305555,13.39666666,'https://de.wikipedia.org/wiki/U-Bahnhof_Hausvogteiplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('213620','Stadtmitte','U2, U6','Mitte',52.51222222,13.38944444,'https://de.wikipedia.org/wiki/U-Bahnhof_Stadtmitte',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('214','Mohrenstraße','U2','Mitte',52.51166666,13.38472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Mohrenstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('215','Potsdamer Platz','U2','Mitte',52.50944444,13.37583333,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Potsdamer_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('216','Mendelssohn-Bartholdy-Park','U2','Kreuzberg',52.50388888,13.375,'https://de.wikipedia.org/wiki/U-Bahnhof_Mendelssohn-Bartholdy-Park',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('218','Bülowstraße','U2','Schöneberg',52.4975,13.36333333,'https://de.wikipedia.org/wiki/U-Bahnhof_B%C3%BClowstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('221909','Zoologischer Garten','U2, U9','Charlottenburg',52.50722222,13.3325,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Zoologischer_Garten',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('222','Ernst-Reuter-Platz','U2','Charlottenburg',52.51194444,13.32222222,'https://de.wikipedia.org/wiki/U-Bahnhof_Ernst-Reuter-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('223','Deutsche Oper','U2','Charlottenburg',52.51194444,13.31055555,'https://de.wikipedia.org/wiki/U-Bahnhof_Deutsche_Oper',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('224714','Bismarckstraße','U2, U7','Charlottenburg',52.51138888,13.30472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Bismarckstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('225','Sophie-Charlotte-Platz','U2','Charlottenburg',52.51083333,13.29666666,'https://de.wikipedia.org/wiki/U-Bahnhof_Sophie-Charlotte-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('226','Kaiserdamm','U2','Westend',52.51,13.28222222,'https://de.wikipedia.org/wiki/U-Bahnhof_Kaiserdamm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('227','Theodor-Heuss-Platz','U2','Westend',52.50972222,13.27305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Theodor-Heuss-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('228','Neu-Westend','U2','Westend',52.51555555,13.26111111,'https://de.wikipedia.org/wiki/U-Bahnhof_Neu-Westend',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('229','Olympia-Stadion','U2','Westend',52.51722222,13.25,'https://de.wikipedia.org/wiki/U-Bahnhof_Olympia-Stadion',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('230','Ruhleben','U2','Westend',52.52555555,13.24138888,'https://de.wikipedia.org/wiki/U-Bahnhof_Ruhleben',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('312','Augsburger Straße','U3','Charlottenburg',52.50055555,13.33638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Augsburger_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('314911','Spichernstraße','U3, U9','Wilmersdorf',52.49666666,13.33111111,'https://de.wikipedia.org/wiki/U-Bahnhof_Spichernstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('315','Hohenzollernplatz','U3','Wilmersdorf',52.49416666,13.32472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Hohenzollernplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('316718','Fehrbelliner Platz','U3, U7','Wilmersdorf',52.49027777,13.31416666,'https://de.wikipedia.org/wiki/U-Bahnhof_Fehrbelliner_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('317','Heidelberger Platz','U3','Wilmersdorf',52.48,13.31194444,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Heidelberger_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('318','Rüdesheimer Platz','U3','Wilmersdorf',52.47333333,13.31444444,'https://de.wikipedia.org/wiki/U-Bahnhof_R%C3%BCdesheimer_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('319','Breitenbachplatz','U3','Dahlem',52.46694444,13.30861111,'https://de.wikipedia.org/wiki/U-Bahnhof_Breitenbachplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('320','Podbielskiallee','U3','Dahlem',52.46416666,13.29583333,'https://de.wikipedia.org/wiki/U-Bahnhof_Podbielskiallee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('321','Dahlem-Dorf','U3','Dahlem',52.4575,13.28972222,'https://de.wikipedia.org/wiki/U-Bahnhof_Dahlem-Dorf',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('322','Freie Universität','U3','Dahlem',52.45111111,13.28194444,'https://de.wikipedia.org/wiki/U-Bahnhof_Freie_Universit%C3%A4t_(Thielplatz)',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('323','Oskar-Helene-Heim','U3','Dahlem',52.45027777,13.26972222,'https://de.wikipedia.org/wiki/U-Bahnhof_Oskar-Helene-Heim',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('324','Onkel Toms Hütte','U3','Zehlendorf',52.45027777,13.25333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Onkel_Toms_H%C3%BCtte',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('325','Krumme Lanke','U3','Zehlendorf',52.44333333,13.24138888,'https://de.wikipedia.org/wiki/U-Bahnhof_Krumme_Lanke',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('402','Viktoria-Luise-Platz','U4','Schöneberg',52.49611111,13.34277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Viktoria-Luise-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('403721','Bayerischer Platz','U4, U7','Schöneberg',52.48861111,13.34,'https://de.wikipedia.org/wiki/U-Bahnhof_Bayerischer_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('404','Rathaus Schöneberg','U4','Schöneberg',52.48305555,13.34194444,'https://de.wikipedia.org/wiki/U-Bahnhof_Rathaus_Sch%C3%B6neberg',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('405','Innsbrucker Platz','U4','Schöneberg',52.47861111,13.34388888,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Innsbrucker_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('501','Hönow','U5','Hellersdorf',52.53833333,13.63388888,'https://de.wikipedia.org/wiki/U-Bahnhof_H%C3%B6now',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('502','Louis-Lewin-Straße','U5','Hellersdorf',52.53888888,13.61833333,'https://de.wikipedia.org/wiki/U-Bahnhof_Louis-Lewin-Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('503','Hellersdorf','U5','Hellersdorf',52.53666666,13.60638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Hellersdorf',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('504','Cottbusser Platz','U5','Hellersdorf',52.53388888,13.59638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Cottbusser_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('505','Kienberg','U5','Hellersdorf',52.52861111,13.59055555,'https://de.wikipedia.org/wiki/U-Bahnhof_Kienberg_(G%C3%A4rten_der_Welt)',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('506','Kaulsdorf-Nord','U5','Hellersdorf',52.52111111,13.58888888,'https://de.wikipedia.org/wiki/U-Bahnhof_Kaulsdorf-Nord',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('507','Wuhletal','U5','Kaulsdorf',52.5125,13.575,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Wuhletal',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('508','Elsterwerdaer Platz','U5','Biesdorf',52.505,13.56055555,'https://de.wikipedia.org/wiki/U-Bahnhof_Elsterwerdaer_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('509','Biesdorf-Süd','U5','Biesdorf',52.49972222,13.54638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Biesdorf-S%C3%BCd',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('510','Tierpark','U5','Friedrichsfelde',52.49638888,13.52333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Tierpark',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('511','Friedrichsfelde','U5','Friedrichsfelde',52.50611111,13.51277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Friedrichsfelde',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('512','Lichtenberg','U5','Lichtenberg',52.51055555,13.49638888,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Lichtenberg',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('513','Magdalenenstraße','U5','Lichtenberg',52.5125,13.48638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Magdalenenstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('514','Frankfurter Allee','U5','Friedrichshain',52.515,13.47472222,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Frankfurter_Allee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('515','Samariterstraße','U5','Friedrichshain',52.51472222,13.46444444,'https://de.wikipedia.org/wiki/U-Bahnhof_Samariterstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('516','Frankfurter Tor','U5','Friedrichshain',52.51583333,13.45416666,'https://de.wikipedia.org/wiki/U-Bahnhof_Frankfurter_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('517','Weberwiese','U5','Friedrichshain',52.51666666,13.445,'https://de.wikipedia.org/wiki/U-Bahnhof_Weberwiese',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('518','Strausberger Platz','U5','Friedrichshain',52.51805555,13.43083333,'https://de.wikipedia.org/wiki/U-Bahnhof_Strausberger_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('519','Schillingstraße','U5','Mitte',52.52027777,13.42166666,'https://de.wikipedia.org/wiki/U-Bahnhof_Schillingstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('601','Alt-Tegel','U6','Tegel',52.58944444,13.28361111,'https://de.wikipedia.org/wiki/U-Bahnhof_Alt-Tegel',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('602','Borsigwerke','U6','Tegel',52.58194444,13.29083333,'https://de.wikipedia.org/wiki/U-Bahnhof_Borsigwerke',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('603','Holzhauser Straße','U6','Tegel',52.57583333,13.29611111,'https://de.wikipedia.org/wiki/U-Bahnhof_Holzhauser_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('604','Otisstraße','U6','Reinickendorf',52.57111111,13.30277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Otisstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('605','Scharnweberstraße','U6','Reinickendorf',52.56694444,13.31277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Scharnweberstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('606','Kurt-Schumacher-Platz','U6','Reinickendorf',52.56333333,13.3275,'https://de.wikipedia.org/wiki/U-Bahnhof_Kurt-Schumacher-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('607','Afrikanische Straße','U6','Wedding',52.56055555,13.33416666,'https://de.wikipedia.org/wiki/U-Bahnhof_Afrikanische_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('608','Rehberge','U6','Wedding',52.55666666,13.34111111,'https://de.wikipedia.org/wiki/U-Bahnhof_Rehberge',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('609','Seestraße','U6','Wedding',52.55,13.35277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Seestra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('611903','Leopoldplatz','U6, U9','Wedding',52.54638888,13.35916666,'https://de.wikipedia.org/wiki/U-Bahnhof_Leopoldplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('612','Wedding','U6','Wedding',52.5425,13.36611111,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Wedding',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('613','Reinickendorfer Straße','U6','Wedding',52.54,13.37027777,'https://de.wikipedia.org/wiki/U-Bahnhof_Reinickendorfer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('614','Schwartzkopffstraße','U6','Mitte',52.53527777,13.37722222,'https://de.wikipedia.org/wiki/U-Bahnhof_Schwartzkopffstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('615','Naturkundemuseum','U6','Mitte',52.53111111,13.3825,'https://de.wikipedia.org/wiki/U-Bahnhof_Naturkundemuseum',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('616','Oranienburger Tor','U6','Mitte',52.525,13.3875,'https://de.wikipedia.org/wiki/U-Bahnhof_Oranienburger_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('617','Friedrichstraße','U6','Mitte',52.52027777,13.38694444,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Friedrichstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('619','Französische Straße','U6','Mitte',52.51472222,13.38916666,'https://de.wikipedia.org/wiki/U-Bahnhof_Franz%C3%B6sische_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('621','Kochstraße','U6','Kreuzberg',52.50583333,13.39055555,'https://de.wikipedia.org/wiki/U-Bahnhof_Kochstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('624768','Mehringdamm','U6, U7','Kreuzberg',52.49444444,13.38861111,'https://de.wikipedia.org/wiki/U-Bahnhof_Mehringdamm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('626','Platz der Luftbrücke','U6','Kreuzberg',52.48555555,13.38583333,'https://de.wikipedia.org/wiki/U-Bahnhof_Platz_der_Luftbr%C3%BCcke',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('627','Paradestraße','U6','Tempelhof',52.47805555,13.38611111,'https://de.wikipedia.org/wiki/U-Bahnhof_Paradestra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('628','Tempelhof','U6','Tempelhof',52.47083333,13.38527777,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Tempelhof',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('629','Alt-Tempelhof','U6','Tempelhof',52.46611111,13.38555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Alt-Tempelhof',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('630','Kaiserin-Augusta-Straße','U6','Tempelhof',52.46,13.38472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Kaiserin-Augusta-Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('631','Ullsteinstraße','U6','Tempelhof',52.45388888,13.38444444,'https://de.wikipedia.org/wiki/U-Bahnhof_Ullsteinstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('632','Westphalweg','U6','Mariendorf',52.44638888,13.38555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Westphalweg',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('633','Alt-Mariendorf','U6','Mariendorf',52.43972222,13.3875,'https://de.wikipedia.org/wiki/U-Bahnhof_Alt-Mariendorf',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('702','Rathaus Spandau','U7','Spandau',52.53527777,13.19972222,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Spandau',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('703','Altstadt Spandau','U7','Spandau',52.53916666,13.20555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Altstadt_Spandau',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('704','Zitadelle','U7','Haselhorst',52.53777777,13.21777777,'https://de.wikipedia.org/wiki/U-Bahnhof_Zitadelle',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('705','Haselhorst','U7','Haselhorst',52.53888888,13.23277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Haselhorst',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('706','Paulsternstraße','U7','Haselhorst',52.53805555,13.24777777,'https://de.wikipedia.org/wiki/U-Bahnhof_Paulsternstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('707','Rohrdamm','U7','Siemensstadt',52.53722222,13.2625,'https://de.wikipedia.org/wiki/U-Bahnhof_Rohrdamm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('708','Siemensdamm','U7','Siemensstadt',52.53666666,13.27555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Siemensdamm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('709','Halemweg','U7','Charlottenburg-Nord',52.53666666,13.28638888,'https://de.wikipedia.org/wiki/U-Bahnhof_Halemweg',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('710','Jakob-Kaiser-Platz','U7','Charlottenburg-Nord',52.53666666,13.29333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Jakob-Kaiser-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('711','Jungfernheide','U7','Charlottenburg',52.53083333,13.30083333,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Jungfernheide',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('712','Mierendorffplatz','U7','Charlottenburg',52.52666666,13.305,'https://de.wikipedia.org/wiki/U-Bahnhof_Mierendorffplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('713','Richard-Wagner-Platz','U7','Charlottenburg',52.51583333,13.3075,'https://de.wikipedia.org/wiki/U-Bahnhof_Richard-Wagner-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('715','Wilmersdorfer Straße','U7','Charlottenburg',52.50666666,13.30666666,'https://de.wikipedia.org/wiki/U-Bahnhof_Wilmersdorfer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('716','Adenauerplatz','U7','Charlottenburg',52.49972222,13.30722222,'https://de.wikipedia.org/wiki/U-Bahnhof_Adenauerplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('717','Konstanzer Straße','U7','Wilmersdorf',52.49361111,13.31,'https://de.wikipedia.org/wiki/U-Bahnhof_Konstanzer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('719','Blissestraße','U7','Wilmersdorf',52.48666666,13.32194444,'https://de.wikipedia.org/wiki/U-Bahnhof_Blissestra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('720913','Berliner Straße','U7, U9','Wilmersdorf',52.48722222,13.33083333,'https://de.wikipedia.org/wiki/U-Bahnhof_Berliner_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('722','Eisenacher Straße','U7','Schöneberg',52.48944444,13.35027777,'https://de.wikipedia.org/wiki/U-Bahnhof_Eisenacher_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('723','Kleistpark','U7','Schöneberg',52.49055555,13.36027777,'https://de.wikipedia.org/wiki/U-Bahnhof_Kleistpark',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('724','Yorckstraße','U7','Schöneberg',52.49305555,13.37083333,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Yorckstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('727','Gneisenaustraße','U7','Kreuzberg',52.49138888,13.39611111,'https://de.wikipedia.org/wiki/U-Bahnhof_Gneisenaustra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('728','Südstern','U7','Kreuzberg',52.48944444,13.40777777,'https://de.wikipedia.org/wiki/U-Bahnhof_S%C3%BCdstern',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('729822','Hermannplatz','U7, U8','Neukölln',52.48722222,13.42472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Hermannplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('730','Rathaus Neukölln','U7','Neukölln',52.48194444,13.43305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Rathaus_Neuk%C3%B6lln',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('731','Karl-Marx-Straße','U7','Neukölln',52.47611111,13.43916666,'https://de.wikipedia.org/wiki/U-Bahnhof_Karl-Marx-Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('732','Neukölln','U7','Neukölln',52.46944444,13.44222222,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Neuk%C3%B6lln',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('733','Grenzallee','U7','Britz',52.46333333,13.44388888,'https://de.wikipedia.org/wiki/U-Bahnhof_Grenzallee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('734','Blaschkoallee','U7','Britz',52.45166666,13.44972222,'https://de.wikipedia.org/wiki/U-Bahnhof_Blaschkoallee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('735','Parchimer Allee','U7','Britz',52.44472222,13.44972222,'https://de.wikipedia.org/wiki/U-Bahnhof_Parchimer_Allee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('736','Britz-Süd','U7','Britz',52.43777777,13.44833333,'https://de.wikipedia.org/wiki/U-Bahnhof_Britz-S%C3%BCd',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('737','Johannisthaler Chaussee','U7','Gropiusstadt',52.42944444,13.45305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Johannisthaler_Chaussee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('738','Lipschitzallee','U7','Gropiusstadt',52.42472222,13.46277777,'https://de.wikipedia.org/wiki/U-Bahnhof_Lipschitzallee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('739','Wutzkyallee','U7','Gropiusstadt',52.42333333,13.47472222,'https://de.wikipedia.org/wiki/U-Bahnhof_Wutzkyallee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('740','Zwickauer Damm','U7','Gropiusstadt',52.42333333,13.48388888,'https://de.wikipedia.org/wiki/U-Bahnhof_Zwickauer_Damm',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('741','Rudow','U7','Rudow',52.41611111,13.49527777,'https://de.wikipedia.org/wiki/U-Bahnhof_Rudow',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('801','Wittenau','U8','Wittenau',52.59583333,13.33666666,'https://de.wikipedia.org/wiki/Bahnhof_Berlin-Wittenau',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('802','Rathaus Reinickendorf','U8','Wittenau',52.58833333,13.32583333,'https://de.wikipedia.org/wiki/U-Bahnhof_Rathaus_Reinickendorf',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('803','Karl-Bonhoeffer-Nervenklinik','U8','Wittenau',52.57833333,13.33138888,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Karl-Bonhoeffer-Nervenklinik',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('804','Lindauer Allee','U8','Reinickendorf',52.57527777,13.33916666,'https://de.wikipedia.org/wiki/U-Bahnhof_Lindauer_Allee',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('805','Paracelsus-Bad','U8','Reinickendorf',52.57416666,13.34916666,'https://de.wikipedia.org/wiki/U-Bahnhof_Paracelsus-Bad',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('806','Residenzstraße','U8','Reinickendorf',52.57111111,13.36055555,'https://de.wikipedia.org/wiki/U-Bahnhof_Residenzstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('807','Franz-Neumann-Platz','U8','Reinickendorf',52.56388888,13.36416666,'https://de.wikipedia.org/wiki/U-Bahnhof_Franz-Neumann-Platz_(Am_Sch%C3%A4fersee)',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('808901','Osloer Straße','U8, U9','Gesundbrunnen',52.55694444,13.37333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Osloer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('809','Pankstraße','U8','Gesundbrunnen',52.55222222,13.38138888,'https://de.wikipedia.org/wiki/U-Bahnhof_Pankstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('810','Gesundbrunnen','U8','Gesundbrunnen',52.54861111,13.37305555,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Gesundbrunnen',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('811','Voltastraße','U8','Gesundbrunnen',52.54222222,13.39305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Voltastra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('812','Bernauer Straße','U8','Mitte',52.5375,13.39666666,'https://de.wikipedia.org/wiki/U-Bahnhof_Bernauer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('813','Rosenthaler Platz','U8','Mitte',52.53,13.40111111,'https://de.wikipedia.org/wiki/U-Bahnhof_Rosenthaler_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('814','Weinmeisterstraße','U8','Mitte',52.52555555,13.405,'https://de.wikipedia.org/wiki/U-Bahnhof_Weinmeisterstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('816','Jannowitzbrücke','U8','Mitte',52.515,13.41805555,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Jannowitzbr%C3%BCcke',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('818','Heinrich-Heine-Straße','U8','Mitte',52.51027777,13.41583333,'https://de.wikipedia.org/wiki/U-Bahnhof_Heinrich-Heine-Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('819','Moritzplatz','U8','Kreuzberg',52.50361111,13.41083333,'https://de.wikipedia.org/wiki/U-Bahnhof_Moritzplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('821','Schönleinstraße','U8','Kreuzberg',52.49305555,13.42194444,'https://de.wikipedia.org/wiki/U-Bahnhof_Sch%C3%B6nleinstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('823','Boddinstraße','U8','Neukölln',52.47944444,13.42555555,'https://de.wikipedia.org/wiki/U-Bahnhof_Boddinstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('824','Leinestraße','U8','Neukölln',52.47361111,13.42805555,'https://de.wikipedia.org/wiki/U-Bahnhof_Leinestra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('825','Hermannstraße','U8','Neukölln',52.4675,13.43138888,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Hermannstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('902','Nauener Platz','U9','Wedding',52.55166666,13.3675,'https://de.wikipedia.org/wiki/U-Bahnhof_Nauener_Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('904','Amrumer Straße','U9','Wedding',52.54222222,13.34888888,'https://de.wikipedia.org/wiki/U-Bahnhof_Amrumer_Stra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('905','Westhafen','U9','Moabit',52.53638888,13.34388888,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Westhafen',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('906','Birkenstraße','U9','Moabit',52.53222222,13.34138888,'https://de.wikipedia.org/wiki/U-Bahnhof_Birkenstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('907','Turmstraße','U9','Moabit',52.52583333,13.34333333,'https://de.wikipedia.org/wiki/U-Bahnhof_Turmstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('908','Hansaplatz','U9','Hansaviertel',52.51777777,13.34222222,'https://de.wikipedia.org/wiki/U-Bahnhof_Hansaplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('912','Güntzelstraße','U9','Wilmersdorf',52.49194444,13.33083333,'https://de.wikipedia.org/wiki/U-Bahnhof_G%C3%BCntzelstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('914','Bundesplatz','U9','Wilmersdorf',52.47888888,13.32805555,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Bundesplatz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('915','Friedrich-Wilhelm-Platz','U9','Friedenau',52.47194444,13.32861111,'https://de.wikipedia.org/wiki/U-Bahnhof_Friedrich-Wilhelm-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('916','Walther-Schreiber-Platz','U9','Friedenau',52.465,13.33166666,'https://de.wikipedia.org/wiki/U-Bahnhof_Walther-Schreiber-Platz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('917','Schloßstraße','U9','Steglitz',52.46083333,13.32444444,'https://de.wikipedia.org/wiki/U-Bahnhof_Schlo%C3%9Fstra%C3%9Fe',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('918','Rathaus Steglitz','U9','Steglitz',52.45611111,13.32,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Rathaus_Steglitz',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('522','Museumsinsel','U5','Mitte',52.5175,13.39833333,'https://de.wikipedia.org/wiki/U-Bahnhof_Museumsinsel',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('523618','Unter den Linden','U5, U6','Mitte',52.51694444,13.38888888,'https://de.wikipedia.org/wiki/U-Bahnhof_Unter_den_Linden',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('524','Brandenburger Tor','U5','Mitte',52.51638888,13.38083333,'https://de.wikipedia.org/wiki/Bahnhof_Berlin_Brandenburger_Tor',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('525','Bundestag','U5','Tiergarten',52.52,13.37305555,'https://de.wikipedia.org/wiki/U-Bahnhof_Bundestag',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('526','Hauptbahnhof','U5','Moabit',52.525,13.36944444,'https://de.wikipedia.org/wiki/Berlin_Hauptbahnhof',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('521','Rotes Rathaus','U5','Mitte',52.51861111,13.40833333,'https://de.wikipedia.org/wiki/U-Bahnhof_Rotes_Rathaus',null);
+INSERT INTO "U556741"."U_STATIONS" VALUES('105305','Prinzenstraße','U1, U3','Kreuzberg',52.49833333,13.40583333,'https://de.wikipedia.org/wiki/U-Bahnhof_Prinzenstra%C3%9Fe',null);
+
+-----
+------
+UPDATE "U556741"."U_STATIONS" SET PREMISE_4326 = NEW ST_Point('Point ('|| LATITUDE ||' '|| LONGITUDE||') ',4326);
+-----
+-----
+SELECT "STATION_NAME", LINE_NAME, LATITUDE, LONGITUDE, PREMISE_4326.st_distance(NEW ST_Point('Point ('|| 52.535308 ||' '|| 13.295798 ||')',4326),'meter') as "Distance"  
+FROM "U556741"."U_STATIONS" where (PREMISE_4326.st_distance(NEW ST_Point('Point ('|| 52.535308 ||' '|| 13.295798 ||')',4326),'kilometer')) < 1
+order by "Distance"
+;
+
+------------
+-----------
+
+INSERT INTO "U556741"."U_LINES" VALUES('1','U1','Warschauer Straße','Schlesisches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('2','U1','Schlesisches Tor','Warschauer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('3','U1','Schlesisches Tor','Görlitzer Bahnhof');
+INSERT INTO "U556741"."U_LINES" VALUES('4','U1','Görlitzer Bahnhof','Schlesisches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('5','U1','Görlitzer Bahnhof','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('6','U1','Kottbusser Tor','Görlitzer Bahnhof');
+INSERT INTO "U556741"."U_LINES" VALUES('7','U1','Kottbusser Tor','Prinzenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('8','U1','Prinzenstraße','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('9','U1','Prinzenstraße','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('10','U1','Hallesches Tor','Prinzenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('11','U1','Hallesches Tor','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('12','U1','Möckernbrücke','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('13','U1','Möckernbrücke','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('14','U1','Gleisdreieck','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('15','U1','Gleisdreieck','Kurfürstenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('16','U1','Kurfürstenstraße','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('17','U1','Kurfürstenstraße','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('18','U1','Nollendorfplatz','Kurfürstenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('19','U1','Nollendorfplatz','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('20','U1','Wittenbergplatz','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('21','U1','Wittenbergplatz','Kurfürstendamm');
+INSERT INTO "U556741"."U_LINES" VALUES('22','U1','Kurfürstendamm','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('23','U1','Kurfürstendamm','Uhlandstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('24','U1','Uhlandstraße','Kurfürstendamm');
+INSERT INTO "U556741"."U_LINES" VALUES('25','U2','Pankow','Vinetastraße');
+INSERT INTO "U556741"."U_LINES" VALUES('26','U2','Vinetastraße','Pankow');
+INSERT INTO "U556741"."U_LINES" VALUES('27','U2','Vinetastraße','Schönhauser Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('28','U2','Schönhauser Allee','Vinetastraße');
+INSERT INTO "U556741"."U_LINES" VALUES('29','U2','Schönhauser Allee','Eberswalder Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('30','U2','Eberswalder Straße','Schönhauser Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('31','U2','Eberswalder Straße','Senefelderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('32','U2','Senefelderplatz','Eberswalder Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('33','U2','Senefelderplatz','Rosa-Luxemburg-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('34','U2','Rosa-Luxemburg-Platz','Senefelderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('35','U2','Rosa-Luxemburg-Platz','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('36','U2','Alexanderplatz','Rosa-Luxemburg-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('37','U2','Alexanderplatz','Klosterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('38','U2','Klosterstraße','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('39','U2','Klosterstraße','Märkisches Museum');
+INSERT INTO "U556741"."U_LINES" VALUES('40','U2','Märkisches Museum','Klosterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('41','U2','Märkisches Museum','Spittelmarkt');
+INSERT INTO "U556741"."U_LINES" VALUES('42','U2','Spittelmarkt','Märkisches Museum');
+INSERT INTO "U556741"."U_LINES" VALUES('43','U2','Spittelmarkt','Hausvogteiplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('44','U2','Hausvogteiplatz','Spittelmarkt');
+INSERT INTO "U556741"."U_LINES" VALUES('45','U2','Hausvogteiplatz','Stadtmitte');
+INSERT INTO "U556741"."U_LINES" VALUES('46','U2','Stadtmitte','Hausvogteiplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('47','U2','Stadtmitte','Mohrenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('48','U2','Mohrenstraße','Stadtmitte');
+INSERT INTO "U556741"."U_LINES" VALUES('49','U2','Mohrenstraße','Potsdamer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('50','U2','Potsdamer Platz','Mohrenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('51','U2','Potsdamer Platz','Mendelssohn-Bartholdy-Park');
+INSERT INTO "U556741"."U_LINES" VALUES('52','U2','Mendelssohn-Bartholdy-Park','Potsdamer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('53','U2','Mendelssohn-Bartholdy-Park','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('54','U2','Gleisdreieck','Mendelssohn-Bartholdy-Park');
+INSERT INTO "U556741"."U_LINES" VALUES('55','U2','Gleisdreieck','Bülowstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('56','U2','Bülowstraße','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('57','U2','Bülowstraße','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('58','U2','Nollendorfplatz','Bülowstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('59','U2','Nollendorfplatz','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('60','U2','Wittenbergplatz','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('61','U2','Wittenbergplatz','Zoologischer Garten');
+INSERT INTO "U556741"."U_LINES" VALUES('62','U2','Zoologischer Garten','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('63','U2','Zoologischer Garten','Ernst-Reuter-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('64','U2','Ernst-Reuter-Platz','Zoologischer Garten');
+INSERT INTO "U556741"."U_LINES" VALUES('65','U2','Ernst-Reuter-Platz','Deutsche Oper');
+INSERT INTO "U556741"."U_LINES" VALUES('66','U2','Deutsche Oper','Ernst-Reuter-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('67','U2','Deutsche Oper','Bismarckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('68','U2','Bismarckstraße','Deutsche Oper');
+INSERT INTO "U556741"."U_LINES" VALUES('69','U2','Bismarckstraße','Sophie-Charlotte-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('70','U2','Sophie-Charlotte-Platz','Bismarckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('71','U2','Sophie-Charlotte-Platz','Kaiserdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('72','U2','Kaiserdamm','Sophie-Charlotte-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('73','U2','Kaiserdamm','Theodor-Heuss-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('74','U2','Theodor-Heuss-Platz','Kaiserdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('75','U2','Theodor-Heuss-Platz','Neu-Westend');
+INSERT INTO "U556741"."U_LINES" VALUES('76','U2','Neu-Westend','Theodor-Heuss-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('77','U2','Neu-Westend','Olympia-Stadion');
+INSERT INTO "U556741"."U_LINES" VALUES('78','U2','Olympia-Stadion','Neu-Westend');
+INSERT INTO "U556741"."U_LINES" VALUES('79','U2','Olympia-Stadion','Ruhleben');
+INSERT INTO "U556741"."U_LINES" VALUES('80','U2','Ruhleben','Olympia-Stadion');
+INSERT INTO "U556741"."U_LINES" VALUES('81','U3','Warschauer Straße','Schlesisches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('82','U3','Schlesisches Tor','Warschauer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('83','U3','Schlesisches Tor','Görlitzer Bahnhof');
+INSERT INTO "U556741"."U_LINES" VALUES('84','U3','Görlitzer Bahnhof','Schlesisches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('85','U3','Görlitzer Bahnhof','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('86','U3','Kottbusser Tor','Görlitzer Bahnhof');
+INSERT INTO "U556741"."U_LINES" VALUES('87','U3','Kottbusser Tor','Prinzenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('88','U3','Prinzenstraße','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('89','U3','Prinzenstraße','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('90','U3','Hallesches Tor','Prinzenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('91','U3','Hallesches Tor','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('92','U3','Möckernbrücke','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('93','U3','Möckernbrücke','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('94','U3','Gleisdreieck','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('95','U3','Gleisdreieck','Kurfürstenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('96','U3','Kurfürstenstraße','Gleisdreieck');
+INSERT INTO "U556741"."U_LINES" VALUES('97','U3','Kurfürstenstraße','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('98','U3','Nollendorfplatz','Kurfürstenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('99','U3','Nollendorfplatz','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('100','U3','Wittenbergplatz','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('101','U3','Wittenbergplatz','Augsburger Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('102','U3','Augsburger Straße','Wittenbergplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('103','U3','Augsburger Straße','Spichernstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('104','U3','Spichernstraße','Augsburger Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('105','U3','Spichernstraße','Hohenzollernplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('106','U3','Hohenzollernplatz','Spichernstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('107','U3','Hohenzollernplatz','Fehrbelliner Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('108','U3','Fehrbelliner Platz','Hohenzollernplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('109','U3','Fehrbelliner Platz','Heidelberger Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('110','U3','Heidelberger Platz','Fehrbelliner Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('111','U3','Heidelberger Platz','Rüdesheimer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('112','U3','Rüdesheimer Platz','Heidelberger Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('113','U3','Rüdesheimer Platz','Breitenbachplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('114','U3','Breitenbachplatz','Rüdesheimer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('115','U3','Breitenbachplatz','Podbielskiallee');
+INSERT INTO "U556741"."U_LINES" VALUES('116','U3','Podbielskiallee','Breitenbachplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('117','U3','Podbielskiallee','Dahlem-Dorf');
+INSERT INTO "U556741"."U_LINES" VALUES('118','U3','Dahlem-Dorf','Podbielskiallee');
+INSERT INTO "U556741"."U_LINES" VALUES('119','U3','Dahlem-Dorf','Freie Universität');
+INSERT INTO "U556741"."U_LINES" VALUES('120','U3','Freie Universität','Dahlem-Dorf');
+INSERT INTO "U556741"."U_LINES" VALUES('121','U3','Freie Universität','Oskar-Helene-Heim');
+INSERT INTO "U556741"."U_LINES" VALUES('122','U3','Oskar-Helene-Heim','Freie Universität');
+INSERT INTO "U556741"."U_LINES" VALUES('123','U3','Oskar-Helene-Heim','Onkel Toms Hütte');
+INSERT INTO "U556741"."U_LINES" VALUES('124','U3','Onkel Toms Hütte','Oskar-Helene-Heim');
+INSERT INTO "U556741"."U_LINES" VALUES('125','U3','Onkel Toms Hütte','Krumme Lanke');
+INSERT INTO "U556741"."U_LINES" VALUES('126','U3','Krumme Lanke','Onkel Toms Hütte');
+INSERT INTO "U556741"."U_LINES" VALUES('127','U4','Nollendorfplatz','Viktoria-Luise-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('128','U4','Viktoria-Luise-Platz','Nollendorfplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('129','U4','Viktoria-Luise-Platz','Bayerischer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('130','U4','Bayerischer Platz','Viktoria-Luise-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('131','U4','Bayerischer Platz','Rathaus Schöneberg');
+INSERT INTO "U556741"."U_LINES" VALUES('132','U4','Rathaus Schöneberg','Bayerischer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('133','U4','Rathaus Schöneberg','Innsbrucker Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('134','U4','Innsbrucker Platz','Rathaus Schöneberg');
+INSERT INTO "U556741"."U_LINES" VALUES('135','U5','Hönow','Louis-Lewin-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('136','U5','Louis-Lewin-Straße','Hönow');
+INSERT INTO "U556741"."U_LINES" VALUES('137','U5','Louis-Lewin-Straße','Hellersdorf');
+INSERT INTO "U556741"."U_LINES" VALUES('138','U5','Hellersdorf','Louis-Lewin-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('139','U5','Hellersdorf','Cottbusser Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('140','U5','Cottbusser Platz','Hellersdorf');
+INSERT INTO "U556741"."U_LINES" VALUES('141','U5','Cottbusser Platz','Kienberg');
+INSERT INTO "U556741"."U_LINES" VALUES('142','U5','Kienberg','Cottbusser Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('143','U5','Kienberg','Kaulsdorf-Nord');
+INSERT INTO "U556741"."U_LINES" VALUES('144','U5','Kaulsdorf-Nord','Kienberg');
+INSERT INTO "U556741"."U_LINES" VALUES('145','U5','Kaulsdorf-Nord','Wuhletal');
+INSERT INTO "U556741"."U_LINES" VALUES('146','U5','Wuhletal','Kaulsdorf-Nord');
+INSERT INTO "U556741"."U_LINES" VALUES('147','U5','Wuhletal','Elsterwerdaer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('148','U5','Elsterwerdaer Platz','Wuhletal');
+INSERT INTO "U556741"."U_LINES" VALUES('149','U5','Elsterwerdaer Platz','Biesdorf-Süd');
+INSERT INTO "U556741"."U_LINES" VALUES('150','U5','Biesdorf-Süd','Elsterwerdaer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('151','U5','Biesdorf-Süd','Tierpark');
+INSERT INTO "U556741"."U_LINES" VALUES('152','U5','Tierpark','Biesdorf-Süd');
+INSERT INTO "U556741"."U_LINES" VALUES('153','U5','Tierpark','Friedrichsfelde');
+INSERT INTO "U556741"."U_LINES" VALUES('154','U5','Friedrichsfelde','Tierpark');
+INSERT INTO "U556741"."U_LINES" VALUES('155','U5','Friedrichsfelde','Lichtenberg');
+INSERT INTO "U556741"."U_LINES" VALUES('156','U5','Lichtenberg','Friedrichsfelde');
+INSERT INTO "U556741"."U_LINES" VALUES('157','U5','Lichtenberg','Magdalenenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('158','U5','Magdalenenstraße','Lichtenberg');
+INSERT INTO "U556741"."U_LINES" VALUES('159','U5','Magdalenenstraße','Frankfurter Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('160','U5','Frankfurter Allee','Magdalenenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('161','U5','Frankfurter Allee','Samariterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('162','U5','Samariterstraße','Frankfurter Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('163','U5','Samariterstraße','Frankfurter Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('164','U5','Frankfurter Tor','Samariterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('165','U5','Frankfurter Tor','Weberwiese');
+INSERT INTO "U556741"."U_LINES" VALUES('166','U5','Weberwiese','Frankfurter Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('167','U5','Weberwiese','Strausberger Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('168','U5','Strausberger Platz','Weberwiese');
+INSERT INTO "U556741"."U_LINES" VALUES('169','U5','Strausberger Platz','Schillingstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('170','U5','Schillingstraße','Strausberger Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('171','U5','Schillingstraße','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('172','U5','Alexanderplatz','Schillingstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('173','U5','Alexanderplatz','Rotes Rathaus');
+INSERT INTO "U556741"."U_LINES" VALUES('174','U5','Rotes Rathaus','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('175','U5','Rotes Rathaus','Museumsinsel');
+INSERT INTO "U556741"."U_LINES" VALUES('176','U5','Museumsinsel','Rotes Rathaus');
+INSERT INTO "U556741"."U_LINES" VALUES('177','U5','Museumsinsel','Unter den Linden');
+INSERT INTO "U556741"."U_LINES" VALUES('178','U5','Unter den Linden','Museumsinsel');
+INSERT INTO "U556741"."U_LINES" VALUES('179','U5','Unter den Linden','Brandenburger Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('180','U5','Brandenburger Tor','Unter den Linden');
+INSERT INTO "U556741"."U_LINES" VALUES('181','U5','Brandenburger Tor','Bundestag');
+INSERT INTO "U556741"."U_LINES" VALUES('182','U5','Bundestag','Brandenburger Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('183','U5','Bundestag','Hauptbahnhof');
+INSERT INTO "U556741"."U_LINES" VALUES('184','U5','Hauptbahnhof','Bundestag');
+INSERT INTO "U556741"."U_LINES" VALUES('185','U6','Alt-Tegel','Borsigwerke');
+INSERT INTO "U556741"."U_LINES" VALUES('186','U6','Borsigwerke','Alt-Tegel');
+INSERT INTO "U556741"."U_LINES" VALUES('187','U6','Borsigwerke','Holzhauser Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('188','U6','Holzhauser Straße','Borsigwerke');
+INSERT INTO "U556741"."U_LINES" VALUES('189','U6','Holzhauser Straße','Otisstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('190','U6','Otisstraße','Holzhauser Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('191','U6','Otisstraße','Scharnweberstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('192','U6','Scharnweberstraße','Otisstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('193','U6','Scharnweberstraße','Kurt-Schumacher-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('194','U6','Kurt-Schumacher-Platz','Scharnweberstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('195','U6','Kurt-Schumacher-Platz','Afrikanische Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('196','U6','Afrikanische Straße','Kurt-Schumacher-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('197','U6','Afrikanische Straße','Rehberge');
+INSERT INTO "U556741"."U_LINES" VALUES('198','U6','Rehberge','Afrikanische Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('199','U6','Rehberge','Seestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('200','U6','Seestraße','Rehberge');
+INSERT INTO "U556741"."U_LINES" VALUES('201','U6','Seestraße','Leopoldplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('202','U6','Leopoldplatz','Seestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('203','U6','Leopoldplatz','Wedding');
+INSERT INTO "U556741"."U_LINES" VALUES('204','U6','Wedding','Leopoldplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('205','U6','Wedding','Reinickendorfer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('206','U6','Reinickendorfer Straße','Wedding');
+INSERT INTO "U556741"."U_LINES" VALUES('207','U6','Reinickendorfer Straße','Schwartzkopffstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('208','U6','Schwartzkopffstraße','Reinickendorfer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('209','U6','Schwartzkopffstraße','Naturkundemuseum');
+INSERT INTO "U556741"."U_LINES" VALUES('210','U6','Naturkundemuseum','Schwartzkopffstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('211','U6','Naturkundemuseum','Oranienburger Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('212','U6','Oranienburger Tor','Naturkundemuseum');
+INSERT INTO "U556741"."U_LINES" VALUES('213','U6','Oranienburger Tor','Friedrichstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('214','U6','Friedrichstraße','Oranienburger Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('215','U6','Friedrichstraße','Unter den Linden');
+INSERT INTO "U556741"."U_LINES" VALUES('216','U6','Unter den Linden','Friedrichstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('217','U6','Unter den Linden','Französische Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('218','U6','Französische Straße','Unter den Linden');
+INSERT INTO "U556741"."U_LINES" VALUES('219','U6','Französische Straße','Stadtmitte');
+INSERT INTO "U556741"."U_LINES" VALUES('220','U6','Stadtmitte','Französische Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('221','U6','Stadtmitte','Kochstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('222','U6','Kochstraße','Stadtmitte');
+INSERT INTO "U556741"."U_LINES" VALUES('223','U6','Kochstraße','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('224','U6','Hallesches Tor','Kochstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('225','U6','Hallesches Tor','Mehringdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('226','U6','Mehringdamm','Hallesches Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('227','U6','Mehringdamm','Platz der Luftbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('228','U6','Platz der Luftbrücke','Mehringdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('229','U6','Platz der Luftbrücke','Paradestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('230','U6','Paradestraße','Platz der Luftbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('231','U6','Paradestraße','Tempelhof');
+INSERT INTO "U556741"."U_LINES" VALUES('232','U6','Tempelhof','Paradestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('233','U6','Tempelhof','Alt-Tempelhof');
+INSERT INTO "U556741"."U_LINES" VALUES('234','U6','Alt-Tempelhof','Tempelhof');
+INSERT INTO "U556741"."U_LINES" VALUES('235','U6','Alt-Tempelhof','Kaiserin-Augusta-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('236','U6','Kaiserin-Augusta-Straße','Alt-Tempelhof');
+INSERT INTO "U556741"."U_LINES" VALUES('237','U6','Kaiserin-Augusta-Straße','Ullsteinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('238','U6','Ullsteinstraße','Kaiserin-Augusta-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('239','U6','Ullsteinstraße','Westphalweg');
+INSERT INTO "U556741"."U_LINES" VALUES('240','U6','Westphalweg','Ullsteinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('241','U6','Westphalweg','Alt-Mariendorf');
+INSERT INTO "U556741"."U_LINES" VALUES('242','U6','Alt-Mariendorf','Westphalweg');
+INSERT INTO "U556741"."U_LINES" VALUES('243','U7','Rathaus Spandau','Altstadt Spandau');
+INSERT INTO "U556741"."U_LINES" VALUES('244','U7','Altstadt Spandau','Rathaus Spandau');
+INSERT INTO "U556741"."U_LINES" VALUES('245','U7','Altstadt Spandau','Zitadelle');
+INSERT INTO "U556741"."U_LINES" VALUES('246','U7','Zitadelle','Altstadt Spandau');
+INSERT INTO "U556741"."U_LINES" VALUES('247','U7','Zitadelle','Haselhorst');
+INSERT INTO "U556741"."U_LINES" VALUES('248','U7','Haselhorst','Zitadelle');
+INSERT INTO "U556741"."U_LINES" VALUES('249','U7','Haselhorst','Paulsternstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('250','U7','Paulsternstraße','Haselhorst');
+INSERT INTO "U556741"."U_LINES" VALUES('251','U7','Paulsternstraße','Rohrdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('252','U7','Rohrdamm','Paulsternstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('253','U7','Rohrdamm','Siemensdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('254','U7','Siemensdamm','Rohrdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('255','U7','Siemensdamm','Halemweg');
+INSERT INTO "U556741"."U_LINES" VALUES('256','U7','Halemweg','Siemensdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('257','U7','Halemweg','Jakob-Kaiser-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('258','U7','Jakob-Kaiser-Platz','Halemweg');
+INSERT INTO "U556741"."U_LINES" VALUES('259','U7','Jakob-Kaiser-Platz','Jungfernheide');
+INSERT INTO "U556741"."U_LINES" VALUES('260','U7','Jungfernheide','Jakob-Kaiser-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('261','U7','Jungfernheide','Mierendorffplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('262','U7','Mierendorffplatz','Jungfernheide');
+INSERT INTO "U556741"."U_LINES" VALUES('263','U7','Mierendorffplatz','Richard-Wagner-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('264','U7','Richard-Wagner-Platz','Mierendorffplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('265','U7','Richard-Wagner-Platz','Bismarckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('266','U7','Bismarckstraße','Richard-Wagner-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('267','U7','Bismarckstraße','Wilmersdorfer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('268','U7','Wilmersdorfer Straße','Bismarckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('269','U7','Wilmersdorfer Straße','Adenauerplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('270','U7','Adenauerplatz','Wilmersdorfer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('271','U7','Adenauerplatz','Konstanzer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('272','U7','Konstanzer Straße','Adenauerplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('273','U7','Konstanzer Straße','Fehrbelliner Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('274','U7','Fehrbelliner Platz','Konstanzer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('275','U7','Fehrbelliner Platz','Blissestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('276','U7','Blissestraße','Fehrbelliner Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('277','U7','Blissestraße','Berliner Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('278','U7','Berliner Straße','Blissestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('279','U7','Berliner Straße','Bayerischer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('280','U7','Bayerischer Platz','Berliner Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('281','U7','Bayerischer Platz','Eisenacher Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('282','U7','Eisenacher Straße','Bayerischer Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('283','U7','Eisenacher Straße','Kleistpark');
+INSERT INTO "U556741"."U_LINES" VALUES('284','U7','Kleistpark','Eisenacher Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('285','U7','Kleistpark','Yorckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('286','U7','Yorckstraße','Kleistpark');
+INSERT INTO "U556741"."U_LINES" VALUES('287','U7','Yorckstraße','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('288','U7','Möckernbrücke','Yorckstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('289','U7','Möckernbrücke','Gneisenaustraße');
+INSERT INTO "U556741"."U_LINES" VALUES('290','U7','Gneisenaustraße','Möckernbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('291','U7','Gneisenaustraße','Südstern');
+INSERT INTO "U556741"."U_LINES" VALUES('292','U7','Südstern','Gneisenaustraße');
+INSERT INTO "U556741"."U_LINES" VALUES('293','U7','Südstern','Hermannplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('294','U7','Hermannplatz','Südstern');
+INSERT INTO "U556741"."U_LINES" VALUES('295','U7','Hermannplatz','Rathaus Neukölln');
+INSERT INTO "U556741"."U_LINES" VALUES('296','U7','Rathaus Neukölln','Hermannplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('297','U7','Rathaus Neukölln','Karl-Marx-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('298','U7','Karl-Marx-Straße','Rathaus Neukölln');
+INSERT INTO "U556741"."U_LINES" VALUES('299','U7','Karl-Marx-Straße','Neukölln');
+INSERT INTO "U556741"."U_LINES" VALUES('300','U7','Neukölln','Karl-Marx-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('301','U7','Neukölln','Grenzallee');
+INSERT INTO "U556741"."U_LINES" VALUES('302','U7','Grenzallee','Neukölln');
+INSERT INTO "U556741"."U_LINES" VALUES('303','U7','Grenzallee','Blaschkoallee');
+INSERT INTO "U556741"."U_LINES" VALUES('304','U7','Blaschkoallee','Grenzallee');
+INSERT INTO "U556741"."U_LINES" VALUES('305','U7','Blaschkoallee','Parchimer Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('306','U7','Parchimer Allee','Blaschkoallee');
+INSERT INTO "U556741"."U_LINES" VALUES('307','U7','Parchimer Allee','Britz-Süd');
+INSERT INTO "U556741"."U_LINES" VALUES('308','U7','Britz-Süd','Parchimer Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('309','U7','Britz-Süd','Johannisthaler Chaussee');
+INSERT INTO "U556741"."U_LINES" VALUES('310','U7','Johannisthaler Chaussee','Britz-Süd');
+INSERT INTO "U556741"."U_LINES" VALUES('311','U7','Johannisthaler Chaussee','Lipschitzallee');
+INSERT INTO "U556741"."U_LINES" VALUES('312','U7','Lipschitzallee','Johannisthaler Chaussee');
+INSERT INTO "U556741"."U_LINES" VALUES('313','U7','Lipschitzallee','Wutzkyallee');
+INSERT INTO "U556741"."U_LINES" VALUES('314','U7','Wutzkyallee','Lipschitzallee');
+INSERT INTO "U556741"."U_LINES" VALUES('315','U7','Wutzkyallee','Zwickauer Damm');
+INSERT INTO "U556741"."U_LINES" VALUES('316','U7','Zwickauer Damm','Wutzkyallee');
+INSERT INTO "U556741"."U_LINES" VALUES('317','U7','Zwickauer Damm','Rudow');
+INSERT INTO "U556741"."U_LINES" VALUES('318','U7','Rudow','Zwickauer Damm');
+INSERT INTO "U556741"."U_LINES" VALUES('319','U7','Rudow','Mehringdamm');
+INSERT INTO "U556741"."U_LINES" VALUES('320','U7','Mehringdamm','Rudow');
+INSERT INTO "U556741"."U_LINES" VALUES('321','U8','Wittenau','Rathaus Reinickendorf');
+INSERT INTO "U556741"."U_LINES" VALUES('322','U8','Rathaus Reinickendorf','Wittenau');
+INSERT INTO "U556741"."U_LINES" VALUES('323','U8','Rathaus Reinickendorf','Karl-Bonhoeffer-Nervenklinik');
+INSERT INTO "U556741"."U_LINES" VALUES('324','U8','Karl-Bonhoeffer-Nervenklinik','Rathaus Reinickendorf');
+INSERT INTO "U556741"."U_LINES" VALUES('325','U8','Karl-Bonhoeffer-Nervenklinik','Lindauer Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('326','U8','Lindauer Allee','Karl-Bonhoeffer-Nervenklinik');
+INSERT INTO "U556741"."U_LINES" VALUES('327','U8','Lindauer Allee','Paracelsus-Bad');
+INSERT INTO "U556741"."U_LINES" VALUES('328','U8','Paracelsus-Bad','Lindauer Allee');
+INSERT INTO "U556741"."U_LINES" VALUES('329','U8','Paracelsus-Bad','Residenzstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('330','U8','Residenzstraße','Paracelsus-Bad');
+INSERT INTO "U556741"."U_LINES" VALUES('331','U8','Residenzstraße','Franz-Neumann-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('332','U8','Franz-Neumann-Platz','Residenzstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('333','U8','Franz-Neumann-Platz','Osloer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('334','U8','Osloer Straße','Franz-Neumann-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('335','U8','Osloer Straße','Pankstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('336','U8','Pankstraße','Osloer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('337','U8','Pankstraße','Gesundbrunnen');
+INSERT INTO "U556741"."U_LINES" VALUES('338','U8','Gesundbrunnen','Pankstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('339','U8','Gesundbrunnen','Voltastraße');
+INSERT INTO "U556741"."U_LINES" VALUES('340','U8','Voltastraße','Gesundbrunnen');
+INSERT INTO "U556741"."U_LINES" VALUES('341','U8','Voltastraße','Bernauer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('342','U8','Bernauer Straße','Voltastraße');
+INSERT INTO "U556741"."U_LINES" VALUES('343','U8','Bernauer Straße','Rosenthaler Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('344','U8','Rosenthaler Platz','Bernauer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('345','U8','Rosenthaler Platz','Weinmeisterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('346','U8','Weinmeisterstraße','Rosenthaler Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('347','U8','Weinmeisterstraße','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('348','U8','Alexanderplatz','Weinmeisterstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('349','U8','Alexanderplatz','Jannowitzbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('350','U8','Jannowitzbrücke','Alexanderplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('351','U8','Jannowitzbrücke','Heinrich-Heine-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('352','U8','Heinrich-Heine-Straße','Jannowitzbrücke');
+INSERT INTO "U556741"."U_LINES" VALUES('353','U8','Heinrich-Heine-Straße','Moritzplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('354','U8','Moritzplatz','Heinrich-Heine-Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('355','U8','Moritzplatz','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('356','U8','Kottbusser Tor','Moritzplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('357','U8','Kottbusser Tor','Schönleinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('358','U8','Schönleinstraße','Kottbusser Tor');
+INSERT INTO "U556741"."U_LINES" VALUES('359','U8','Schönleinstraße','Hermannplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('360','U8','Hermannplatz','Schönleinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('361','U8','Hermannplatz','Boddinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('362','U8','Boddinstraße','Hermannplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('363','U8','Boddinstraße','Leinestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('364','U8','Leinestraße','Boddinstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('365','U8','Leinestraße','Hermannstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('366','U8','Hermannstraße','Leinestraße');
+INSERT INTO "U556741"."U_LINES" VALUES('367','U9','Osloer Straße','Nauener Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('368','U9','Nauener Platz','Osloer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('369','U9','Nauener Platz','Leopoldplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('370','U9','Leopoldplatz','Nauener Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('371','U9','Leopoldplatz','Amrumer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('372','U9','Amrumer Straße','Leopoldplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('373','U9','Amrumer Straße','Westhafen');
+INSERT INTO "U556741"."U_LINES" VALUES('374','U9','Westhafen','Amrumer Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('375','U9','Westhafen','Birkenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('376','U9','Birkenstraße','Westhafen');
+INSERT INTO "U556741"."U_LINES" VALUES('377','U9','Birkenstraße','Turmstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('378','U9','Turmstraße','Birkenstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('379','U9','Turmstraße','Hansaplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('380','U9','Hansaplatz','Turmstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('381','U9','Hansaplatz','Zoologischer Garten');
+INSERT INTO "U556741"."U_LINES" VALUES('382','U9','Zoologischer Garten','Hansaplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('383','U9','Zoologischer Garten','Kurfürstendamm');
+INSERT INTO "U556741"."U_LINES" VALUES('384','U9','Kurfürstendamm','Zoologischer Garten');
+INSERT INTO "U556741"."U_LINES" VALUES('385','U9','Kurfürstendamm','Spichernstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('386','U9','Spichernstraße','Kurfürstendamm');
+INSERT INTO "U556741"."U_LINES" VALUES('387','U9','Spichernstraße','Güntzelstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('388','U9','Güntzelstraße','Spichernstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('389','U9','Güntzelstraße','Berliner Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('390','U9','Berliner Straße','Güntzelstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('391','U9','Berliner Straße','Bundesplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('392','U9','Bundesplatz','Berliner Straße');
+INSERT INTO "U556741"."U_LINES" VALUES('393','U9','Bundesplatz','Friedrich-Wilhelm-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('394','U9','Friedrich-Wilhelm-Platz','Bundesplatz');
+INSERT INTO "U556741"."U_LINES" VALUES('395','U9','Friedrich-Wilhelm-Platz','Walther-Schreiber-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('396','U9','Walther-Schreiber-Platz','Friedrich-Wilhelm-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('397','U9','Walther-Schreiber-Platz','Schloßstraße');
+INSERT INTO "U556741"."U_LINES" VALUES('398','U9','Schloßstraße','Walther-Schreiber-Platz');
+INSERT INTO "U556741"."U_LINES" VALUES('399','U9','Schloßstraße','Rathaus Steglitz');
+INSERT INTO "U556741"."U_LINES" VALUES('400','U9','Rathaus Steglitz','Schloßstraße');
+
+----------------
+----------------
+
+/*create graph workspace "U-Banhnetz Berlin"
+	edge table U556741."U_LINES"
+	source column "START"
+	target column "END"
+	key column "LINE_ID"
+	
+	vertex table U556741."U_STATIONS"
+	key column "STATION_NAME"
+;*/
