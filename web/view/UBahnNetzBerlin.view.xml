@@ -1,6 +1,6 @@
 <mvc:View controllerName="de.htwberlin.adbkt.basic1.controller.UBahnNetzBerlin" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.commons"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
-	<Page id="unetzPro" 
+	<Page id="unetz" 
 		title="{i18n>unetzTitle}" 
 		class="sapUiResponsiveContentPadding" 
 		showNavButton="true" 

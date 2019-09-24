@@ -1,122 +1,184 @@
 sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
-	"de/htwberlin/adbkt/basic1/Cred"
-], function (BaseController, Cred) {
+	"de/htwberlin/adbkt/basic1/Cred", "sap/ui/model/json/JSONModel"
+], function (BaseController, Cred, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("de.htwberlin.adbkt.basic1.controller.UBahnNetzBerlinPro", {
 		onInit: function () {
-
+		
 		},
-		onFindButtonPress: function (oEvent) {
-			sap.m.MessageToast.show('Die Umkreissuche wird durchgeführt.. ');
+/**
+ * ===========================================================================
+ *  Global Objects
+ * ===========================================================================
+ */
+		oMap: {},
+		oCoordinates: {
+			LAN: null,
+			LAT: null
+			//oStart: {},
+			//oEnd: {}
+		},
 
-			var fueltype = this.getView().byId('fueltype').getSelectedKey();
-			var address = this.getView().byId('address').getValue();
-			var distance = this.getView().byId('distance').getValue();
 
-			self = this;
+/**
+ * ===========================================================================
+ * On Create Function
+ * ===========================================================================
+ */
+		onAfterRendering: function () {
+			const platform = new H.service.Platform({
+				app_id: Cred.getHereAppId(),
+				app_code: Cred.getHereAppCode(),
+				useHTTPS: true
+			});
+			const defaultLayers = platform.createDefaultLayers({
+				tileSize: pixelRatio === 1 ? 256 : 512,
+				ppi: pixelRatio === 1 ? undefined : 320
+			});
+			var pixelRatio = window.devicePixelRatio || 1;
+			let map = new H.Map(
+				document.getElementById("__component0---unetzPro--map"),
+				defaultLayers.normal.map, {
+					zoom: 14,
+					center: {
+						lat: 52.5159,
+						lng: 13.3777
+					},
+					pixelRatio: pixelRatio
 
-			//Geocoding
-			$.ajax({
-				url: 'https://geocoder.api.here.com/6.2/geocode.json',
-				type: 'GET',
-				dataType: 'jsonp',
-				jsonp: 'jsoncallback',
-				data: {
-					searchtext: address,
-					app_id: Cred.getHereAppId(),
-					app_code: Cred.getHereAppCode(),
-					gen: '9'
-				},
-				success: function (data) {
-					var lat = data.Response.View["0"].Result["0"].Location.DisplayPosition.Latitude;
-					var lng = data.Response.View["0"].Result["0"].Location.DisplayPosition.Longitude;
+				}
+			);
+			this.oMap = map;
+			const mapEvents = new H.mapevents.MapEvents(map);
+			const behavior = new H.mapevents.Behavior(mapEvents);
+			var ui = H.ui.UI.createDefault(map, defaultLayers);
+			this.moveMapToCurrentLocation();
+		},
 
-					self.requestTankerkoenigData(lat, lng, distance, fueltype)
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+		getCurrentLocation: async function(){
+			var oJSON = {};
+			return new Promise(function(resolve, reject) {
+				if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(position =>{
+							oJSON['LAT'] = position.coords.latitude;
+							oJSON['LNG'] = position.coords.longitude;
+							resolve(oJSON);
+						});
+				} else { 
+					sap.m.MessageToast.show( "Geolocation is not supported by this browser.");
 				}
 			});
 		},
+
+/**
+ * ===========================================================================
+ *  View functions
+ * ===========================================================================
+ */
+		updateStartFieldWithCurrentAddress: async function(lat,lng){
+			var start = this.getView().byId('address_start');
+			var sAdress= await this.reverseGeocoding(lat,lng);
+			start.setValue(sAdress);
+		},
+/**
+ * ===========================================================================
+ *  HERE Map functions
+ * ===========================================================================
+ */
+		moveMapToCurrentLocation: async function () {
+			var oJSON = await this.getCurrentLocation();
+			this.oMap.setCenter({
+				lat: oJSON['LAT'],
+				lng: oJSON['LNG']
+			});
+			this.setMarker(oJSON['LAT'],oJSON['LNG']);
+			this.oMap.setZoom(14);
+			this.updateStartFieldWithCurrentAddress(oJSON['LAT'],oJSON['LNG']);
+
+		},
+
+		setMarker: function(lat, lng){
+			var oMarker = new H.map.Marker({
+				lat: lat,
+				lng: lng
+			});
+			this.oMap.addObject(oMarker);
+		},
+/**
+ * ===========================================================================
+ *  Geocoding API Calls
+ * ===========================================================================
+ */
+		reverseGeocoding: async function(lat,lng){
+			var sAdress = null;
+			return new Promise(function(resolve, reject) {
+				$.ajax({
+					url: 'https://reverse.geocoder.api.here.com/6.2/reversegeocode.json',
+					type: 'GET',
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					data: {
+						prox: lat+','+lng+',250',
+						mode: 'retrieveAddresses',
+						gen: '9',
+						maxresults: '1',
+						city: 'Berlin',
+						app_id: Cred.getHereAppId(),
+						app_code: Cred.getHereAppCode()
+					},
+					success: function (data) {
+						sAdress = data.Response.View[0].Result[0].Location.Address.Label;
+						resolve(sAdress);
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					}
+			})
+
+			});
+		},
+		routeFast: async function(oCoordinatesStart,oCoordinatesTarget){
+			var sAdress = null;
+			return new Promise(function(resolve, reject) {
+				$.ajax({
+					url: 'https://route.api.here.com/routing/7.2/calculateroute.json',
+					type: 'GET',
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					data: {
+						waypoint0: oCoordinatesStart.LAT+','+oCoordinatesStart.LNG,
+    					waypoint1: oCoordinatesTarget.LAT+','+oCoordinatesTarget.LNG,
+    					mode: 'fastest;publicTransportTimeTable',
+    					alternatives: '3',
+						city: 'Berlin',
+						app_id: Cred.getHereAppId(),
+						app_code: Cred.getHereAppCode()
+					},
+					success: function (data) {
+						sAdress = data.Response.View[0].Result[0].Location.Address.Label;
+						sap.m.MessageToast.show(sAdress);
+						resolve(sAdress);
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
+					}
+			})
+
+			});
+		},
+
+/**
+ * ===========================================================================
+ *  HANA DB functions
+ * ===========================================================================
+ */
+		
 
 		onFindButtonPress_Re: function (oEvent) {
 			sap.m.MessageToast.show('Die Umkreissuche wird durchgeführt.. ');
-
-			//var fueltype = this.getView().byId('fueltype').getSelectedKey();
-			var address = this.getView().byId('address').getValue();
-			var distance = this.getView().byId('distance').getValue();
-
-			self = this;
-
-			//Geocoding
-			$.ajax({
-				url: 'https://geocoder.api.here.com/6.2/geocode.json',
-				type: 'GET',
-				dataType: 'jsonp',
-				jsonp: 'jsoncallback',
-				data: {
-					searchtext: address,
-					app_id: Cred.getHereAppId(),
-					app_code: Cred.getHereAppCode(),
-					gen: '9'
-				},
-				success: function (data) {
-					var lat = data.Response.View["0"].Result["0"].Location.DisplayPosition.Latitude;
-					var lng = data.Response.View["0"].Result["0"].Location.DisplayPosition.Longitude;
-
-					self.requestTankDataFromHDB(lat, lng, distance)
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
-				}
-			});
 		},
 
-		requestTankDataFromHDB: function (lat, lng, distance) {
-			sap.m.MessageToast.show(lat + '\n' + lng + '\n' + distance + " km");
-			self = this;
-			$.ajax({
-				url: 'http://localhost:3000/outbound',
-				type: 'GET',
-				data: {
-					distance: distance,
-					lng: lng,
-					lat: lat,      
-				},
-				success: function (data) {
-					var log = self.getView().byId('log');
-					log.setValue(JSON.stringify(data, null, 2));
-					
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
-				}
-			});
-		},
 		
-		requestTankerkoenigData: function (lat, lng, distance, fueltype) {
-			sap.m.MessageToast.show(lat + '\n' + lng + '\n' + fueltype);
-			self = this;
-			$.ajax({
-				url: "https://creativecommons.tankerkoenig.de/json/list.php",
-				data: {
-					lat: lat,
-					lng: lng,
-					rad: distance,
-					sort: "dist",
-					type: fueltype,
-					apikey: Cred.getTankerkoenigApiKey()
-				},
-				success: function (data) {
-					var log = self.getView().byId('log');
-					log.setValue(JSON.stringify(data, null, 2));
-				},
-				error: function (jqXHR, textStatus, errorThrown) {
-					sap.m.MessageToast.show(textStatus + '\n' + jqXHR + '\n' + errorThrown);
-				}
-
-			});
-		},
 	});
 });
