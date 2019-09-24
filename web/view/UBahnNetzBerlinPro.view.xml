@@ -14,11 +14,11 @@
 				<!-- Form zur User Eingabe -->
 				<!--<HBox>
 					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMLocationSearch" type="XML"/>
-					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMFuzzySearchDB" type="XML"/>-->
-				</HBox>
+					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMFuzzySearchDB" type="XML"/>
+				</HBox>-->
 				<List headerText="Aufgabe 4: ">
 					<InputListItem label="Start:">
-						<Input id="address_start" placeholder="Adresse" value="Treskowallee 8, Berlin"/>
+						<Input id="address_start" placeholder="Adresse" value=""/>
 					</InputListItem>
 					<InputListItem label="Ziel:">
 						<Input id="address_target" placeholder="Adresse" value="Güntzelstr. 10, Berlin"/>

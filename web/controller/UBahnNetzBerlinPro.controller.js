@@ -138,7 +138,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 			});
 		},
-		reverseGeocoding: async function(oCoordinatesStart,oCoordinatesTarget){
+		routeFast: async function(oCoordinatesStart,oCoordinatesTarget){
 			var sAdress = null;
 			return new Promise(function(resolve, reject) {
 				$.ajax({
@@ -149,7 +149,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					data: {
 						waypoint0: oCoordinatesStart.LAT+','+oCoordinatesStart.LNG,
     					waypoint1: oCoordinatesTarget.LAT+','+oCoordinatesTarget.LNG,
-    					mode: 'ffastest;publicTransportTimeTable',
+    					mode: 'fastest;publicTransportTimeTable',
     					alternatives: '3',
 						city: 'Berlin',
 						app_id: Cred.getHereAppId(),
@@ -157,6 +157,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 					},
 					success: function (data) {
 						sAdress = data.Response.View[0].Result[0].Location.Address.Label;
+						sap.m.MessageToast.show(sAdress);
 						resolve(sAdress);
 					},
 					error: function (jqXHR, textStatus, errorThrown) {
