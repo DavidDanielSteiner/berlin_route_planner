@@ -58,11 +58,11 @@ stops_berlin = stops_berlin.replace(regex=[r'\[.*?\]'], value='') #delete [U5]
 # CSV export
 # =============================================================================
 
-stops_berlin.to_csv("stops_berlin.csv", sep=',', index=False, encoding="utf-8")
-stop_times_berlin.to_csv("stop_times.csv", sep=',', index=False, encoding="utf-8")
-trips_berlin.to_csv("trips.csv", sep=',', index=False, encoding="utf-8")
-routes_berlin.to_csv("routes.csv", sep=',', index=False, encoding="utf-8")
-transfers_berlin.to_csv("transfers.csv", sep=',', index=False, encoding="utf-8")
+stops_berlin.to_csv("stops_berlin.csv", sep=',', index=True, encoding="utf-8")
+stop_times_berlin.to_csv("stop_times.csv", sep=',', index=True, encoding="utf-8")
+trips_berlin.to_csv("trips.csv", sep=',', index=True, encoding="utf-8")
+routes_berlin.to_csv("routes.csv", sep=',', index=True, encoding="utf-8")
+transfers_berlin.to_csv("transfers.csv", sep=',', index=True, encoding="utf-8")
 #calendar.to_csv("calendar.csv", sep=',', index=False, encoding="utf-8")
 #agency_berlin.to_csv("agency.csv", sep=',', index=False, encoding="utf-8")
 #shapes.to_csv("shapes.csv", sep=',', index=False, encoding="utf-8")
