@@ -51,18 +51,18 @@ stops_berlin = stops_berlin[['stop_id', 'stop_name', 'stop_lat', 'stop_lon']]
 stops_berlin = stops_berlin.replace(regex=[r'\(Berlin\)'], value='') #delete (Berlin)
 stops_berlin = stops_berlin.replace(regex=[r'\[.*?\]'], value='') #delete [U5]
 #stops_berlin = stops_berlin.drop_duplicates(subset=['stop_name'], keep='last')
-
+stops_berlin = stops_berlin.reset_index()
 #transfers = transfers.drop(columns=['from_trip_id', 'to_trip_id'])
 
 # =============================================================================
 # CSV export
 # =============================================================================
 
-stops_berlin.to_csv("stops_berlin.csv", sep=',', index=True, encoding="utf-8")
-stop_times_berlin.to_csv("stop_times.csv", sep=',', index=True, encoding="utf-8")
-trips_berlin.to_csv("trips.csv", sep=',', index=True, encoding="utf-8")
-routes_berlin.to_csv("routes.csv", sep=',', index=True, encoding="utf-8")
-transfers_berlin.to_csv("transfers.csv", sep=',', index=True, encoding="utf-8")
+stops_berlin.to_csv("stops_berlin.csv", sep=',', index=True, index_label='index', encoding="utf-8")
+stop_times_berlin.to_csv("stop_times.csv", sep=',', index=True, index_label='index', encoding="utf-8")
+trips_berlin.to_csv("trips.csv", sep=',', index=True, index_label='index', encoding="utf-8")
+routes_berlin.to_csv("routes.csv", sep=',', index=True, index_label='index', encoding="utf-8")
+transfers_berlin.to_csv("transfers.csv", sep=',', index=True, index_label='index', encoding="utf-8")
 #calendar.to_csv("calendar.csv", sep=',', index=False, encoding="utf-8")
 #agency_berlin.to_csv("agency.csv", sep=',', index=False, encoding="utf-8")
 #shapes.to_csv("shapes.csv", sep=',', index=False, encoding="utf-8")
@@ -144,9 +144,7 @@ SELECT stop_id, stop_name FROM stops WHERE stop_id IN (
   SELECT DISTINCT stop_id FROM stop_times WHERE trip_id IN (
     SELECT DISTINCT trip_id FROM trips WHERE route_id = %(route_id)s))
 """, 
-
 route_id='17518_400'
-
 )
 for row in q:
     print(row)
@@ -159,6 +157,7 @@ SELECT s.stop_name, s.stop_id, st.stop_sequence, t.trip_headsign
 FROM 
 trips t INNER JOIN stop_times st on t.trip_id = st.trip_id
         INNER JOIN stops s on s.stop_id = st.stop_id
+        INNER JOIN
         
 WHERE
 t.route_id='17518_400'

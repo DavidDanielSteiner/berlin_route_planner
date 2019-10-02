@@ -1,4 +1,4 @@
-,route_id,from_stop_id,to_stop_id,min_transfer_time,from_route_id,to_route_id
+index,route_id,from_stop_id,to_stop_id,min_transfer_time,from_route_id,to_route_id
 0,18949_109,60110011611,60110011611,,18949_109,18949_109
 1,18949_109,60110011612,60110011611,,12003_109,18949_109
 2,18949_109,60110011613,60110011614,,12003_109,18949_109

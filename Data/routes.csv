@@ -1,4 +1,4 @@
-,route_id,route_short_name,route_type,agency_id
+index,route_id,route_short_name,route_type,agency_id
 0,18970_700,S2X,700,1
 1,18950_109,S3,109,1
 2,18949_109,S26,109,1
