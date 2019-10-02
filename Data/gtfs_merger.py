@@ -63,16 +63,7 @@ stop_times_berlin = stop_times_berlin[['trip_id', 'stop_name', 'arrival_time', '
 # =============================================================================
 # Create new tables
 # =============================================================================
-new_df = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on='stop_id', right_on = 'from_stop_id')
-tmp = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on='stop_id', right_on = 'from_stop_id')
-tmp = tmp[['stop_name', 'from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
-tmp = tmp.rename(columns={"stop_name": "from_stop"})
-graph = pd.merge(stops_berlin, tmp,  how='inner', left_on='stop_id', right_on = 'to_stop_id')
-graph = graph[['from_stop', 'stop_name', 'min_transfer_time', 'from_route_id', 'to_route_id']]
-graph = graph.rename(columns={"stop_name": "to_stop"})
 
-
-new_df = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on=['stop_id','stop_id'], right_on = ['from_stop_id','to_stop_id'])
 
 
 #lines table
