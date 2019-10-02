@@ -36,9 +36,6 @@ routes_berlin = pd.merge(agency_berlin, routes, on='agency_id', how='inner')
 routes_berlin = routes_berlin[['route_id', 'route_short_name', 'route_type', 'agency_id']]
 routes_berlin = routes_berlin[routes_berlin['route_short_name'].str.contains('U|S')]
 
-transfers_berlin = pd.merge(routes_berlin, transfers, left_on='route_id', right_on='to_route_id')
-transfers_berlin = transfers_berlin[['route_id', 'from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
-
 trips_berlin = pd.merge(routes_berlin, trips, on='route_id', how='inner')
 trips_berlin = trips_berlin[['route_id', 'service_id', 'trip_id', 'trip_headsign', 'direction_id', 'shape_id']]
 
@@ -52,7 +49,70 @@ stops_berlin = stops_berlin.replace(regex=[r'\(Berlin\)'], value='') #delete (Be
 stops_berlin = stops_berlin.replace(regex=[r'\[.*?\]'], value='') #delete [U5]
 #stops_berlin = stops_berlin.drop_duplicates(subset=['stop_name'], keep='last')
 stops_berlin = stops_berlin.reset_index()
+stops_berlin = stops_berlin[['stop_id', 'stop_name', 'stop_lat', 'stop_lon']]
+
 #transfers = transfers.drop(columns=['from_trip_id', 'to_trip_id'])
+transfers_berlin = pd.merge(stops_berlin, transfers, left_on='stop_id', right_on='from_stop_id')
+transfers_berlin = transfers_berlin[['from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
+
+#replace stop_id with stop_name
+stop_times_berlin = pd.merge(stop_times_berlin, stops_berlin, how='inner', on="stop_id")
+stop_times_berlin = stop_times_berlin[['trip_id', 'stop_name', 'arrival_time', 'departure_time', 'stop_sequence']]
+
+
+# =============================================================================
+# Create new tables
+# =============================================================================
+new_df = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on='stop_id', right_on = 'from_stop_id')
+tmp = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on='stop_id', right_on = 'from_stop_id')
+tmp = tmp[['stop_name', 'from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
+tmp = tmp.rename(columns={"stop_name": "from_stop"})
+graph = pd.merge(stops_berlin, tmp,  how='inner', left_on='stop_id', right_on = 'to_stop_id')
+graph = graph[['from_stop', 'stop_name', 'min_transfer_time', 'from_route_id', 'to_route_id']]
+graph = graph.rename(columns={"stop_name": "to_stop"})
+
+
+new_df = pd.merge(stops_berlin, transfers_berlin,  how='inner', left_on=['stop_id','stop_id'], right_on = ['from_stop_id','to_stop_id'])
+
+
+#lines table
+lines = pd.DataFrame()
+
+#Für jede route alle trips
+for index, row in routes_berlin.iterrows():
+    route_id = (row['route_id'])
+    route_name = (row['route_short_name'])
+
+    aRoute = trips[trips['route_id'] == route_id]
+    aTrips = pd.merge(aRoute, stop_times_berlin,  how='inner', on='trip_id')
+    #aMax = aTrips.drop_duplicates(subset='stop_sequence')
+    
+    #Für route trip mit maximalen stationen
+    try:
+        max_sequence = aTrips['stop_sequence'].idxmax()
+        aMaxTrip_id = int(aTrips[max_sequence:max_sequence+1]['trip_id'])
+    
+        #Alle Stationen für Trip
+        all_Stations_Trip = stop_times_berlin[stop_times_berlin['trip_id'] == aMaxTrip_id]
+        all_Stations_Trip = pd.merge(all_Stations_Trip, stops_berlin, how='inner', on='stop_id')
+        all_Stations_Trip = all_Stations_Trip[['stop_name', 'stop_sequence']]
+        all_Stations_Trip['route_name']=route_name
+        all_Stations_Trip['route_id']=route_id
+        lines = lines.append(all_Stations_Trip)
+        print(route_name)
+    except Exception as e:
+        print(e)
+lines = lines.reset_index(drop=True)
+
+
+#stations table
+stations = stops_berlin.drop_duplicates(subset='stop_name')
+stations = stations.reset_index(drop=True)
+del stations['stop_id']
+
+
+
+
 
 # =============================================================================
 # CSV export
@@ -66,7 +126,8 @@ transfers_berlin.to_csv("transfers.csv", sep=',', index=True, index_label='index
 #calendar.to_csv("calendar.csv", sep=',', index=False, encoding="utf-8")
 #agency_berlin.to_csv("agency.csv", sep=',', index=False, encoding="utf-8")
 #shapes.to_csv("shapes.csv", sep=',', index=False, encoding="utf-8")
-
+lines.to_csv("lines.csv", sep=',', index=True, index_label='index', encoding="utf-8")
+stations.to_csv("stations.csv", sep=',', index=True, index_label='index', encoding="utf-8")
 
 # =============================================================================
 # DB Upload
