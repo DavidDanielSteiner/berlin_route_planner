@@ -256,3 +256,47 @@ WHERE c.monday = 1
 
 
 SELECT * FROM stop_times st inner join stops s on st.stop_id = s.stop_id WHERE trip_id = 120958873 
+
+
+# =============================================================================
+# 
+# =============================================================================
+
+lines = pd.read_csv('lines.csv')
+stations = pd.read_csv('stations.csv')
+stop_times = pd.read_csv('stop_times.csv')
+
+#1. select trip with nearest arrival_time for specific station (stop_time)
+#2 Check where 
+
+U5, Tierpark , 
+U5, Frankfurter Tor 
+U5/U2, Akexanderplatz
+U2, Hackescher Markt
+
+
+
+
+
+
+
+q = engine.execute('''    
+SELECT t.trip_id, t.trip_headsign, st.departure_time, t.direction_id
+FROM 
+stop_times st   INNER JOIN stops s on s.stop_id = st.stop_id      
+                INNER JOIN trips t on st.trip_id = t.trip_id
+
+WHERE
+s.stop_name = 'U Frankfurter Tor' AND
+st.departure_time > '16:00:00' AND
+st.departure_time> "00:00:00" AND st.departure_time < "23:59:59" 
+
+ORDER BY 
+st.departure_time ASC
+LIMIT 10
+''')
+for row in q:
+    print(row)
+
+
+
