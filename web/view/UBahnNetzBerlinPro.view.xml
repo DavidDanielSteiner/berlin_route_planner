@@ -27,7 +27,7 @@
 						<Select id="searchType">
 							<core:Item key="lessChange" text="am wenigsten Umstiege"/>
 							<core:Item key="fastestPath" text="kürzeste Zeit"/>
-							<core:Item key="lessHops" text="am wenigsteb Stationen"/>
+							<core:Item key="lessHops" text="am wenigsten Stationen"/>
 						</Select>
 					</InputListItem>
 					<InputListItem label="Suche">
