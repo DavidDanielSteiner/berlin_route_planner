@@ -23,15 +23,15 @@
 					<InputListItem label="Ziel:">
 						<Input id="address_target" placeholder="Adresse" value="Güntzelstr. 10, Berlin"/>
 					</InputListItem>
-					<InputListItem label="Suche">
-						<Button text="Suchen" press="runFuzzySearch"/>
-					</InputListItem>
 					<InputListItem label="Typ der Suche">
 						<Select id="searchType">
 							<core:Item key="lessChange" text="am wenigsten Umstiege"/>
 							<core:Item key="fastestPath" text="kürzeste Zeit"/>
 							<core:Item key="lessHops" text="am wenigsteb Stationen"/>
 						</Select>
+					</InputListItem>
+					<InputListItem label="Suche">
+						<Button text="Suchen" press="runFuzzySearch"/>
 					</InputListItem>
 				</List>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
