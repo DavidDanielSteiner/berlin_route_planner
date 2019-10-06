@@ -10,22 +10,23 @@ Created on Thu Sep 19 18:39:57 2019
 
 import pandas as pd
 
-stops = pd.read_csv('stops.txt', sep=",", encoding="utf-8")
-stop_times = pd.read_csv('stop_times.txt', sep=",", encoding="utf-8")
-routes = pd.read_csv('routes.txt', sep=",", encoding="utf-8")
-trips = pd.read_csv('trips.txt', sep=",", encoding="utf-8")
-stop_times = pd.read_csv('stop_times.txt', sep=",", encoding="utf-8")
-agency = pd.read_csv('agency.txt', sep=",", encoding="utf-8")
+
+stops = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\stops.txt', sep=",", encoding="utf-8")
+stop_times = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\stop_times.txt', sep=",", encoding="utf-8")
+routes = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\routes.txt', sep=",", encoding="utf-8")
+trips = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\trips.txt', sep=",", encoding="utf-8")
+stop_times = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\stop_times.txt', sep=",", encoding="utf-8")
+agency = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\agency.txt', sep=",", encoding="utf-8")
 
 #calendar = pd.read_csv('calendar.txt', sep=",", encoding="utf-8")
 #shapes = pd.read_csv('shapes.txt', sep=",", encoding="utf-8")
-transfers = pd.read_csv('transfers.txt', sep=",", encoding="utf-8")
+#transfers = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\transfers.txt', sep=",", encoding="utf-8")
 
 
 # =============================================================================
 # Filter Berlin Routes
 # =============================================================================
-#stops_berlin = stops[stops['stop_name'].str.contains(r'\(Berlin\)')]
+ #stops_berlin = stops[stops['stop_name'].str.contains(r'\(Berlin\)')]
 #stops_berlin = stops_berlin.replace(regex=[r'\(Berlin\)'], value='')
 #stops_berlin = stops_berlin[['stop_id', 'stop_name', 'stop_lat', 'stop_lon']]
 #stops_berlin = stops_berlin.drop_duplicates(subset=['stop_id'], keep='last')
@@ -52,8 +53,8 @@ stops_berlin = stops_berlin.reset_index()
 stops_berlin = stops_berlin[['stop_id', 'stop_name', 'stop_lat', 'stop_lon']]
 
 #transfers = transfers.drop(columns=['from_trip_id', 'to_trip_id'])
-transfers_berlin = pd.merge(stops_berlin, transfers, left_on='stop_id', right_on='from_stop_id')
-transfers_berlin = transfers_berlin[['from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
+#transfers_berlin = pd.merge(stops_berlin, transfers, left_on='stop_id', right_on='from_stop_id')
+#transfers_berlin = transfers_berlin[['from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
 
 #replace stop_id with stop_name
 stop_times_berlin = pd.merge(stop_times_berlin, stops_berlin, how='inner', on="stop_id")
@@ -64,19 +65,27 @@ stop_times_berlin = stop_times_berlin[['trip_id', 'stop_name', 'arrival_time', '
 # Create new tables
 # =============================================================================
 
+#stations table
+stations = stops_berlin.drop_duplicates(subset='stop_name')
+stations = stations.reset_index(drop=True)
+del stations['stop_id']
+
 
 
 #lines table
 lines = pd.DataFrame()
+routes_new = routes_berlin[routes_berlin['route_type'] != 700]
+routes_new = routes_new.drop_duplicates(subset='route_short_name', keep='last')
 
 #Für jede route alle trips
-for index, row in routes_berlin.iterrows():
+for index, row in routes_new.iterrows():
     route_id = (row['route_id'])
     route_name = (row['route_short_name'])
 
-    aRoute = trips[trips['route_id'] == route_id]
+    tmp = pd.merge(trips_berlin, routes_new, how='inner', on='route_id')
+    aRoute = tmp[tmp['route_short_name'] == route_name]
     aTrips = pd.merge(aRoute, stop_times_berlin,  how='inner', on='trip_id')
-    #aMax = aTrips.drop_duplicates(subset='stop_sequence')
+    #aTrips.drop_duplicates(subset='stop_name')
     
     #Für route trip mit maximalen stationen
     try:
@@ -85,10 +94,11 @@ for index, row in routes_berlin.iterrows():
     
         #Alle Stationen für Trip
         all_Stations_Trip = stop_times_berlin[stop_times_berlin['trip_id'] == aMaxTrip_id]
-        all_Stations_Trip = pd.merge(all_Stations_Trip, stops_berlin, how='inner', on='stop_id')
+        all_Stations_Trip = pd.merge(all_Stations_Trip, stations, how='inner', on='stop_name')
         all_Stations_Trip = all_Stations_Trip[['stop_name', 'stop_sequence']]
         all_Stations_Trip['route_name']=route_name
         all_Stations_Trip['route_id']=route_id
+        all_Stations_Trip = all_Stations_Trip.sort_values('stop_sequence')
         lines = lines.append(all_Stations_Trip)
         print(route_name)
     except Exception as e:
@@ -96,10 +106,7 @@ for index, row in routes_berlin.iterrows():
 lines = lines.reset_index(drop=True)
 
 
-#stations table
-stations = stops_berlin.drop_duplicates(subset='stop_name')
-stations = stations.reset_index(drop=True)
-del stations['stop_id']
+
 
 
 

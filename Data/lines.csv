@@ -1,992 +1,591 @@
 index,stop_name,stop_sequence,route_name,route_id
-0,S Blankenfelde (TF) Bhf,0,S2X,18970_700
-1,S Mahlow,1,S2X,18970_700
-2,"Berlin, Goltzstr./Lichtenrader Damm",2,S2X,18970_700
-3,"Berlin, Mariendorfer Damm/Buckower Chaussee",3,S2X,18970_700
-4,U Alt-Mariendorf  ,4,S2X,18970_700
-5,S Priesterweg ,5,S2X,18970_700
-6,S Charlottenburg Bhf ,0,S3,18950_109
-7,S Westkreuz ,1,S3,18950_109
-8,S Olympiastadion ,2,S3,18950_109
-9,S Teltow Stadt,0,S26,18949_109
-10,S Lichterfelde Süd ,1,S26,18949_109
-11,S Osdorfer Str. ,2,S26,18949_109
-12,S Lichterfelde Ost Bhf ,3,S26,18949_109
-13,S Lankwitz ,4,S26,18949_109
-14,S Südende ,5,S26,18949_109
-15,S Priesterweg ,6,S26,18949_109
-16,S Südkreuz Bhf ,7,S26,18949_109
-17,S+U Yorckstr. S2 S25 S26 U7 ,8,S26,18949_109
-18,S Anhalter Bahnhof ,9,S26,18949_109
-19,S+U Potsdamer Platz Bhf ,10,S26,18949_109
-20,S+U Brandenburger Tor ,11,S26,18949_109
-21,S+U Friedrichstr. Bhf ,12,S26,18949_109
-22,S Oranienburger Str. ,13,S26,18949_109
-23,S Nordbahnhof ,14,S26,18949_109
-24,S Humboldthain ,15,S26,18949_109
-25,S+U Gesundbrunnen Bhf ,16,S26,18949_109
-26,S Bornholmer Str. ,17,S26,18949_109
-27,S Wollankstr. ,18,S26,18949_109
-28,S Schönholz ,19,S26,18949_109
-29,S Wilhelmsruh ,20,S26,18949_109
-30,S+U Wittenau ,21,S26,18949_109
-31,S Waidmannslust ,22,S26,18949_109
-32,S Köpenick ,0,S3,17614_109
-33,S Wuhlheide ,1,S3,17614_109
-34,S Karlshorst ,2,S3,17614_109
-35,S Betriebsbahnhof Rummelsburg ,3,S3,17614_109
-36,S Rummelsburg ,4,S3,17614_109
-37,S Ostkreuz Bhf ,5,S3,17614_109
-38,S+U Warschauer Str. ,6,S3,17614_109
-39,S Ostbahnhof ,7,S3,17614_109
-40,S Ahrensfelde Bhf ,0,S7,16815_109
-41,S Mehrower Allee ,1,S7,16815_109
-42,S Raoul-Wallenberg-Str. ,2,S7,16815_109
-43,S Marzahn ,3,S7,16815_109
-44,S Poelchaustr. ,4,S7,16815_109
-45,S Springpfuhl ,5,S7,16815_109
-46,S Friedrichsfelde Ost ,6,S7,16815_109
-47,S+U Lichtenberg Bhf ,7,S7,16815_109
-48,S Nöldnerplatz ,8,S7,16815_109
-49,S Ostkreuz Bhf ,9,S7,16815_109
-50,S+U Warschauer Str. ,10,S7,16815_109
-51,S Ostbahnhof ,11,S7,16815_109
-52,S Ahrensfelde Bhf ,0,S7,16814_109
-53,S Mehrower Allee ,1,S7,16814_109
-54,S Raoul-Wallenberg-Str. ,2,S7,16814_109
-55,S Marzahn ,3,S7,16814_109
-56,S Poelchaustr. ,4,S7,16814_109
-57,S Springpfuhl ,5,S7,16814_109
-58,S Friedrichsfelde Ost ,6,S7,16814_109
-59,S+U Lichtenberg Bhf ,7,S7,16814_109
-60,S Nöldnerplatz ,8,S7,16814_109
-61,S Ostkreuz Bhf ,9,S7,16814_109
-62,S+U Warschauer Str. ,10,S7,16814_109
-63,S Ostbahnhof ,11,S7,16814_109
-64,S+U Gesundbrunnen Bhf ,0,S42,14383_700
-65,S Humboldthain ,1,S42,14383_700
-66,S+U Wedding ,2,S42,14383_700
-67,S+U Westhafen ,3,S42,14383_700
-68,U Turmstr. ,4,S42,14383_700
-69,S Beusselstr. ,5,S42,14383_700
-70,S+U Jungfernheide Bhf ,6,S42,14383_700
-71,S Westend ,7,S42,14383_700
-72,S Grünau ,0,S85,12003_109
-73,S Adlershof ,1,S85,12003_109
-74,S Betriebsbahnhof Schöneweide ,2,S85,12003_109
-75,S Schöneweide Bhf ,3,S85,12003_109
-76,S Baumschulenweg ,4,S85,12003_109
-77,S Plänterwald ,5,S85,12003_109
-78,S Treptower Park ,6,S85,12003_109
-79,S Ostkreuz Bhf ,7,S85,12003_109
-80,S+U Frankfurter Allee ,8,S85,12003_109
-81,S Storkower Str. ,9,S85,12003_109
-82,S Landsberger Allee ,10,S85,12003_109
-83,S Greifswalder Str. ,11,S85,12003_109
-84,S Prenzlauer Allee ,12,S85,12003_109
-85,S+U Schönhauser Allee ,13,S85,12003_109
-86,S Bornholmer Str. ,14,S85,12003_109
-87,S+U Pankow ,15,S85,12003_109
-88,S Grünau ,0,S46,11537_109
-89,S Adlershof ,1,S46,11537_109
-90,S Betriebsbahnhof Schöneweide ,2,S46,11537_109
-91,S Schöneweide Bhf ,3,S46,11537_109
-92,S Baumschulenweg ,4,S46,11537_109
-93,S Köllnische Heide ,5,S46,11537_109
-94,S+U Neukölln ,6,S46,11537_109
-95,S+U Hermannstr. ,7,S46,11537_109
-96,S+U Tempelhof ,8,S46,11537_109
-97,S Südkreuz Bhf ,9,S46,11537_109
-98,S Grünau ,0,S46,11536_109
-99,S Adlershof ,1,S46,11536_109
-100,S Betriebsbahnhof Schöneweide ,2,S46,11536_109
-101,S Schöneweide Bhf ,3,S46,11536_109
-102,S Baumschulenweg ,4,S46,11536_109
-103,S Köllnische Heide ,5,S46,11536_109
-104,S+U Neukölln ,6,S46,11536_109
-105,S+U Hermannstr. ,7,S46,11536_109
-106,S Wartenberg ,0,S75,11387_700
-107,S Hohenschönhausen Bhf ,1,S75,11387_700
-108,"Berlin, Klettwitzer Str.",2,S75,11387_700
-109,S Raoul-Wallenberg-Str. ,3,S75,11387_700
-110,S Marzahn ,4,S75,11387_700
-111,S Poelchaustr. ,5,S75,11387_700
-112,S Springpfuhl ,6,S75,11387_700
-113,S Friedrichsfelde Ost ,7,S75,11387_700
-114,S+U Lichtenberg Bhf ,8,S75,11387_700
-115,S Nöldnerplatz ,9,S75,11387_700
-116,S Rummelsburg ,10,S75,11387_700
-117,S Ostkreuz Bhf ,11,S75,11387_700
-118,S Westend ,0,S41,11342_700
-119,S+U Jungfernheide Bhf ,1,S41,11342_700
-120,S Beusselstr. ,2,S41,11342_700
-121,U Turmstr. ,3,S41,11342_700
-122,S+U Westhafen ,4,S41,11342_700
-123,S+U Wedding ,5,S41,11342_700
-124,S Humboldthain ,6,S41,11342_700
-125,S+U Gesundbrunnen Bhf ,7,S41,11342_700
-126,S Mahlsdorf  ,0,S5,10456_700
-127,S Birkenstein,1,S5,10456_700
-128,S Hoppegarten,2,S5,10456_700
-129,S Neuenhagen,3,S5,10456_700
-130,S Fredersdorf,4,S5,10456_700
-131,S Petershagen Nord,5,S5,10456_700
-132,S Strausberg Bhf,6,S5,10456_700
-133,"Strausberg, Am Annatal",7,S5,10456_700
-134,S Strausberg Stadt,8,S5,10456_700
-135,S Strausberg Nord,9,S5,10456_700
-136,S Priesterweg ,0,S2,10278_109
-137,S Südkreuz Bhf ,1,S2,10278_109
-138,S+U Yorckstr. S2 S25 S26 U7 ,2,S2,10278_109
-139,S Anhalter Bahnhof ,3,S2,10278_109
-140,S+U Potsdamer Platz Bhf ,4,S2,10278_109
-141,S+U Brandenburger Tor ,5,S2,10278_109
-142,S+U Friedrichstr. Bhf ,6,S2,10278_109
-143,S Oranienburger Str. ,7,S2,10278_109
-144,S Nordbahnhof ,8,S2,10278_109
-145,S Humboldthain ,9,S2,10278_109
-146,S+U Gesundbrunnen Bhf ,10,S2,10278_109
-147,S+U Gesundbrunnen Bhf ,0,S1,10277_109
-148,S Bornholmer Str. ,1,S1,10277_109
-149,S Wollankstr. ,2,S1,10277_109
-150,S Schönholz ,3,S1,10277_109
-151,S Wilhelmsruh ,4,S1,10277_109
-152,S+U Wittenau ,5,S1,10277_109
-153,S Waidmannslust ,6,S1,10277_109
-154,S Hermsdorf ,7,S1,10277_109
-155,S Frohnau ,8,S1,10277_109
-156,S Hohen Neuendorf,9,S1,10277_109
-157,S Birkenwerder Bhf,10,S1,10277_109
-158,S Borgsdorf,11,S1,10277_109
-159,S Lehnitz,12,S1,10277_109
-160,S Oranienburg Bhf,13,S1,10277_109
-161,S+U Gesundbrunnen Bhf ,0,S1,10276_109
-162,S Humboldthain ,1,S1,10276_109
-163,S Nordbahnhof ,2,S1,10276_109
-164,S Oranienburger Str. ,3,S1,10276_109
-165,S+U Friedrichstr. Bhf ,4,S1,10276_109
-166,S+U Brandenburger Tor ,5,S1,10276_109
-167,S+U Potsdamer Platz Bhf ,6,S1,10276_109
-168,S Anhalter Bahnhof ,7,S1,10276_109
-169,S+U Yorckstr. S1 U7 ,8,S1,10276_109
-170,S Julius-Leber-Brücke ,9,S1,10276_109
-171,S Schöneberg ,10,S1,10276_109
-172,S Friedenau ,11,S1,10276_109
-173,S Feuerbachstr. ,12,S1,10276_109
-174,S+U Rathaus Steglitz ,13,S1,10276_109
-175,S Botanischer Garten ,14,S1,10276_109
-176,S Lichterfelde West ,15,S1,10276_109
-177,S Sundgauer Str. ,16,S1,10276_109
-178,S Zehlendorf ,17,S1,10276_109
-179,S Mexikoplatz ,18,S1,10276_109
-180,S Schlachtensee ,19,S1,10276_109
-181,S Nikolassee ,20,S1,10276_109
-182,S Wannsee Bhf ,21,S1,10276_109
-183,S Ahrensfelde Bhf ,0,S7,10272_700
-184,S Mehrower Allee ,1,S7,10272_700
-185,S Raoul-Wallenberg-Str. ,2,S7,10272_700
-186,S Marzahn ,3,S7,10272_700
-187,S Poelchaustr. ,4,S7,10272_700
-188,S Springpfuhl ,5,S7,10272_700
-189,S Flughafen Berlin-Schönefeld Bhf,0,S9,10271_109
-190,S Grünbergallee ,1,S9,10271_109
-191,S Altglienicke ,2,S9,10271_109
-192,S Adlershof ,3,S9,10271_109
-193,S Betriebsbahnhof Schöneweide ,4,S9,10271_109
-194,S Schöneweide Bhf ,5,S9,10271_109
-195,S Baumschulenweg ,6,S9,10271_109
-196,S Plänterwald ,7,S9,10271_109
-197,S Treptower Park ,8,S9,10271_109
-198,S Blankenfelde (TF) Bhf,0,S2,10231_700
-199,S Mahlow,1,S2,10231_700
-200,"Berlin, Goltzstr./Lichtenrader Damm",2,S2,10231_700
-201,S Lichtenrade ,3,S2,10231_700
-202,S Schichauweg ,4,S2,10231_700
-203,S Buckower Chaussee ,5,S2,10231_700
-204,S Marienfelde ,6,S2,10231_700
-205,S Attilastr. ,7,S2,10231_700
-206,S Südende ,8,S2,10231_700
-207,S Priesterweg ,9,S2,10231_700
-208,S Spindlersfeld ,0,S47,10229_109
-209,S Oberspree ,1,S47,10229_109
-210,S Schöneweide Bhf ,2,S47,10229_109
-211,S Baumschulenweg ,3,S47,10229_109
-212,S Köllnische Heide ,4,S47,10229_109
-213,S+U Neukölln ,5,S47,10229_109
-214,S+U Hermannstr. ,6,S47,10229_109
-215,S Südkreuz Bhf ,0,S42,10227_109
-216,S Südkreuz Bhf ,27,S42,10227_109
-217,S+U Tempelhof ,1,S42,10227_109
-218,S+U Hermannstr. ,2,S42,10227_109
-219,S+U Neukölln ,3,S42,10227_109
-220,S Sonnenallee ,4,S42,10227_109
-221,S Treptower Park ,5,S42,10227_109
-222,S Ostkreuz Bhf ,6,S42,10227_109
-223,S+U Frankfurter Allee ,7,S42,10227_109
-224,S Storkower Str. ,8,S42,10227_109
-225,S Landsberger Allee ,9,S42,10227_109
-226,S Greifswalder Str. ,10,S42,10227_109
-227,S Prenzlauer Allee ,11,S42,10227_109
-228,S+U Schönhauser Allee ,12,S42,10227_109
-229,S+U Gesundbrunnen Bhf ,13,S42,10227_109
-230,S+U Wedding ,14,S42,10227_109
-231,S+U Westhafen ,15,S42,10227_109
-232,S Beusselstr. ,16,S42,10227_109
-233,S+U Jungfernheide Bhf ,17,S42,10227_109
-234,S Westend ,18,S42,10227_109
-235,S Messe Nord/ICC ,19,S42,10227_109
-236,S Westkreuz ,20,S42,10227_109
-237,S Halensee ,21,S42,10227_109
-238,S Hohenzollerndamm ,22,S42,10227_109
-239,S+U Heidelberger Platz ,23,S42,10227_109
-240,S+U Bundesplatz ,24,S42,10227_109
-241,S+U Innsbrucker Platz ,25,S42,10227_109
-242,S Schöneberg ,26,S42,10227_109
-243,S Beusselstr. ,0,S42,10226_109
-244,S+U Jungfernheide Bhf ,1,S42,10226_109
-245,S Westend ,2,S42,10226_109
-246,S Messe Nord/ICC ,3,S42,10226_109
-247,S Westkreuz ,4,S42,10226_109
-248,S Halensee ,5,S42,10226_109
-249,S Hohenzollerndamm ,6,S42,10226_109
-250,S+U Heidelberger Platz ,7,S42,10226_109
-251,S+U Bundesplatz ,8,S42,10226_109
-252,S+U Innsbrucker Platz ,9,S42,10226_109
-253,S Schöneberg ,10,S42,10226_109
-254,S Südkreuz Bhf ,11,S42,10226_109
-255,S+U Tempelhof ,12,S42,10226_109
-256,S+U Hermannstr. ,13,S42,10226_109
-257,S+U Neukölln ,14,S42,10226_109
-258,S Sonnenallee ,15,S42,10226_109
-259,S Treptower Park ,16,S42,10226_109
-260,S Ostkreuz Bhf ,17,S42,10226_109
-261,S+U Frankfurter Allee ,18,S42,10226_109
-262,S Storkower Str. ,19,S42,10226_109
-263,S Landsberger Allee ,20,S42,10226_109
-264,S Greifswalder Str. ,21,S42,10226_109
-265,S Prenzlauer Allee ,22,S42,10226_109
-266,S+U Schönhauser Allee ,23,S42,10226_109
-267,S+U Gesundbrunnen Bhf ,24,S42,10226_109
-268,S+U Wedding ,25,S42,10226_109
-269,S+U Westhafen ,26,S42,10226_109
-270,S Beusselstr. ,27,S42,10226_109
-271,S Südkreuz Bhf ,0,S41,10224_109
-272,S Südkreuz Bhf ,27,S41,10224_109
-273,S Schöneberg ,1,S41,10224_109
-274,S+U Innsbrucker Platz ,2,S41,10224_109
-275,S+U Bundesplatz ,3,S41,10224_109
-276,S+U Heidelberger Platz ,4,S41,10224_109
-277,S Hohenzollerndamm ,5,S41,10224_109
-278,S Halensee ,6,S41,10224_109
-279,S Westkreuz ,7,S41,10224_109
-280,S Messe Nord/ICC ,8,S41,10224_109
-281,S Westend ,9,S41,10224_109
-282,S+U Jungfernheide Bhf ,10,S41,10224_109
-283,S Beusselstr. ,11,S41,10224_109
-284,S+U Westhafen ,12,S41,10224_109
-285,S+U Wedding ,13,S41,10224_109
-286,S+U Gesundbrunnen Bhf ,14,S41,10224_109
-287,S+U Schönhauser Allee ,15,S41,10224_109
-288,S Prenzlauer Allee ,16,S41,10224_109
-289,S Greifswalder Str. ,17,S41,10224_109
-290,S Landsberger Allee ,18,S41,10224_109
-291,S Storkower Str. ,19,S41,10224_109
-292,S+U Frankfurter Allee ,20,S41,10224_109
-293,S Ostkreuz Bhf ,21,S41,10224_109
-294,S Treptower Park ,22,S41,10224_109
-295,S Sonnenallee ,23,S41,10224_109
-296,S+U Neukölln ,24,S41,10224_109
-297,S+U Hermannstr. ,25,S41,10224_109
-298,S+U Tempelhof ,26,S41,10224_109
-299,S Beusselstr. ,0,S41,10223_109
-300,S+U Westhafen ,1,S41,10223_109
-301,S+U Wedding ,2,S41,10223_109
-302,S+U Gesundbrunnen Bhf ,3,S41,10223_109
-303,S+U Schönhauser Allee ,4,S41,10223_109
-304,S Prenzlauer Allee ,5,S41,10223_109
-305,S Greifswalder Str. ,6,S41,10223_109
-306,S Landsberger Allee ,7,S41,10223_109
-307,S Storkower Str. ,8,S41,10223_109
-308,S+U Frankfurter Allee ,9,S41,10223_109
-309,S Ostkreuz Bhf ,10,S41,10223_109
-310,S Treptower Park ,11,S41,10223_109
-311,S Sonnenallee ,12,S41,10223_109
-312,S+U Neukölln ,13,S41,10223_109
-313,S+U Hermannstr. ,14,S41,10223_109
-314,S+U Tempelhof ,15,S41,10223_109
-315,S Südkreuz Bhf ,16,S41,10223_109
-316,S Schöneberg ,17,S41,10223_109
-317,S+U Innsbrucker Platz ,18,S41,10223_109
-318,S+U Bundesplatz ,19,S41,10223_109
-319,S+U Heidelberger Platz ,20,S41,10223_109
-320,S Hohenzollerndamm ,21,S41,10223_109
-321,S Halensee ,22,S41,10223_109
-322,S Westkreuz ,23,S41,10223_109
-323,S Messe Nord/ICC ,24,S41,10223_109
-324,S Westend ,25,S41,10223_109
-325,S+U Jungfernheide Bhf ,26,S41,10223_109
-326,S Beusselstr. ,27,S41,10223_109
-327,S Flughafen Berlin-Schönefeld Bhf,0,S9,10170_109
-328,S Grünbergallee ,1,S9,10170_109
-329,S Altglienicke ,2,S9,10170_109
-330,S Adlershof ,3,S9,10170_109
-331,S Betriebsbahnhof Schöneweide ,4,S9,10170_109
-332,S Schöneweide Bhf ,5,S9,10170_109
-333,S Baumschulenweg ,6,S9,10170_109
-334,S Plänterwald ,7,S9,10170_109
-335,S Treptower Park ,8,S9,10170_109
-336,S+U Warschauer Str. ,9,S9,10170_109
-337,S Ostbahnhof ,10,S9,10170_109
-338,S+U Jannowitzbrücke ,11,S9,10170_109
-339,S+U Alexanderplatz Bhf ,12,S9,10170_109
-340,S Hackescher Markt ,13,S9,10170_109
-341,S+U Friedrichstr. Bhf ,14,S9,10170_109
-342,S+U Berlin Hauptbahnhof,15,S9,10170_109
-343,S Bellevue ,16,S9,10170_109
-344,S Tiergarten ,17,S9,10170_109
-345,S+U Zoologischer Garten Bhf ,18,S9,10170_109
-346,S Savignyplatz ,19,S9,10170_109
-347,S Charlottenburg Bhf ,20,S9,10170_109
-348,S Westkreuz ,21,S9,10170_109
-349,S Messe Süd ,22,S9,10170_109
-350,S Heerstr. ,23,S9,10170_109
-351,S Olympiastadion ,24,S9,10170_109
-352,S Pichelsberg ,25,S9,10170_109
-353,S Stresow ,26,S9,10170_109
-354,S Spandau Bhf ,27,S9,10170_109
-355,S Zeuthen,0,S8,10167_109
-356,S Eichwalde,1,S8,10167_109
-357,S Grünau ,2,S8,10167_109
-358,S Adlershof ,3,S8,10167_109
-359,S Betriebsbahnhof Schöneweide ,4,S8,10167_109
-360,S Schöneweide Bhf ,5,S8,10167_109
-361,S Baumschulenweg ,6,S8,10167_109
-362,S Plänterwald ,7,S8,10167_109
-363,S Treptower Park ,8,S8,10167_109
-364,S Ostkreuz Bhf ,9,S8,10167_109
-365,S+U Frankfurter Allee ,10,S8,10167_109
-366,S Storkower Str. ,11,S8,10167_109
-367,S Landsberger Allee ,12,S8,10167_109
-368,S Greifswalder Str. ,13,S8,10167_109
-369,S Prenzlauer Allee ,14,S8,10167_109
-370,S+U Schönhauser Allee ,15,S8,10167_109
-371,S Bornholmer Str. ,16,S8,10167_109
-372,S+U Pankow ,17,S8,10167_109
-373,S Pankow-Heinersdorf ,18,S8,10167_109
-374,S Blankenburg ,19,S8,10167_109
-375,S Mühlenbeck-Mönchmühle,20,S8,10167_109
-376,S Schönfließ,21,S8,10167_109
-377,S Bergfelde,22,S8,10167_109
-378,S Hohen Neuendorf,23,S8,10167_109
-379,S Birkenwerder Bhf,24,S8,10167_109
-380,S Wartenberg ,0,S75,10166_109
-381,S Hohenschönhausen Bhf ,1,S75,10166_109
-382,S Gehrenseestr. ,2,S75,10166_109
-383,S Springpfuhl ,3,S75,10166_109
-384,S Friedrichsfelde Ost ,4,S75,10166_109
-385,S+U Lichtenberg Bhf ,5,S75,10166_109
-386,S Nöldnerplatz ,6,S75,10166_109
-387,S Ostkreuz Bhf ,7,S75,10166_109
-388,S+U Warschauer Str. ,8,S75,10166_109
-389,S Ostbahnhof ,9,S75,10166_109
-390,S Wartenberg ,0,S75,10165_109
-391,S Hohenschönhausen Bhf ,1,S75,10165_109
-392,S Gehrenseestr. ,2,S75,10165_109
-393,S Springpfuhl ,3,S75,10165_109
-394,S Friedrichsfelde Ost ,4,S75,10165_109
-395,S+U Lichtenberg Bhf ,5,S75,10165_109
-396,S Nöldnerplatz ,6,S75,10165_109
-397,S Ostkreuz Bhf ,7,S75,10165_109
-398,S+U Warschauer Str. ,8,S75,10165_109
-399,S Ostbahnhof ,9,S75,10165_109
-400,S Ahrensfelde Bhf ,0,S7,10163_109
-401,S Mehrower Allee ,1,S7,10163_109
-402,S Raoul-Wallenberg-Str. ,2,S7,10163_109
-403,S Marzahn ,3,S7,10163_109
-404,S Poelchaustr. ,4,S7,10163_109
-405,S Springpfuhl ,5,S7,10163_109
-406,S Friedrichsfelde Ost ,6,S7,10163_109
-407,S+U Lichtenberg Bhf ,7,S7,10163_109
-408,S Nöldnerplatz ,8,S7,10163_109
-409,S Ostkreuz Bhf ,9,S7,10163_109
-410,S+U Warschauer Str. ,10,S7,10163_109
-411,S Ostbahnhof ,11,S7,10163_109
-412,S+U Jannowitzbrücke ,12,S7,10163_109
-413,S+U Alexanderplatz Bhf ,13,S7,10163_109
-414,S Hackescher Markt ,14,S7,10163_109
-415,S+U Friedrichstr. Bhf ,15,S7,10163_109
-416,S+U Berlin Hauptbahnhof,16,S7,10163_109
-417,S Bellevue ,17,S7,10163_109
-418,S Tiergarten ,18,S7,10163_109
-419,S+U Zoologischer Garten Bhf ,19,S7,10163_109
-420,S Savignyplatz ,20,S7,10163_109
-421,S Charlottenburg Bhf ,21,S7,10163_109
-422,S Westkreuz ,22,S7,10163_109
-423,S Grunewald ,23,S7,10163_109
-424,S Nikolassee ,24,S7,10163_109
-425,S Wannsee Bhf ,25,S7,10163_109
-426,S Griebnitzsee Bhf,26,S7,10163_109
-427,S Babelsberg,27,S7,10163_109
-428,S Potsdam Hauptbahnhof,28,S7,10163_109
-429,S Ahrensfelde Bhf ,0,S7,10162_109
-430,S Mehrower Allee ,1,S7,10162_109
-431,S Raoul-Wallenberg-Str. ,2,S7,10162_109
-432,S Marzahn ,3,S7,10162_109
-433,S Poelchaustr. ,4,S7,10162_109
-434,S Springpfuhl ,5,S7,10162_109
-435,S Friedrichsfelde Ost ,6,S7,10162_109
-436,S+U Lichtenberg Bhf ,7,S7,10162_109
-437,S Nöldnerplatz ,8,S7,10162_109
-438,S Ostkreuz Bhf ,9,S7,10162_109
-439,S+U Warschauer Str. ,10,S7,10162_109
-440,S Ostbahnhof ,11,S7,10162_109
-441,S+U Jannowitzbrücke ,12,S7,10162_109
-442,S+U Alexanderplatz Bhf ,13,S7,10162_109
-443,S Hackescher Markt ,14,S7,10162_109
-444,S+U Friedrichstr. Bhf ,15,S7,10162_109
-445,S+U Berlin Hauptbahnhof,16,S7,10162_109
-446,S Bellevue ,17,S7,10162_109
-447,S Tiergarten ,18,S7,10162_109
-448,S+U Zoologischer Garten Bhf ,19,S7,10162_109
-449,S Savignyplatz ,20,S7,10162_109
-450,S Charlottenburg Bhf ,21,S7,10162_109
-451,S Westkreuz ,22,S7,10162_109
-452,S Grunewald ,23,S7,10162_109
-453,S Nikolassee ,24,S7,10162_109
-454,S Wannsee Bhf ,25,S7,10162_109
-455,S Griebnitzsee Bhf,26,S7,10162_109
-456,S Babelsberg,27,S7,10162_109
-457,S Potsdam Hauptbahnhof,28,S7,10162_109
-458,S Strausberg Nord,0,S5,10160_109
-459,S Strausberg Stadt,1,S5,10160_109
-460,S Hegermühle,2,S5,10160_109
-461,S Strausberg Bhf,3,S5,10160_109
-462,S Petershagen Nord,4,S5,10160_109
-463,S Fredersdorf,5,S5,10160_109
-464,S Neuenhagen,6,S5,10160_109
-465,S Hoppegarten,7,S5,10160_109
-466,S Birkenstein,8,S5,10160_109
-467,S Mahlsdorf Bhf ,9,S5,10160_109
-468,S Kaulsdorf ,10,S5,10160_109
-469,S+U Wuhletal ,11,S5,10160_109
-470,S Mahlsdorf Bhf ,0,S5,10159_109
-471,S Kaulsdorf ,1,S5,10159_109
-472,S+U Wuhletal ,2,S5,10159_109
-473,S Biesdorf ,3,S5,10159_109
-474,S Friedrichsfelde Ost ,4,S5,10159_109
-475,S+U Lichtenberg Bhf ,5,S5,10159_109
-476,S Nöldnerplatz ,6,S5,10159_109
-477,S Ostkreuz Bhf ,7,S5,10159_109
-478,S+U Warschauer Str. ,8,S5,10159_109
-479,S Ostbahnhof ,9,S5,10159_109
-480,S Mahlsdorf Bhf ,0,S5,10158_109
-481,S Kaulsdorf ,1,S5,10158_109
-482,S+U Wuhletal ,2,S5,10158_109
-483,S Biesdorf ,3,S5,10158_109
-484,S Friedrichsfelde Ost ,4,S5,10158_109
-485,S+U Lichtenberg Bhf ,5,S5,10158_109
-486,S Nöldnerplatz ,6,S5,10158_109
-487,S Ostkreuz Bhf ,7,S5,10158_109
-488,S+U Warschauer Str. ,8,S5,10158_109
-489,S Ostbahnhof ,9,S5,10158_109
-490,S+U Jannowitzbrücke ,10,S5,10158_109
-491,S+U Alexanderplatz Bhf ,11,S5,10158_109
-492,S Hackescher Markt ,12,S5,10158_109
-493,S+U Friedrichstr. Bhf ,13,S5,10158_109
-494,S+U Berlin Hauptbahnhof,14,S5,10158_109
-495,S Bellevue ,15,S5,10158_109
-496,S Tiergarten ,16,S5,10158_109
-497,S+U Zoologischer Garten Bhf ,17,S5,10158_109
-498,S Savignyplatz ,18,S5,10158_109
-499,S Charlottenburg Bhf ,19,S5,10158_109
-500,S Westkreuz ,20,S5,10158_109
-501,S Messe Süd ,21,S5,10158_109
-502,S Heerstr. ,22,S5,10158_109
-503,S Olympiastadion ,23,S5,10158_109
-504,S Pichelsberg ,24,S5,10158_109
-505,S Grunewald ,0,S5,10157_109
-506,S Westkreuz ,1,S5,10157_109
-507,S Charlottenburg Bhf ,2,S5,10157_109
-508,S Savignyplatz ,3,S5,10157_109
-509,S+U Zoologischer Garten Bhf ,4,S5,10157_109
-510,S Tiergarten ,5,S5,10157_109
-511,S Bellevue ,6,S5,10157_109
-512,S+U Berlin Hauptbahnhof,7,S5,10157_109
-513,S+U Friedrichstr. Bhf ,8,S5,10157_109
-514,S Hackescher Markt ,9,S5,10157_109
-515,S+U Alexanderplatz Bhf ,10,S5,10157_109
-516,S+U Jannowitzbrücke ,11,S5,10157_109
-517,S Ostbahnhof ,12,S5,10157_109
-518,S+U Warschauer Str. ,13,S5,10157_109
-519,S Ostkreuz Bhf ,14,S5,10157_109
-520,S Nöldnerplatz ,15,S5,10157_109
-521,S+U Lichtenberg Bhf ,16,S5,10157_109
-522,S Friedrichsfelde Ost ,17,S5,10157_109
-523,S Biesdorf ,18,S5,10157_109
-524,S+U Wuhletal ,19,S5,10157_109
-525,S Kaulsdorf ,20,S5,10157_109
-526,S Mahlsdorf Bhf ,21,S5,10157_109
-527,S Birkenstein,22,S5,10157_109
-528,S Hoppegarten,23,S5,10157_109
-529,S Neuenhagen,24,S5,10157_109
-530,S Fredersdorf,25,S5,10157_109
-531,S Petershagen Nord,26,S5,10157_109
-532,S Strausberg Bhf,27,S5,10157_109
-533,S Hegermühle,28,S5,10157_109
-534,S Strausberg Stadt,29,S5,10157_109
-535,S Strausberg Nord,30,S5,10157_109
-536,S Königs Wusterhausen Bhf,0,S46,10155_109
-537,S Wildau,1,S46,10155_109
-538,S Zeuthen,2,S46,10155_109
-539,S Eichwalde,3,S46,10155_109
-540,S Grünau ,4,S46,10155_109
-541,S Adlershof ,5,S46,10155_109
-542,S Betriebsbahnhof Schöneweide ,6,S46,10155_109
-543,S Schöneweide Bhf ,7,S46,10155_109
-544,S Baumschulenweg ,8,S46,10155_109
-545,S Köllnische Heide ,9,S46,10155_109
-546,S+U Neukölln ,10,S46,10155_109
-547,S+U Hermannstr. ,11,S46,10155_109
-548,S+U Tempelhof ,12,S46,10155_109
-549,S Südkreuz Bhf ,13,S46,10155_109
-550,S Schöneberg ,14,S46,10155_109
-551,S+U Innsbrucker Platz ,15,S46,10155_109
-552,S+U Bundesplatz ,16,S46,10155_109
-553,S+U Heidelberger Platz ,17,S46,10155_109
-554,S Hohenzollerndamm ,18,S46,10155_109
-555,S Halensee ,19,S46,10155_109
-556,S Westkreuz ,20,S46,10155_109
-557,S Messe Nord/ICC ,21,S46,10155_109
-558,S Westend ,22,S46,10155_109
-559,S+U Jungfernheide Bhf ,23,S46,10155_109
-560,S Beusselstr. ,24,S46,10155_109
-561,S+U Westhafen ,25,S46,10155_109
-562,S+U Wedding ,26,S46,10155_109
-563,S+U Gesundbrunnen Bhf ,27,S46,10155_109
-564,S Flughafen Berlin-Schönefeld Bhf,0,S45,10154_109
-565,S Grünbergallee ,1,S45,10154_109
-566,S Altglienicke ,2,S45,10154_109
-567,S Adlershof ,3,S45,10154_109
-568,S Betriebsbahnhof Schöneweide ,4,S45,10154_109
-569,S Schöneweide Bhf ,5,S45,10154_109
-570,S Baumschulenweg ,6,S45,10154_109
-571,S Köllnische Heide ,7,S45,10154_109
-572,S+U Neukölln ,8,S45,10154_109
-573,S+U Hermannstr. ,9,S45,10154_109
-574,S+U Tempelhof ,10,S45,10154_109
-575,S Südkreuz Bhf ,11,S45,10154_109
-576,S Köpenick ,0,S3,10150_109
-577,S Wuhlheide ,1,S3,10150_109
-578,S Karlshorst ,2,S3,10150_109
-579,S Betriebsbahnhof Rummelsburg ,3,S3,10150_109
-580,S Rummelsburg ,4,S3,10150_109
-581,S Ostkreuz Bhf ,5,S3,10150_109
-582,S+U Warschauer Str. ,6,S3,10150_109
-583,S Erkner Bhf,0,S3,10149_109
-584,S Wilhelmshagen ,1,S3,10149_109
-585,S Rahnsdorf ,2,S3,10149_109
-586,S Friedrichshagen ,3,S3,10149_109
-587,S Hirschgarten ,4,S3,10149_109
-588,S Köpenick ,5,S3,10149_109
-589,S Wuhlheide ,6,S3,10149_109
-590,S Karlshorst ,7,S3,10149_109
-591,S Betriebsbahnhof Rummelsburg ,8,S3,10149_109
-592,S Rummelsburg ,9,S3,10149_109
-593,S Ostkreuz Bhf ,10,S3,10149_109
-594,S+U Warschauer Str. ,11,S3,10149_109
-595,S Ostbahnhof ,12,S3,10149_109
-596,S Erkner Bhf,0,S3,10148_109
-597,S Wilhelmshagen ,1,S3,10148_109
-598,S Rahnsdorf ,2,S3,10148_109
-599,S Friedrichshagen ,3,S3,10148_109
-600,S Hirschgarten ,4,S3,10148_109
-601,S Köpenick ,5,S3,10148_109
-602,S Wuhlheide ,6,S3,10148_109
-603,S Karlshorst ,7,S3,10148_109
-604,S Betriebsbahnhof Rummelsburg ,8,S3,10148_109
-605,S Rummelsburg ,9,S3,10148_109
-606,S Ostkreuz Bhf ,10,S3,10148_109
-607,S+U Warschauer Str. ,11,S3,10148_109
-608,S Ostbahnhof ,12,S3,10148_109
-609,S+U Jannowitzbrücke ,13,S3,10148_109
-610,S+U Alexanderplatz Bhf ,14,S3,10148_109
-611,S Hackescher Markt ,15,S3,10148_109
-612,S+U Friedrichstr. Bhf ,16,S3,10148_109
-613,S+U Berlin Hauptbahnhof,17,S3,10148_109
-614,S Bellevue ,18,S3,10148_109
-615,S Tiergarten ,19,S3,10148_109
-616,S+U Zoologischer Garten Bhf ,20,S3,10148_109
-617,S Savignyplatz ,21,S3,10148_109
-618,S Charlottenburg Bhf ,22,S3,10148_109
-619,S Westkreuz ,23,S3,10148_109
-620,S Messe Süd ,24,S3,10148_109
-621,S Heerstr. ,25,S3,10148_109
-622,S Olympiastadion ,26,S3,10148_109
-623,S Pichelsberg ,27,S3,10148_109
-624,S Stresow ,28,S3,10148_109
-625,S Spandau Bhf ,29,S3,10148_109
-626,S Teltow Stadt,0,S25,10145_109
-627,S Lichterfelde Süd ,1,S25,10145_109
-628,S Osdorfer Str. ,2,S25,10145_109
-629,S Lichterfelde Ost Bhf ,3,S25,10145_109
-630,S Lankwitz ,4,S25,10145_109
-631,S Südende ,5,S25,10145_109
-632,S Priesterweg ,6,S25,10145_109
-633,S Südkreuz Bhf ,7,S25,10145_109
-634,S+U Yorckstr. S2 S25 S26 U7 ,8,S25,10145_109
-635,S Anhalter Bahnhof ,9,S25,10145_109
-636,S+U Potsdamer Platz Bhf ,10,S25,10145_109
-637,S+U Brandenburger Tor ,11,S25,10145_109
-638,S+U Friedrichstr. Bhf ,12,S25,10145_109
-639,S Oranienburger Str. ,13,S25,10145_109
-640,S Nordbahnhof ,14,S25,10145_109
-641,S Humboldthain ,15,S25,10145_109
-642,S+U Gesundbrunnen Bhf ,16,S25,10145_109
-643,S Bornholmer Str. ,17,S25,10145_109
-644,S Wollankstr. ,18,S25,10145_109
-645,S Schönholz ,19,S25,10145_109
-646,S Alt-Reinickendorf ,20,S25,10145_109
-647,S+U Karl-Bonhoeffer-Nervenklinik ,21,S25,10145_109
-648,S Eichborndamm ,22,S25,10145_109
-649,S Tegel ,23,S25,10145_109
-650,S Schulzendorf ,24,S25,10145_109
-651,S Heiligensee ,25,S25,10145_109
-652,S Hennigsdorf Bhf,26,S25,10145_109
-653,S Blankenfelde (TF) Bhf,0,S2,10144_109
-654,S Mahlow,1,S2,10144_109
-655,S Lichtenrade ,2,S2,10144_109
-656,S Schichauweg ,3,S2,10144_109
-657,S Buckower Chaussee ,4,S2,10144_109
-658,S Marienfelde ,5,S2,10144_109
-659,S Attilastr. ,6,S2,10144_109
-660,S Priesterweg ,7,S2,10144_109
-661,S Südkreuz Bhf ,8,S2,10144_109
-662,S+U Yorckstr. S2 S25 S26 U7 ,9,S2,10144_109
-663,S Anhalter Bahnhof ,10,S2,10144_109
-664,S+U Potsdamer Platz Bhf ,11,S2,10144_109
-665,S+U Brandenburger Tor ,12,S2,10144_109
-666,S+U Friedrichstr. Bhf ,13,S2,10144_109
-667,S Oranienburger Str. ,14,S2,10144_109
-668,S Nordbahnhof ,15,S2,10144_109
-669,S Humboldthain ,16,S2,10144_109
-670,S+U Gesundbrunnen Bhf ,17,S2,10144_109
-671,S Bornholmer Str. ,18,S2,10144_109
-672,S+U Pankow ,19,S2,10144_109
-673,S Pankow-Heinersdorf ,20,S2,10144_109
-674,S Blankenburg ,21,S2,10144_109
-675,S Karow Bhf ,22,S2,10144_109
-676,S Buch ,23,S2,10144_109
-677,S Blankenfelde (TF) Bhf,0,S2,10143_109
-678,S Mahlow,1,S2,10143_109
-679,S Lichtenrade ,2,S2,10143_109
-680,S Schichauweg ,3,S2,10143_109
-681,S Buckower Chaussee ,4,S2,10143_109
-682,S Marienfelde ,5,S2,10143_109
-683,S Attilastr. ,6,S2,10143_109
-684,S Priesterweg ,7,S2,10143_109
-685,S Südkreuz Bhf ,8,S2,10143_109
-686,S+U Yorckstr. S2 S25 S26 U7 ,9,S2,10143_109
-687,S Anhalter Bahnhof ,10,S2,10143_109
-688,S+U Potsdamer Platz Bhf ,11,S2,10143_109
-689,S+U Brandenburger Tor ,12,S2,10143_109
-690,S+U Friedrichstr. Bhf ,13,S2,10143_109
-691,S Oranienburger Str. ,14,S2,10143_109
-692,S Nordbahnhof ,15,S2,10143_109
-693,S Humboldthain ,16,S2,10143_109
-694,S+U Gesundbrunnen Bhf ,17,S2,10143_109
-695,S Bornholmer Str. ,18,S2,10143_109
-696,S+U Pankow ,19,S2,10143_109
-697,S Pankow-Heinersdorf ,20,S2,10143_109
-698,S Blankenburg ,21,S2,10143_109
-699,S Karow Bhf ,22,S2,10143_109
-700,S Buch ,23,S2,10143_109
-701,S Röntgental,24,S2,10143_109
-702,S Zepernick,25,S2,10143_109
-703,S Bernau-Friedenstal,26,S2,10143_109
-704,S Bernau Bhf,27,S2,10143_109
-705,S Wannsee Bhf ,0,S1,10142_109
-706,S Nikolassee ,1,S1,10142_109
-707,S Schlachtensee ,2,S1,10142_109
-708,S Mexikoplatz ,3,S1,10142_109
-709,S Zehlendorf ,4,S1,10142_109
-710,S Sundgauer Str. ,5,S1,10142_109
-711,S Lichterfelde West ,6,S1,10142_109
-712,S Botanischer Garten ,7,S1,10142_109
-713,S+U Rathaus Steglitz ,8,S1,10142_109
-714,S Feuerbachstr. ,9,S1,10142_109
-715,S Friedenau ,10,S1,10142_109
-716,S Schöneberg ,11,S1,10142_109
-717,S Julius-Leber-Brücke ,12,S1,10142_109
-718,S+U Yorckstr. S1 U7 ,13,S1,10142_109
-719,S Anhalter Bahnhof ,14,S1,10142_109
-720,S+U Potsdamer Platz Bhf ,15,S1,10142_109
-721,S+U Brandenburger Tor ,16,S1,10142_109
-722,S+U Friedrichstr. Bhf ,17,S1,10142_109
-723,S Oranienburger Str. ,18,S1,10142_109
-724,S Nordbahnhof ,19,S1,10142_109
-725,S Humboldthain ,20,S1,10142_109
-726,S+U Gesundbrunnen Bhf ,21,S1,10142_109
-727,S Bornholmer Str. ,22,S1,10142_109
-728,S Wollankstr. ,23,S1,10142_109
-729,S Schönholz ,24,S1,10142_109
-730,S Wilhelmsruh ,25,S1,10142_109
-731,S+U Wittenau ,26,S1,10142_109
-732,S Waidmannslust ,27,S1,10142_109
-733,S Hermsdorf ,28,S1,10142_109
-734,S Frohnau ,29,S1,10142_109
-735,S Hohen Neuendorf,30,S1,10142_109
-736,S Birkenwerder Bhf,31,S1,10142_109
-737,S Borgsdorf,32,S1,10142_109
-738,S Lehnitz,33,S1,10142_109
-739,S Oranienburg Bhf,34,S1,10142_109
-740,S Wannsee Bhf ,0,S1,10141_109
-741,S Nikolassee ,1,S1,10141_109
-742,S Schlachtensee ,2,S1,10141_109
-743,S Mexikoplatz ,3,S1,10141_109
-744,S Zehlendorf ,4,S1,10141_109
-745,S Sundgauer Str. ,5,S1,10141_109
-746,S Lichterfelde West ,6,S1,10141_109
-747,S Botanischer Garten ,7,S1,10141_109
-748,S+U Rathaus Steglitz ,8,S1,10141_109
-749,S Feuerbachstr. ,9,S1,10141_109
-750,S Friedenau ,10,S1,10141_109
-751,S Schöneberg ,11,S1,10141_109
-752,S Julius-Leber-Brücke ,12,S1,10141_109
-753,S+U Yorckstr. S1 U7 ,13,S1,10141_109
-754,S Anhalter Bahnhof ,14,S1,10141_109
-755,S+U Potsdamer Platz Bhf ,15,S1,10141_109
-756,S+U Brandenburger Tor ,16,S1,10141_109
-757,S+U Friedrichstr. Bhf ,17,S1,10141_109
-758,S Oranienburger Str. ,18,S1,10141_109
-759,S Nordbahnhof ,19,S1,10141_109
-760,S Humboldthain ,20,S1,10141_109
-761,S+U Gesundbrunnen Bhf ,21,S1,10141_109
-762,S Bornholmer Str. ,22,S1,10141_109
-763,S Wollankstr. ,23,S1,10141_109
-764,S Schönholz ,24,S1,10141_109
-765,S Wilhelmsruh ,25,S1,10141_109
-766,S+U Wittenau ,26,S1,10141_109
-767,S Waidmannslust ,27,S1,10141_109
-768,S Hermsdorf ,28,S1,10141_109
-769,S Frohnau ,29,S1,10141_109
-770,S Hohen Neuendorf,30,S1,10141_109
-771,S Birkenwerder Bhf,31,S1,10141_109
-772,S Borgsdorf,32,S1,10141_109
-773,S Lehnitz,33,S1,10141_109
-774,S Oranienburg Bhf,34,S1,10141_109
-775,U Osloer Str. ,0,U9,17526_400
-776,U Nauener Platz ,1,U9,17526_400
-777,U Leopoldplatz ,2,U9,17526_400
-778,U Amrumer Str. ,3,U9,17526_400
-779,S+U Westhafen ,4,U9,17526_400
-780,U Birkenstr. ,5,U9,17526_400
-781,U Turmstr. ,6,U9,17526_400
-782,U Hansaplatz ,7,U9,17526_400
-783,S+U Zoologischer Garten Bhf ,8,U9,17526_400
-784,U Kurfürstendamm ,9,U9,17526_400
-785,U Spichernstr. ,10,U9,17526_400
-786,U Güntzelstr. ,11,U9,17526_400
-787,U Berliner Str. ,12,U9,17526_400
-788,S+U Bundesplatz ,13,U9,17526_400
-789,U Friedrich-Wilhelm-Platz ,14,U9,17526_400
-790,U Walther-Schreiber-Platz ,15,U9,17526_400
-791,U Schloßstr. ,16,U9,17526_400
-792,S+U Rathaus Steglitz  ,17,U9,17526_400
-793,S+U Wittenau  ,0,U8,17525_400
-794,U Rathaus Reinickendorf ,1,U8,17525_400
-795,S+U Karl-Bonhoeffer-Nervenklinik ,2,U8,17525_400
-796,U Lindauer Allee ,3,U8,17525_400
-797,U Paracelsus-Bad ,4,U8,17525_400
-798,U Residenzstr. ,5,U8,17525_400
-799,U Franz-Neumann-Platz ,6,U8,17525_400
-800,U Osloer Str. ,7,U8,17525_400
-801,U Pankstr. ,8,U8,17525_400
-802,S+U Gesundbrunnen Bhf ,9,U8,17525_400
-803,U Voltastr. ,10,U8,17525_400
-804,U Bernauer Str. ,11,U8,17525_400
-805,U Rosenthaler Platz ,12,U8,17525_400
-806,U Weinmeisterstr. ,13,U8,17525_400
-807,S+U Alexanderplatz  ,14,U8,17525_400
-808,S+U Jannowitzbrücke ,15,U8,17525_400
-809,U Heinrich-Heine-Str. ,16,U8,17525_400
-810,U Moritzplatz ,17,U8,17525_400
-811,U Kottbusser Tor ,18,U8,17525_400
-812,U Schönleinstr. ,19,U8,17525_400
-813,U Hermannplatz ,20,U8,17525_400
-814,U Boddinstr. ,21,U8,17525_400
-815,U Leinestr. ,22,U8,17525_400
-816,S+U Hermannstr. ,23,U8,17525_400
-817,S+U Rathaus Spandau ,0,U7,17523_400
-818,U Altstadt Spandau ,1,U7,17523_400
-819,U Zitadelle ,2,U7,17523_400
-820,U Haselhorst ,3,U7,17523_400
-821,U Paulsternstr. ,4,U7,17523_400
-822,U Rohrdamm ,5,U7,17523_400
-823,U Siemensdamm ,6,U7,17523_400
-824,U Halemweg ,7,U7,17523_400
-825,U Jakob-Kaiser-Platz ,8,U7,17523_400
-826,S+U Jungfernheide Bhf ,9,U7,17523_400
-827,U Mierendorffplatz ,10,U7,17523_400
-828,U Richard-Wagner-Platz ,11,U7,17523_400
-829,U Bismarckstr. ,12,U7,17523_400
-830,U Wilmersdorfer Str. ,13,U7,17523_400
-831,U Adenauerplatz ,14,U7,17523_400
-832,U Konstanzer Str. ,15,U7,17523_400
-833,U Fehrbelliner Platz ,16,U7,17523_400
-834,U Blissestr. ,17,U7,17523_400
-835,U Berliner Str. ,18,U7,17523_400
-836,U Bayerischer Platz ,19,U7,17523_400
-837,U Eisenacher Str. ,20,U7,17523_400
-838,U Kleistpark ,21,U7,17523_400
-839,S+U Yorckstr. ,22,U7,17523_400
-840,U Möckernbrücke ,23,U7,17523_400
-841,U Mehringdamm ,24,U7,17523_400
-842,U Gneisenaustr. ,25,U7,17523_400
-843,U Südstern ,26,U7,17523_400
-844,U Hermannplatz ,27,U7,17523_400
-845,U Rathaus Neukölln ,28,U7,17523_400
-846,U Karl-Marx-Str. ,29,U7,17523_400
-847,S+U Neukölln  ,30,U7,17523_400
-848,U Grenzallee ,31,U7,17523_400
-849,U Blaschkoallee ,32,U7,17523_400
-850,U Parchimer Allee ,33,U7,17523_400
-851,U Britz-Süd ,34,U7,17523_400
-852,U Johannisthaler Chaussee ,35,U7,17523_400
-853,U Lipschitzallee ,36,U7,17523_400
-854,U Wutzkyallee ,37,U7,17523_400
-855,U Zwickauer Damm ,38,U7,17523_400
-856,U Rudow ,39,U7,17523_400
-857,U Rudow ,0,U7,17522_700
-858,U Rudow ,1,U7,17522_700
-859,"Berlin, Neuköllner Str./Zwickauer Damm",2,U7,17522_700
-860,"Berlin, Wutzkyallee/Fritz-Erler-Allee",3,U7,17522_700
-861,"Berlin, Lipschitzallee/Fritz-Erler-Allee",4,U7,17522_700
-862,"Berlin, Johannisthaler Chaussee/Fritz-Erler-Allee",5,U7,17522_700
-863,"Berlin, Grüner Weg/Gutschmidtstr.",6,U7,17522_700
-864,"Berlin, Buschkrugallee/Parchimer Allee",7,U7,17522_700
-865,"Berlin, Buschkrug",8,U7,17522_700
-866,U Grenzallee/Jahnstr. ,9,U7,17522_700
-867,U Grenzallee ,10,U7,17522_700
-868,U Alt-Tegel ,0,U6,17521_400
-869,U Borsigwerke ,1,U6,17521_400
-870,U Holzhauser Str. ,2,U6,17521_400
-871,U Otisstr. ,3,U6,17521_400
-872,U Scharnweberstr. ,4,U6,17521_400
-873,U Kurt-Schumacher-Platz ,5,U6,17521_400
-874,U Afrikanische Str. ,6,U6,17521_400
-875,U Rehberge ,7,U6,17521_400
-876,U Seestr. ,8,U6,17521_400
-877,U Leopoldplatz ,9,U6,17521_400
-878,S+U Wedding ,10,U6,17521_400
-879,U Reinickendorfer Str. ,11,U6,17521_400
-880,U Schwartzkopffstr. ,12,U6,17521_400
-881,U Naturkundemuseum ,13,U6,17521_400
-882,U Oranienburger Tor ,14,U6,17521_400
-883,S+U Friedrichstr. Bhf ,15,U6,17521_400
-884,U Französische Str. ,16,U6,17521_400
-885,U Stadtmitte ,17,U6,17521_400
-886,U Kochstr./Checkpoint Charlie ,18,U6,17521_400
-887,U Hallesches Tor ,19,U6,17521_400
-888,U Mehringdamm ,20,U6,17521_400
-889,U Platz der Luftbrücke ,21,U6,17521_400
-890,U Paradestr. ,22,U6,17521_400
-891,S+U Tempelhof ,23,U6,17521_400
-892,U Alt-Tempelhof ,24,U6,17521_400
-893,U Kaiserin-Augusta-Str. ,25,U6,17521_400
-894,U Ullsteinstr. ,26,U6,17521_400
-895,U Westphalweg ,27,U6,17521_400
-896,U Alt-Mariendorf ,28,U6,17521_400
-897,S+U Brandenburger Tor ,0,U55,17519_400
-898,U Bundestag ,1,U55,17519_400
-899,S+U Berlin Hauptbahnhof,2,U55,17519_400
-900,U Hönow ,0,U5,17518_400
-901,U Louis-Lewin-Str. ,1,U5,17518_400
-902,U Hellersdorf ,2,U5,17518_400
-903,U Cottbusser Platz ,3,U5,17518_400
-904,U Kienberg (Gärten der Welt) ,4,U5,17518_400
-905,U Kaulsdorf-Nord ,5,U5,17518_400
-906,S+U Wuhletal ,6,U5,17518_400
-907,U Elsterwerdaer Platz ,7,U5,17518_400
-908,U Biesdorf-Süd ,8,U5,17518_400
-909,U Tierpark ,9,U5,17518_400
-910,U Friedrichsfelde ,10,U5,17518_400
-911,S+U Lichtenberg  ,11,U5,17518_400
-912,U Magdalenenstr. ,12,U5,17518_400
-913,S+U Frankfurter Allee ,13,U5,17518_400
-914,U Samariterstr. ,14,U5,17518_400
-915,U Frankfurter Tor ,15,U5,17518_400
-916,U Weberwiese ,16,U5,17518_400
-917,U Strausberger Platz ,17,U5,17518_400
-918,U Schillingstr. ,18,U5,17518_400
-919,S+U Alexanderplatz  ,19,U5,17518_400
-920,U Nollendorfplatz ,0,U4,17516_400
-921,U Viktoria-Luise-Platz ,1,U4,17516_400
-922,U Bayerischer Platz ,2,U4,17516_400
-923,U Rathaus Schöneberg ,3,U4,17516_400
-924,S+U Innsbrucker Platz ,4,U4,17516_400
-925,S+U Warschauer Str. ,0,U3,17515_400
-926,U Schlesisches Tor ,1,U3,17515_400
-927,U Görlitzer Bahnhof ,2,U3,17515_400
-928,U Kottbusser Tor ,3,U3,17515_400
-929,U Prinzenstr. ,4,U3,17515_400
-930,U Hallesches Tor ,5,U3,17515_400
-931,U Möckernbrücke ,6,U3,17515_400
-932,U Gleisdreieck ,7,U3,17515_400
-933,U Kurfürstenstr. ,8,U3,17515_400
-934,U Nollendorfplatz ,9,U3,17515_400
-935,U Wittenbergplatz ,10,U3,17515_400
-936,U Augsburger Str. ,11,U3,17515_400
-937,U Spichernstr. ,12,U3,17515_400
-938,U Hohenzollernplatz ,13,U3,17515_400
-939,U Fehrbelliner Platz ,14,U3,17515_400
-940,S+U Heidelberger Platz ,15,U3,17515_400
-941,U Rüdesheimer Platz ,16,U3,17515_400
-942,U Breitenbachplatz ,17,U3,17515_400
-943,U Podbielskiallee ,18,U3,17515_400
-944,U Dahlem-Dorf ,19,U3,17515_400
-945,U Freie Universität (Thielplatz) ,20,U3,17515_400
-946,U Oskar-Helene-Heim ,21,U3,17515_400
-947,U Onkel Toms Hütte ,22,U3,17515_400
-948,U Krumme Lanke ,23,U3,17515_400
-949,S+U Pankow ,0,U2,17514_400
-950,U Vinetastr. ,1,U2,17514_400
-951,S+U Schönhauser Allee ,2,U2,17514_400
-952,U Eberswalder Str. ,3,U2,17514_400
-953,U Senefelderplatz ,4,U2,17514_400
-954,U Rosa-Luxemburg-Platz ,5,U2,17514_400
-955,S+U Alexanderplatz  ,6,U2,17514_400
-956,U Klosterstr. ,7,U2,17514_400
-957,U Märkisches Museum ,8,U2,17514_400
-958,U Spittelmarkt ,9,U2,17514_400
-959,U Hausvogteiplatz ,10,U2,17514_400
-960,"Berlin, U Stadtmitte U2",11,U2,17514_400
-961,U Mohrenstr. ,12,U2,17514_400
-962,S+U Potsdamer Platz (Bln) ,13,U2,17514_400
-963,U Mendelssohn-Bartholdy-Park ,14,U2,17514_400
-964,U Gleisdreieck ,15,U2,17514_400
-965,U Bülowstr. ,16,U2,17514_400
-966,U Nollendorfplatz ,17,U2,17514_400
-967,U Wittenbergplatz ,18,U2,17514_400
-968,S+U Zoologischer Garten Bhf ,19,U2,17514_400
-969,U Ernst-Reuter-Platz ,20,U2,17514_400
-970,U Deutsche Oper ,21,U2,17514_400
-971,U Bismarckstr. ,22,U2,17514_400
-972,U Sophie-Charlotte-Platz ,23,U2,17514_400
-973,U Kaiserdamm ,24,U2,17514_400
-974,"Berlin, U Theodor-Heuss-Platz",25,U2,17514_400
-975,U Neu-Westend ,26,U2,17514_400
-976,U Olympia-Stadion ,27,U2,17514_400
-977,U Ruhleben ,28,U2,17514_400
-978,S+U Warschauer Str. ,0,U1,17512_400
-979,U Schlesisches Tor ,1,U1,17512_400
-980,U Görlitzer Bahnhof ,2,U1,17512_400
-981,U Kottbusser Tor ,3,U1,17512_400
-982,U Prinzenstr. ,4,U1,17512_400
-983,U Hallesches Tor ,5,U1,17512_400
-984,U Möckernbrücke ,6,U1,17512_400
-985,U Gleisdreieck ,7,U1,17512_400
-986,U Kurfürstenstr. ,8,U1,17512_400
-987,U Nollendorfplatz ,9,U1,17512_400
-988,U Wittenbergplatz ,10,U1,17512_400
-989,U Kurfürstendamm ,11,U1,17512_400
-990,U Uhlandstr. ,12,U1,17512_400
+0,S Teltow Stadt,0,S26,18949_109
+1,S Lichterfelde Süd ,1,S26,18949_109
+2,S Osdorfer Str. ,2,S26,18949_109
+3,S Lichterfelde Ost Bhf ,3,S26,18949_109
+4,S Lankwitz ,4,S26,18949_109
+5,S Südende ,5,S26,18949_109
+6,S Priesterweg ,6,S26,18949_109
+7,S Südkreuz Bhf ,7,S26,18949_109
+8,S+U Yorckstr. S2 S25 S26 U7 ,8,S26,18949_109
+9,S Anhalter Bahnhof ,9,S26,18949_109
+10,S+U Potsdamer Platz Bhf ,10,S26,18949_109
+11,S+U Brandenburger Tor ,11,S26,18949_109
+12,S+U Friedrichstr. Bhf ,12,S26,18949_109
+13,S Oranienburger Str. ,13,S26,18949_109
+14,S Nordbahnhof ,14,S26,18949_109
+15,S Humboldthain ,15,S26,18949_109
+16,S+U Gesundbrunnen Bhf ,16,S26,18949_109
+17,S Bornholmer Str. ,17,S26,18949_109
+18,S Wollankstr. ,18,S26,18949_109
+19,S Schönholz ,19,S26,18949_109
+20,S Wilhelmsruh ,20,S26,18949_109
+21,S+U Wittenau ,21,S26,18949_109
+22,S Waidmannslust ,22,S26,18949_109
+23,S Grünau ,0,S85,12003_109
+24,S Adlershof ,1,S85,12003_109
+25,S Betriebsbahnhof Schöneweide ,2,S85,12003_109
+26,S Schöneweide Bhf ,3,S85,12003_109
+27,S Baumschulenweg ,4,S85,12003_109
+28,S Plänterwald ,5,S85,12003_109
+29,S Treptower Park ,6,S85,12003_109
+30,S Ostkreuz Bhf ,7,S85,12003_109
+31,S+U Frankfurter Allee ,8,S85,12003_109
+32,S Storkower Str. ,9,S85,12003_109
+33,S Landsberger Allee ,10,S85,12003_109
+34,S Greifswalder Str. ,11,S85,12003_109
+35,S Prenzlauer Allee ,12,S85,12003_109
+36,S+U Schönhauser Allee ,13,S85,12003_109
+37,S Bornholmer Str. ,14,S85,12003_109
+38,S+U Pankow ,15,S85,12003_109
+39,S Spindlersfeld ,0,S47,10229_109
+40,S Oberspree ,1,S47,10229_109
+41,S Schöneweide Bhf ,2,S47,10229_109
+42,S Baumschulenweg ,3,S47,10229_109
+43,S Köllnische Heide ,4,S47,10229_109
+44,S+U Neukölln ,5,S47,10229_109
+45,S+U Hermannstr. ,6,S47,10229_109
+46,S Beusselstr. ,0,S42,10226_109
+47,S+U Jungfernheide Bhf ,1,S42,10226_109
+48,S Westend ,2,S42,10226_109
+49,S Messe Nord/ICC ,3,S42,10226_109
+50,S Westkreuz ,4,S42,10226_109
+51,S Halensee ,5,S42,10226_109
+52,S Hohenzollerndamm ,6,S42,10226_109
+53,S+U Heidelberger Platz ,7,S42,10226_109
+54,S+U Bundesplatz ,8,S42,10226_109
+55,S+U Innsbrucker Platz ,9,S42,10226_109
+56,S Schöneberg ,10,S42,10226_109
+57,S Südkreuz Bhf ,11,S42,10226_109
+58,S+U Tempelhof ,12,S42,10226_109
+59,S+U Hermannstr. ,13,S42,10226_109
+60,S+U Neukölln ,14,S42,10226_109
+61,S Sonnenallee ,15,S42,10226_109
+62,S Treptower Park ,16,S42,10226_109
+63,S Ostkreuz Bhf ,17,S42,10226_109
+64,S+U Frankfurter Allee ,18,S42,10226_109
+65,S Storkower Str. ,19,S42,10226_109
+66,S Landsberger Allee ,20,S42,10226_109
+67,S Greifswalder Str. ,21,S42,10226_109
+68,S Prenzlauer Allee ,22,S42,10226_109
+69,S+U Schönhauser Allee ,23,S42,10226_109
+70,S+U Gesundbrunnen Bhf ,24,S42,10226_109
+71,S+U Wedding ,25,S42,10226_109
+72,S+U Westhafen ,26,S42,10226_109
+73,S Beusselstr. ,27,S42,10226_109
+74,S Beusselstr. ,0,S41,10223_109
+75,S+U Westhafen ,1,S41,10223_109
+76,S+U Wedding ,2,S41,10223_109
+77,S+U Gesundbrunnen Bhf ,3,S41,10223_109
+78,S+U Schönhauser Allee ,4,S41,10223_109
+79,S Prenzlauer Allee ,5,S41,10223_109
+80,S Greifswalder Str. ,6,S41,10223_109
+81,S Landsberger Allee ,7,S41,10223_109
+82,S Storkower Str. ,8,S41,10223_109
+83,S+U Frankfurter Allee ,9,S41,10223_109
+84,S Ostkreuz Bhf ,10,S41,10223_109
+85,S Treptower Park ,11,S41,10223_109
+86,S Sonnenallee ,12,S41,10223_109
+87,S+U Neukölln ,13,S41,10223_109
+88,S+U Hermannstr. ,14,S41,10223_109
+89,S+U Tempelhof ,15,S41,10223_109
+90,S Südkreuz Bhf ,16,S41,10223_109
+91,S Schöneberg ,17,S41,10223_109
+92,S+U Innsbrucker Platz ,18,S41,10223_109
+93,S+U Bundesplatz ,19,S41,10223_109
+94,S+U Heidelberger Platz ,20,S41,10223_109
+95,S Hohenzollerndamm ,21,S41,10223_109
+96,S Halensee ,22,S41,10223_109
+97,S Westkreuz ,23,S41,10223_109
+98,S Messe Nord/ICC ,24,S41,10223_109
+99,S Westend ,25,S41,10223_109
+100,S+U Jungfernheide Bhf ,26,S41,10223_109
+101,S Beusselstr. ,27,S41,10223_109
+102,S Flughafen Berlin-Schönefeld Bhf,0,S9,10170_109
+103,S Grünbergallee ,1,S9,10170_109
+104,S Altglienicke ,2,S9,10170_109
+105,S Adlershof ,3,S9,10170_109
+106,S Betriebsbahnhof Schöneweide ,4,S9,10170_109
+107,S Schöneweide Bhf ,5,S9,10170_109
+108,S Baumschulenweg ,6,S9,10170_109
+109,S Plänterwald ,7,S9,10170_109
+110,S Treptower Park ,8,S9,10170_109
+111,S+U Warschauer Str. ,9,S9,10170_109
+112,S Ostbahnhof ,10,S9,10170_109
+113,S+U Jannowitzbrücke ,11,S9,10170_109
+114,S+U Alexanderplatz Bhf ,12,S9,10170_109
+115,S Hackescher Markt ,13,S9,10170_109
+116,S+U Friedrichstr. Bhf ,14,S9,10170_109
+117,S+U Berlin Hauptbahnhof,15,S9,10170_109
+118,S Bellevue ,16,S9,10170_109
+119,S Tiergarten ,17,S9,10170_109
+120,S+U Zoologischer Garten Bhf ,18,S9,10170_109
+121,S Savignyplatz ,19,S9,10170_109
+122,S Charlottenburg Bhf ,20,S9,10170_109
+123,S Westkreuz ,21,S9,10170_109
+124,S Messe Süd ,22,S9,10170_109
+125,S Heerstr. ,23,S9,10170_109
+126,S Olympiastadion ,24,S9,10170_109
+127,S Pichelsberg ,25,S9,10170_109
+128,S Stresow ,26,S9,10170_109
+129,S Spandau Bhf ,27,S9,10170_109
+130,S Zeuthen,0,S8,10167_109
+131,S Eichwalde,1,S8,10167_109
+132,S Grünau ,2,S8,10167_109
+133,S Adlershof ,3,S8,10167_109
+134,S Betriebsbahnhof Schöneweide ,4,S8,10167_109
+135,S Schöneweide Bhf ,5,S8,10167_109
+136,S Baumschulenweg ,6,S8,10167_109
+137,S Plänterwald ,7,S8,10167_109
+138,S Treptower Park ,8,S8,10167_109
+139,S Ostkreuz Bhf ,9,S8,10167_109
+140,S+U Frankfurter Allee ,10,S8,10167_109
+141,S Storkower Str. ,11,S8,10167_109
+142,S Landsberger Allee ,12,S8,10167_109
+143,S Greifswalder Str. ,13,S8,10167_109
+144,S Prenzlauer Allee ,14,S8,10167_109
+145,S+U Schönhauser Allee ,15,S8,10167_109
+146,S Bornholmer Str. ,16,S8,10167_109
+147,S+U Pankow ,17,S8,10167_109
+148,S Pankow-Heinersdorf ,18,S8,10167_109
+149,S Blankenburg ,19,S8,10167_109
+150,S Mühlenbeck-Mönchmühle,20,S8,10167_109
+151,S Schönfließ,21,S8,10167_109
+152,S Bergfelde,22,S8,10167_109
+153,S Hohen Neuendorf,23,S8,10167_109
+154,S Birkenwerder Bhf,24,S8,10167_109
+155,S Wartenberg ,0,S75,10165_109
+156,S Hohenschönhausen Bhf ,1,S75,10165_109
+157,S Gehrenseestr. ,2,S75,10165_109
+158,S Springpfuhl ,3,S75,10165_109
+159,S Friedrichsfelde Ost ,4,S75,10165_109
+160,S+U Lichtenberg Bhf ,5,S75,10165_109
+161,S Nöldnerplatz ,6,S75,10165_109
+162,S Ostkreuz Bhf ,7,S75,10165_109
+163,S+U Warschauer Str. ,8,S75,10165_109
+164,S Ostbahnhof ,9,S75,10165_109
+165,S Ahrensfelde Bhf ,0,S7,10162_109
+166,S Mehrower Allee ,1,S7,10162_109
+167,S Raoul-Wallenberg-Str. ,2,S7,10162_109
+168,S Marzahn ,3,S7,10162_109
+169,S Poelchaustr. ,4,S7,10162_109
+170,S Springpfuhl ,5,S7,10162_109
+171,S Friedrichsfelde Ost ,6,S7,10162_109
+172,S+U Lichtenberg Bhf ,7,S7,10162_109
+173,S Nöldnerplatz ,8,S7,10162_109
+174,S Ostkreuz Bhf ,9,S7,10162_109
+175,S+U Warschauer Str. ,10,S7,10162_109
+176,S Ostbahnhof ,11,S7,10162_109
+177,S+U Jannowitzbrücke ,12,S7,10162_109
+178,S+U Alexanderplatz Bhf ,13,S7,10162_109
+179,S Hackescher Markt ,14,S7,10162_109
+180,S+U Friedrichstr. Bhf ,15,S7,10162_109
+181,S+U Berlin Hauptbahnhof,16,S7,10162_109
+182,S Bellevue ,17,S7,10162_109
+183,S Tiergarten ,18,S7,10162_109
+184,S+U Zoologischer Garten Bhf ,19,S7,10162_109
+185,S Savignyplatz ,20,S7,10162_109
+186,S Charlottenburg Bhf ,21,S7,10162_109
+187,S Westkreuz ,22,S7,10162_109
+188,S Grunewald ,23,S7,10162_109
+189,S Nikolassee ,24,S7,10162_109
+190,S Wannsee Bhf ,25,S7,10162_109
+191,S Griebnitzsee Bhf,26,S7,10162_109
+192,S Babelsberg,27,S7,10162_109
+193,S Potsdam Hauptbahnhof,28,S7,10162_109
+194,S Grunewald ,0,S5,10157_109
+195,S Westkreuz ,1,S5,10157_109
+196,S Charlottenburg Bhf ,2,S5,10157_109
+197,S Savignyplatz ,3,S5,10157_109
+198,S+U Zoologischer Garten Bhf ,4,S5,10157_109
+199,S Tiergarten ,5,S5,10157_109
+200,S Bellevue ,6,S5,10157_109
+201,S+U Berlin Hauptbahnhof,7,S5,10157_109
+202,S+U Friedrichstr. Bhf ,8,S5,10157_109
+203,S Hackescher Markt ,9,S5,10157_109
+204,S+U Alexanderplatz Bhf ,10,S5,10157_109
+205,S+U Jannowitzbrücke ,11,S5,10157_109
+206,S Ostbahnhof ,12,S5,10157_109
+207,S+U Warschauer Str. ,13,S5,10157_109
+208,S Ostkreuz Bhf ,14,S5,10157_109
+209,S Nöldnerplatz ,15,S5,10157_109
+210,S+U Lichtenberg Bhf ,16,S5,10157_109
+211,S Friedrichsfelde Ost ,17,S5,10157_109
+212,S Biesdorf ,18,S5,10157_109
+213,S+U Wuhletal ,19,S5,10157_109
+214,S Kaulsdorf ,20,S5,10157_109
+215,S Mahlsdorf Bhf ,21,S5,10157_109
+216,S Birkenstein,22,S5,10157_109
+217,S Hoppegarten,23,S5,10157_109
+218,S Neuenhagen,24,S5,10157_109
+219,S Fredersdorf,25,S5,10157_109
+220,S Petershagen Nord,26,S5,10157_109
+221,S Strausberg Bhf,27,S5,10157_109
+222,S Hegermühle,28,S5,10157_109
+223,S Strausberg Stadt,29,S5,10157_109
+224,S Strausberg Nord,30,S5,10157_109
+225,S Königs Wusterhausen Bhf,0,S46,10155_109
+226,S Wildau,1,S46,10155_109
+227,S Zeuthen,2,S46,10155_109
+228,S Eichwalde,3,S46,10155_109
+229,S Grünau ,4,S46,10155_109
+230,S Adlershof ,5,S46,10155_109
+231,S Betriebsbahnhof Schöneweide ,6,S46,10155_109
+232,S Schöneweide Bhf ,7,S46,10155_109
+233,S Baumschulenweg ,8,S46,10155_109
+234,S Köllnische Heide ,9,S46,10155_109
+235,S+U Neukölln ,10,S46,10155_109
+236,S+U Hermannstr. ,11,S46,10155_109
+237,S+U Tempelhof ,12,S46,10155_109
+238,S Südkreuz Bhf ,13,S46,10155_109
+239,S Schöneberg ,14,S46,10155_109
+240,S+U Innsbrucker Platz ,15,S46,10155_109
+241,S+U Bundesplatz ,16,S46,10155_109
+242,S+U Heidelberger Platz ,17,S46,10155_109
+243,S Hohenzollerndamm ,18,S46,10155_109
+244,S Halensee ,19,S46,10155_109
+245,S Westkreuz ,20,S46,10155_109
+246,S Messe Nord/ICC ,21,S46,10155_109
+247,S Westend ,22,S46,10155_109
+248,S+U Jungfernheide Bhf ,23,S46,10155_109
+249,S Beusselstr. ,24,S46,10155_109
+250,S+U Westhafen ,25,S46,10155_109
+251,S+U Wedding ,26,S46,10155_109
+252,S+U Gesundbrunnen Bhf ,27,S46,10155_109
+253,S Flughafen Berlin-Schönefeld Bhf,0,S45,10154_109
+254,S Grünbergallee ,1,S45,10154_109
+255,S Altglienicke ,2,S45,10154_109
+256,S Adlershof ,3,S45,10154_109
+257,S Betriebsbahnhof Schöneweide ,4,S45,10154_109
+258,S Schöneweide Bhf ,5,S45,10154_109
+259,S Baumschulenweg ,6,S45,10154_109
+260,S Köllnische Heide ,7,S45,10154_109
+261,S+U Neukölln ,8,S45,10154_109
+262,S+U Hermannstr. ,9,S45,10154_109
+263,S+U Tempelhof ,10,S45,10154_109
+264,S Südkreuz Bhf ,11,S45,10154_109
+265,S Erkner Bhf,0,S3,10148_109
+266,S Wilhelmshagen ,1,S3,10148_109
+267,S Rahnsdorf ,2,S3,10148_109
+268,S Friedrichshagen ,3,S3,10148_109
+269,S Hirschgarten ,4,S3,10148_109
+270,S Köpenick ,5,S3,10148_109
+271,S Wuhlheide ,6,S3,10148_109
+272,S Karlshorst ,7,S3,10148_109
+273,S Betriebsbahnhof Rummelsburg ,8,S3,10148_109
+274,S Rummelsburg ,9,S3,10148_109
+275,S Ostkreuz Bhf ,10,S3,10148_109
+276,S+U Warschauer Str. ,11,S3,10148_109
+277,S Ostbahnhof ,12,S3,10148_109
+278,S+U Jannowitzbrücke ,13,S3,10148_109
+279,S+U Alexanderplatz Bhf ,14,S3,10148_109
+280,S Hackescher Markt ,15,S3,10148_109
+281,S+U Friedrichstr. Bhf ,16,S3,10148_109
+282,S+U Berlin Hauptbahnhof,17,S3,10148_109
+283,S Bellevue ,18,S3,10148_109
+284,S Tiergarten ,19,S3,10148_109
+285,S+U Zoologischer Garten Bhf ,20,S3,10148_109
+286,S Savignyplatz ,21,S3,10148_109
+287,S Charlottenburg Bhf ,22,S3,10148_109
+288,S Westkreuz ,23,S3,10148_109
+289,S Messe Süd ,24,S3,10148_109
+290,S Heerstr. ,25,S3,10148_109
+291,S Olympiastadion ,26,S3,10148_109
+292,S Pichelsberg ,27,S3,10148_109
+293,S Stresow ,28,S3,10148_109
+294,S Spandau Bhf ,29,S3,10148_109
+295,S Teltow Stadt,0,S25,10145_109
+296,S Lichterfelde Süd ,1,S25,10145_109
+297,S Osdorfer Str. ,2,S25,10145_109
+298,S Lichterfelde Ost Bhf ,3,S25,10145_109
+299,S Lankwitz ,4,S25,10145_109
+300,S Südende ,5,S25,10145_109
+301,S Priesterweg ,6,S25,10145_109
+302,S Südkreuz Bhf ,7,S25,10145_109
+303,S+U Yorckstr. S2 S25 S26 U7 ,8,S25,10145_109
+304,S Anhalter Bahnhof ,9,S25,10145_109
+305,S+U Potsdamer Platz Bhf ,10,S25,10145_109
+306,S+U Brandenburger Tor ,11,S25,10145_109
+307,S+U Friedrichstr. Bhf ,12,S25,10145_109
+308,S Oranienburger Str. ,13,S25,10145_109
+309,S Nordbahnhof ,14,S25,10145_109
+310,S Humboldthain ,15,S25,10145_109
+311,S+U Gesundbrunnen Bhf ,16,S25,10145_109
+312,S Bornholmer Str. ,17,S25,10145_109
+313,S Wollankstr. ,18,S25,10145_109
+314,S Schönholz ,19,S25,10145_109
+315,S Alt-Reinickendorf ,20,S25,10145_109
+316,S+U Karl-Bonhoeffer-Nervenklinik ,21,S25,10145_109
+317,S Eichborndamm ,22,S25,10145_109
+318,S Tegel ,23,S25,10145_109
+319,S Schulzendorf ,24,S25,10145_109
+320,S Heiligensee ,25,S25,10145_109
+321,S Hennigsdorf Bhf,26,S25,10145_109
+322,S Blankenfelde (TF) Bhf,0,S2,10143_109
+323,S Mahlow,1,S2,10143_109
+324,S Lichtenrade ,2,S2,10143_109
+325,S Schichauweg ,3,S2,10143_109
+326,S Buckower Chaussee ,4,S2,10143_109
+327,S Marienfelde ,5,S2,10143_109
+328,S Attilastr. ,6,S2,10143_109
+329,S Priesterweg ,7,S2,10143_109
+330,S Südkreuz Bhf ,8,S2,10143_109
+331,S+U Yorckstr. S2 S25 S26 U7 ,9,S2,10143_109
+332,S Anhalter Bahnhof ,10,S2,10143_109
+333,S+U Potsdamer Platz Bhf ,11,S2,10143_109
+334,S+U Brandenburger Tor ,12,S2,10143_109
+335,S+U Friedrichstr. Bhf ,13,S2,10143_109
+336,S Oranienburger Str. ,14,S2,10143_109
+337,S Nordbahnhof ,15,S2,10143_109
+338,S Humboldthain ,16,S2,10143_109
+339,S+U Gesundbrunnen Bhf ,17,S2,10143_109
+340,S Bornholmer Str. ,18,S2,10143_109
+341,S+U Pankow ,19,S2,10143_109
+342,S Pankow-Heinersdorf ,20,S2,10143_109
+343,S Blankenburg ,21,S2,10143_109
+344,S Karow Bhf ,22,S2,10143_109
+345,S Buch ,23,S2,10143_109
+346,S Röntgental,24,S2,10143_109
+347,S Zepernick,25,S2,10143_109
+348,S Bernau-Friedenstal,26,S2,10143_109
+349,S Bernau Bhf,27,S2,10143_109
+350,S Wannsee Bhf ,0,S1,10141_109
+351,S Nikolassee ,1,S1,10141_109
+352,S Schlachtensee ,2,S1,10141_109
+353,S Mexikoplatz ,3,S1,10141_109
+354,S Zehlendorf ,4,S1,10141_109
+355,S Sundgauer Str. ,5,S1,10141_109
+356,S Lichterfelde West ,6,S1,10141_109
+357,S Botanischer Garten ,7,S1,10141_109
+358,S+U Rathaus Steglitz ,8,S1,10141_109
+359,S Feuerbachstr. ,9,S1,10141_109
+360,S Friedenau ,10,S1,10141_109
+361,S Schöneberg ,11,S1,10141_109
+362,S Julius-Leber-Brücke ,12,S1,10141_109
+363,S+U Yorckstr. S1 U7 ,13,S1,10141_109
+364,S Anhalter Bahnhof ,14,S1,10141_109
+365,S+U Potsdamer Platz Bhf ,15,S1,10141_109
+366,S+U Brandenburger Tor ,16,S1,10141_109
+367,S+U Friedrichstr. Bhf ,17,S1,10141_109
+368,S Oranienburger Str. ,18,S1,10141_109
+369,S Nordbahnhof ,19,S1,10141_109
+370,S Humboldthain ,20,S1,10141_109
+371,S+U Gesundbrunnen Bhf ,21,S1,10141_109
+372,S Bornholmer Str. ,22,S1,10141_109
+373,S Wollankstr. ,23,S1,10141_109
+374,S Schönholz ,24,S1,10141_109
+375,S Wilhelmsruh ,25,S1,10141_109
+376,S+U Wittenau ,26,S1,10141_109
+377,S Waidmannslust ,27,S1,10141_109
+378,S Hermsdorf ,28,S1,10141_109
+379,S Frohnau ,29,S1,10141_109
+380,S Hohen Neuendorf,30,S1,10141_109
+381,S Birkenwerder Bhf,31,S1,10141_109
+382,S Borgsdorf,32,S1,10141_109
+383,S Lehnitz,33,S1,10141_109
+384,S Oranienburg Bhf,34,S1,10141_109
+385,U Osloer Str. ,0,U9,17526_400
+386,U Nauener Platz ,1,U9,17526_400
+387,U Leopoldplatz ,2,U9,17526_400
+388,U Amrumer Str. ,3,U9,17526_400
+389,S+U Westhafen ,4,U9,17526_400
+390,U Birkenstr. ,5,U9,17526_400
+391,U Turmstr. ,6,U9,17526_400
+392,U Hansaplatz ,7,U9,17526_400
+393,S+U Zoologischer Garten Bhf ,8,U9,17526_400
+394,U Kurfürstendamm ,9,U9,17526_400
+395,U Spichernstr. ,10,U9,17526_400
+396,U Güntzelstr. ,11,U9,17526_400
+397,U Berliner Str. ,12,U9,17526_400
+398,S+U Bundesplatz ,13,U9,17526_400
+399,U Friedrich-Wilhelm-Platz ,14,U9,17526_400
+400,U Walther-Schreiber-Platz ,15,U9,17526_400
+401,U Schloßstr. ,16,U9,17526_400
+402,S+U Rathaus Steglitz  ,17,U9,17526_400
+403,S+U Wittenau  ,0,U8,17525_400
+404,U Rathaus Reinickendorf ,1,U8,17525_400
+405,S+U Karl-Bonhoeffer-Nervenklinik ,2,U8,17525_400
+406,U Lindauer Allee ,3,U8,17525_400
+407,U Paracelsus-Bad ,4,U8,17525_400
+408,U Residenzstr. ,5,U8,17525_400
+409,U Franz-Neumann-Platz ,6,U8,17525_400
+410,U Osloer Str. ,7,U8,17525_400
+411,U Pankstr. ,8,U8,17525_400
+412,S+U Gesundbrunnen Bhf ,9,U8,17525_400
+413,U Voltastr. ,10,U8,17525_400
+414,U Bernauer Str. ,11,U8,17525_400
+415,U Rosenthaler Platz ,12,U8,17525_400
+416,U Weinmeisterstr. ,13,U8,17525_400
+417,S+U Alexanderplatz  ,14,U8,17525_400
+418,S+U Jannowitzbrücke ,15,U8,17525_400
+419,U Heinrich-Heine-Str. ,16,U8,17525_400
+420,U Moritzplatz ,17,U8,17525_400
+421,U Kottbusser Tor ,18,U8,17525_400
+422,U Schönleinstr. ,19,U8,17525_400
+423,U Hermannplatz ,20,U8,17525_400
+424,U Boddinstr. ,21,U8,17525_400
+425,U Leinestr. ,22,U8,17525_400
+426,S+U Hermannstr. ,23,U8,17525_400
+427,S+U Rathaus Spandau ,0,U7,17523_400
+428,U Altstadt Spandau ,1,U7,17523_400
+429,U Zitadelle ,2,U7,17523_400
+430,U Haselhorst ,3,U7,17523_400
+431,U Paulsternstr. ,4,U7,17523_400
+432,U Rohrdamm ,5,U7,17523_400
+433,U Siemensdamm ,6,U7,17523_400
+434,U Halemweg ,7,U7,17523_400
+435,U Jakob-Kaiser-Platz ,8,U7,17523_400
+436,S+U Jungfernheide Bhf ,9,U7,17523_400
+437,U Mierendorffplatz ,10,U7,17523_400
+438,U Richard-Wagner-Platz ,11,U7,17523_400
+439,U Bismarckstr. ,12,U7,17523_400
+440,U Wilmersdorfer Str. ,13,U7,17523_400
+441,U Adenauerplatz ,14,U7,17523_400
+442,U Konstanzer Str. ,15,U7,17523_400
+443,U Fehrbelliner Platz ,16,U7,17523_400
+444,U Blissestr. ,17,U7,17523_400
+445,U Berliner Str. ,18,U7,17523_400
+446,U Bayerischer Platz ,19,U7,17523_400
+447,U Eisenacher Str. ,20,U7,17523_400
+448,U Kleistpark ,21,U7,17523_400
+449,S+U Yorckstr. ,22,U7,17523_400
+450,U Möckernbrücke ,23,U7,17523_400
+451,U Mehringdamm ,24,U7,17523_400
+452,U Gneisenaustr. ,25,U7,17523_400
+453,U Südstern ,26,U7,17523_400
+454,U Hermannplatz ,27,U7,17523_400
+455,U Rathaus Neukölln ,28,U7,17523_400
+456,U Karl-Marx-Str. ,29,U7,17523_400
+457,S+U Neukölln  ,30,U7,17523_400
+458,U Grenzallee ,31,U7,17523_400
+459,U Blaschkoallee ,32,U7,17523_400
+460,U Parchimer Allee ,33,U7,17523_400
+461,U Britz-Süd ,34,U7,17523_400
+462,U Johannisthaler Chaussee ,35,U7,17523_400
+463,U Lipschitzallee ,36,U7,17523_400
+464,U Wutzkyallee ,37,U7,17523_400
+465,U Zwickauer Damm ,38,U7,17523_400
+466,U Rudow ,39,U7,17523_400
+467,U Alt-Tegel ,0,U6,17521_400
+468,U Borsigwerke ,1,U6,17521_400
+469,U Holzhauser Str. ,2,U6,17521_400
+470,U Otisstr. ,3,U6,17521_400
+471,U Scharnweberstr. ,4,U6,17521_400
+472,U Kurt-Schumacher-Platz ,5,U6,17521_400
+473,U Afrikanische Str. ,6,U6,17521_400
+474,U Rehberge ,7,U6,17521_400
+475,U Seestr. ,8,U6,17521_400
+476,U Leopoldplatz ,9,U6,17521_400
+477,S+U Wedding ,10,U6,17521_400
+478,U Reinickendorfer Str. ,11,U6,17521_400
+479,U Schwartzkopffstr. ,12,U6,17521_400
+480,U Naturkundemuseum ,13,U6,17521_400
+481,U Oranienburger Tor ,14,U6,17521_400
+482,S+U Friedrichstr. Bhf ,15,U6,17521_400
+483,U Französische Str. ,16,U6,17521_400
+484,U Stadtmitte ,17,U6,17521_400
+485,U Kochstr./Checkpoint Charlie ,18,U6,17521_400
+486,U Hallesches Tor ,19,U6,17521_400
+487,U Mehringdamm ,20,U6,17521_400
+488,U Platz der Luftbrücke ,21,U6,17521_400
+489,U Paradestr. ,22,U6,17521_400
+490,S+U Tempelhof ,23,U6,17521_400
+491,U Alt-Tempelhof ,24,U6,17521_400
+492,U Kaiserin-Augusta-Str. ,25,U6,17521_400
+493,U Ullsteinstr. ,26,U6,17521_400
+494,U Westphalweg ,27,U6,17521_400
+495,U Alt-Mariendorf ,28,U6,17521_400
+496,S+U Brandenburger Tor ,0,U55,17519_400
+497,U Bundestag ,1,U55,17519_400
+498,S+U Berlin Hauptbahnhof,2,U55,17519_400
+499,U Hönow ,0,U5,17518_400
+500,U Louis-Lewin-Str. ,1,U5,17518_400
+501,U Hellersdorf ,2,U5,17518_400
+502,U Cottbusser Platz ,3,U5,17518_400
+503,U Kienberg (Gärten der Welt) ,4,U5,17518_400
+504,U Kaulsdorf-Nord ,5,U5,17518_400
+505,S+U Wuhletal ,6,U5,17518_400
+506,U Elsterwerdaer Platz ,7,U5,17518_400
+507,U Biesdorf-Süd ,8,U5,17518_400
+508,U Tierpark ,9,U5,17518_400
+509,U Friedrichsfelde ,10,U5,17518_400
+510,S+U Lichtenberg  ,11,U5,17518_400
+511,U Magdalenenstr. ,12,U5,17518_400
+512,S+U Frankfurter Allee ,13,U5,17518_400
+513,U Samariterstr. ,14,U5,17518_400
+514,U Frankfurter Tor ,15,U5,17518_400
+515,U Weberwiese ,16,U5,17518_400
+516,U Strausberger Platz ,17,U5,17518_400
+517,U Schillingstr. ,18,U5,17518_400
+518,S+U Alexanderplatz  ,19,U5,17518_400
+519,U Nollendorfplatz ,0,U4,17516_400
+520,U Viktoria-Luise-Platz ,1,U4,17516_400
+521,U Bayerischer Platz ,2,U4,17516_400
+522,U Rathaus Schöneberg ,3,U4,17516_400
+523,S+U Innsbrucker Platz ,4,U4,17516_400
+524,S+U Warschauer Str. ,0,U3,17515_400
+525,U Schlesisches Tor ,1,U3,17515_400
+526,U Görlitzer Bahnhof ,2,U3,17515_400
+527,U Kottbusser Tor ,3,U3,17515_400
+528,U Prinzenstr. ,4,U3,17515_400
+529,U Hallesches Tor ,5,U3,17515_400
+530,U Möckernbrücke ,6,U3,17515_400
+531,U Gleisdreieck ,7,U3,17515_400
+532,U Kurfürstenstr. ,8,U3,17515_400
+533,U Nollendorfplatz ,9,U3,17515_400
+534,U Wittenbergplatz ,10,U3,17515_400
+535,U Augsburger Str. ,11,U3,17515_400
+536,U Spichernstr. ,12,U3,17515_400
+537,U Hohenzollernplatz ,13,U3,17515_400
+538,U Fehrbelliner Platz ,14,U3,17515_400
+539,S+U Heidelberger Platz ,15,U3,17515_400
+540,U Rüdesheimer Platz ,16,U3,17515_400
+541,U Breitenbachplatz ,17,U3,17515_400
+542,U Podbielskiallee ,18,U3,17515_400
+543,U Dahlem-Dorf ,19,U3,17515_400
+544,U Freie Universität (Thielplatz) ,20,U3,17515_400
+545,U Oskar-Helene-Heim ,21,U3,17515_400
+546,U Onkel Toms Hütte ,22,U3,17515_400
+547,U Krumme Lanke ,23,U3,17515_400
+548,S+U Pankow ,0,U2,17514_400
+549,U Vinetastr. ,1,U2,17514_400
+550,S+U Schönhauser Allee ,2,U2,17514_400
+551,U Eberswalder Str. ,3,U2,17514_400
+552,U Senefelderplatz ,4,U2,17514_400
+553,U Rosa-Luxemburg-Platz ,5,U2,17514_400
+554,S+U Alexanderplatz  ,6,U2,17514_400
+555,U Klosterstr. ,7,U2,17514_400
+556,U Märkisches Museum ,8,U2,17514_400
+557,U Spittelmarkt ,9,U2,17514_400
+558,U Hausvogteiplatz ,10,U2,17514_400
+559,"Berlin, U Stadtmitte U2",11,U2,17514_400
+560,U Mohrenstr. ,12,U2,17514_400
+561,S+U Potsdamer Platz (Bln) ,13,U2,17514_400
+562,U Mendelssohn-Bartholdy-Park ,14,U2,17514_400
+563,U Gleisdreieck ,15,U2,17514_400
+564,U Bülowstr. ,16,U2,17514_400
+565,U Nollendorfplatz ,17,U2,17514_400
+566,U Wittenbergplatz ,18,U2,17514_400
+567,S+U Zoologischer Garten Bhf ,19,U2,17514_400
+568,U Ernst-Reuter-Platz ,20,U2,17514_400
+569,U Deutsche Oper ,21,U2,17514_400
+570,U Bismarckstr. ,22,U2,17514_400
+571,U Sophie-Charlotte-Platz ,23,U2,17514_400
+572,U Kaiserdamm ,24,U2,17514_400
+573,"Berlin, U Theodor-Heuss-Platz",25,U2,17514_400
+574,U Neu-Westend ,26,U2,17514_400
+575,U Olympia-Stadion ,27,U2,17514_400
+576,U Ruhleben ,28,U2,17514_400
+577,S+U Warschauer Str. ,0,U1,17512_400
+578,U Schlesisches Tor ,1,U1,17512_400
+579,U Görlitzer Bahnhof ,2,U1,17512_400
+580,U Kottbusser Tor ,3,U1,17512_400
+581,U Prinzenstr. ,4,U1,17512_400
+582,U Hallesches Tor ,5,U1,17512_400
+583,U Möckernbrücke ,6,U1,17512_400
+584,U Gleisdreieck ,7,U1,17512_400
+585,U Kurfürstenstr. ,8,U1,17512_400
+586,U Nollendorfplatz ,9,U1,17512_400
+587,U Wittenbergplatz ,10,U1,17512_400
+588,U Kurfürstendamm ,11,U1,17512_400
+589,U Uhlandstr. ,12,U1,17512_400
