@@ -20,7 +20,7 @@ agency = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\agency.tx
 
 #calendar = pd.read_csv('calendar.txt', sep=",", encoding="utf-8")
 #shapes = pd.read_csv('shapes.txt', sep=",", encoding="utf-8")
-#transfers = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\transfers.txt', sep=",", encoding="utf-8")
+transfers = pd.read_csv(r'C:\Users\David\OneDrive\Documents\Datasets\GTFS\transfers.txt', sep=",", encoding="utf-8")
 
 
 # =============================================================================
@@ -53,12 +53,19 @@ stops_berlin = stops_berlin.reset_index()
 stops_berlin = stops_berlin[['stop_id', 'stop_name', 'stop_lat', 'stop_lon']]
 
 #transfers = transfers.drop(columns=['from_trip_id', 'to_trip_id'])
-#transfers_berlin = pd.merge(stops_berlin, transfers, left_on='stop_id', right_on='from_stop_id')
-#transfers_berlin = transfers_berlin[['from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id']]
+transfers_berlin = pd.merge(stops_berlin, transfers, left_on='stop_id', right_on='from_stop_id')
+transfers_berlin = transfers_berlin[['from_stop_id', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id', 'from_trip_id', 'to_trip_id']]
+tmp = pd.merge(stops, transfers, left_on ='stop_id', right_on='from_stop_id', how='inner')
+tmp = tmp[['stop_name', 'to_stop_id', 'min_transfer_time', 'from_route_id', 'to_route_id', 'from_trip_id', 'to_trip_id']]
+tmp = tmp.rename(columns={"stop_name": "from_stop_name"})
+tmp = pd.merge(stops, tmp, left_on ='stop_id', right_on='to_stop_id', how='inner')
+tmp = tmp[['stop_name', 'from_stop_name', 'min_transfer_time', 'from_route_id', 'to_route_id', 'from_trip_id', 'to_trip_id']]
+transfers_berlin = tmp.rename(columns={"stop_name": "to_stop_name"})
 
 #replace stop_id with stop_name
 stop_times_berlin = pd.merge(stop_times_berlin, stops_berlin, how='inner', on="stop_id")
 stop_times_berlin = stop_times_berlin[['trip_id', 'stop_name', 'arrival_time', 'departure_time', 'stop_sequence']]
+
 
 
 # =============================================================================
@@ -69,6 +76,9 @@ stop_times_berlin = stop_times_berlin[['trip_id', 'stop_name', 'arrival_time', '
 stations = stops_berlin.drop_duplicates(subset='stop_name')
 stations = stations.reset_index(drop=True)
 del stations['stop_id']
+
+#x = pd.merge(stations, x,how='inner', on='stop_name')
+#x = stop_times_berlin.drop_duplicates(subset='stop_name')
 
 
 
@@ -94,10 +104,11 @@ for index, row in routes_new.iterrows():
     
         #Alle Stationen für Trip
         all_Stations_Trip = stop_times_berlin[stop_times_berlin['trip_id'] == aMaxTrip_id]
+        tmp = pd.merge(trips_berlin, all_Stations_Trip, how='inner', on='trip_id')
         all_Stations_Trip = pd.merge(all_Stations_Trip, stations, how='inner', on='stop_name')
         all_Stations_Trip = all_Stations_Trip[['stop_name', 'stop_sequence']]
         all_Stations_Trip['route_name']=route_name
-        all_Stations_Trip['route_id']=route_id
+        all_Stations_Trip['route_id']= tmp[1:2]['route_id'].values[0]
         all_Stations_Trip = all_Stations_Trip.sort_values('stop_sequence')
         lines = lines.append(all_Stations_Trip)
         print(route_name)
@@ -107,7 +118,50 @@ lines = lines.reset_index(drop=True)
 
 
 
+# =============================================================================
+# Test 
+# =============================================================================
 
+s41 = lines[81:90]
+u6 = lines [490:494]
+
+planner = s41.append(u6)
+
+#get all trips that depart from given station at given time
+df = pd.read_sql_query('''
+SELECT DISTINCT st.departure_time, t.trip_id, t.trip_headsign, t.direction_id
+FROM 
+stop_times st   INNER JOIN stops s on s.stop_name = st.stop_name  
+                INNER JOIN trips t on st.trip_id = t.trip_id
+
+WHERE
+s.stop_name = 'S Landsberger Allee ' AND
+st.departure_time > '16:00:00' AND
+st.departure_time> "00:00:00" AND st.departure_time < "23:59:59" 
+GROUP BY
+st.departure_time
+ORDER BY 
+st.departure_time ASC
+LIMIT 100
+''', engine) 
+
+#find trip that contains transfer station
+
+
+#find transfer station
+tmp = planner.drop_duplicates(subset='route_id', keep='first')
+x = transfers_berlin[(transfers_berlin['to_route_id'] == '10223_109')]
+& (transfers_berlin['to_route_id'] == '17521_400')]
+
+x = routes_berlin[(routes_berlin['route_id'] == '10223_109')]
+10223_109
+
+#to_route_id = tmp[1:2]['route_id'].values[0]
+#planner['to_route'] = to_route_id
+#tmp = pd.merge(planner, transfers_berlin,  how='inner', left_on=['route_id'], right_on = ['from_route_id'])
+#x = pd.merge(planner, tmp,  how='inner', left_on=['to_route'], right_on = ['to_route_id'])
+
+x = pd.merge(planner)
 
 
 
@@ -132,7 +186,8 @@ stations.to_csv("stations.csv", sep=',', index=True, index_label='index', encodi
 # =============================================================================
 
 from sqlalchemy import create_engine
-engine = create_engine('mysql+mysqldb://root:''@localhost/gtfs_berlin', echo = False)
+#engine = create_engine('mysql+mysqldb://root:''@localhost/gtfs_berlin', echo = False)
+engine = create_engine('mysql+mysqldb://datastig_admin:v8fLxLatu9Qc8TY@68.66.248.12/datastig_test')
 print(engine.table_names())        
 
 stops_berlin.to_sql("stops", engine, if_exists='replace')
@@ -141,7 +196,7 @@ trips_berlin.to_sql("trips", engine, if_exists='replace')
 stop_times_berlin.to_sql("stop_times", engine, if_exists='replace')
 agency.to_sql("agency", engine, if_exists='replace')
 
-#transfers.to_sql("transfers", engine, if_exists='replace')
+transfers.to_sql("transfers", engine, if_exists='replace')
 #calendar.to_sql("calendar", engine, if_exists='replace')
 
 # =============================================================================
