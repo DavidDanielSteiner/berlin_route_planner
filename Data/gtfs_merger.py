@@ -79,10 +79,6 @@ stations = stops_berlin.drop_duplicates(subset='stop_name')
 stations = stations.reset_index(drop=True)
 del stations['stop_id']
 
-#x = pd.merge(stations, x,how='inner', on='stop_name')
-#x = stop_times_berlin.drop_duplicates(subset='stop_name')
-
-
 
 #lines table
 lines = pd.DataFrame()
@@ -119,10 +115,6 @@ for index, row in routes_new.iterrows():
 lines = lines.reset_index(drop=True)
 
 
-
-
-
-
 # =============================================================================
 # CSV export
 # =============================================================================
@@ -142,9 +134,17 @@ stations.to_csv("stations.csv", sep=',', index=True, index_label='index', encodi
 # DB Upload
 # =============================================================================
 
+import importlib.util
+spec = importlib.util.spec_from_file_location("module.name", r'C:\Users\David\Dropbox\Code\config.py')
+config = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(config)
+DB_CREDENTIALS = config.sqlalchemy_DATASTIG_TEST
+
+
+
 from sqlalchemy import create_engine
 #engine = create_engine('mysql+mysqldb://root:''@localhost/gtfs_berlin', echo = False)
-engine = create_engine('mysql+mysqldb://datastig_admin:v8fLxLatu9Qc8TY@68.66.248.12/datastig_test')
+engine = create_engine(DB_CREDENTIALS)
 print(engine.table_names())        
 
 stops_berlin.to_sql("stops", engine, if_exists='replace')
@@ -152,8 +152,10 @@ routes_berlin.to_sql("routes", engine, if_exists='replace')
 trips_berlin.to_sql("trips", engine, if_exists='replace')
 stop_times_berlin.to_sql("stop_times", engine, if_exists='replace')
 agency.to_sql("agency", engine, if_exists='replace')
+lines.to_sql("lines", engine, if_exists='replace')
+stations.to_sql("stations", engine, if_exists='replace')
 
-transfers.to_sql("transfers", engine, if_exists='replace')
+#transfers.to_sql("transfers", engine, if_exists='replace')
 #calendar.to_sql("calendar", engine, if_exists='replace')
 
 # =============================================================================
@@ -281,145 +283,7 @@ SELECT * FROM stop_times st inner join stops s on st.stop_id = s.stop_id WHERE t
 # =============================================================================
 # Test 
 # =============================================================================
-from sqlalchemy import create_engine
-engine = create_engine('mysql+mysqldb://datastig_admin:v8fLxLatu9Qc8TY@68.66.248.12/datastig_test')
 
-def get_all_trips_from_station(station, time):
-    
-    params = {'station': station,
-              'time': time}
-    sql = '''
-    SELECT DISTINCT st.departure_time, t.trip_id, t.trip_headsign, t.direction_id
-    FROM 
-    stop_times st   INNER JOIN stops s on s.stop_name = st.stop_name  
-                    INNER JOIN trips t on st.trip_id = t.trip_id
-    
-    WHERE
-    s.stop_name = %(station)s AND
-    st.departure_time > %(time)s AND
-    st.departure_time> "00:00:00" AND st.departure_time < "23:59:59" 
-    GROUP BY
-    st.departure_time
-    ORDER BY 
-    st.departure_time ASC
-    LIMIT 100
-    '''
-    df = pd.read_sql_query(sql, engine, params=params, parse_dates=None, chunksize=None)
-    return df
-  
-    
-def get_all_stations_from_trip(trip_id):
-    
-    params = {'trip_id': trip_id}
-    sql = '''
-    SELECT DISTINCT s.stop_name, t.trip_headsign, st.stop_sequence, st.departure_time
-    FROM 
-    stop_times st   INNER JOIN stops s on s.stop_name = st.stop_name      
-                    INNER JOIN trips t on st.trip_id = t.trip_id
-    WHERE
-    st.trip_id = %(trip_id)s
-    ORDER BY 
-    st.stop_sequence
-    '''
-    df = pd.read_sql_query(sql, engine, params=params, parse_dates=None, chunksize=None)
-    return df
-
-
-def find_correct_trip(trip_id, start_station, end_station):
-
-     
-    try:
-        planner_trip = get_all_stations_from_trip(trip_id)
-        idx = planner_trip[planner_trip['stop_name'] == start_station].index.values.astype(int)[0]
-        #idx_end = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[i]].index.values.astype(int)[0]
-        planner_next_stations = planner_trip.loc[idx:]
-        tmp = pd.Series(planner_next_stations['stop_name'])
-        #check if trip contains transfer_station
-        if planner_transfer_station[i] in tmp.values:
-            print("found matching trip")
-            idx_end = planner_next_stations[planner_next_stations['stop_name'] == end_station].index.values.astype(int)[0]
-            planner_next_stations = planner_trip.loc[idx:idx_end]
-            #planner_station_times = planner_station_times.append(planner_next_stations)
-            #transfer_time = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[0]]['departure_time'].values[0]
-            #break
-            return planner_next_stations
-        else:
-            print("doesn't contain transfer station")
-            empty = pd.DataFrame()
-            return empty   
-    except:
-        print("Error occured")
-        empty = pd.DataFrame()
-        return empty   
-
- 
-
-
-#Graph with stations
-s41 = lines[81:90]
-u6 = lines [490:494]
-planner_stations = s41.append(u6)
-planner_start_station = planner_stations.iloc[0]['stop_name']
-planner_end_station = planner_stations.iloc[-1]['stop_name']
-
-#get all trips that depart from given station at given time
-planner_trips = get_all_trips_from_station(planner_start_station, '16:00:00')
-
-#find transfer stations
-planner_transfer_station = []
-route_name = ''
-
-for index, row in planner_stations.iterrows():
-    route_new = row['route_name']
-    
-    if route_name == '':
-        route_name = row['route_name']
-        stop_name = row['stop_name']
-        print(route_name)
-    if route_name != '' and route_name !=  route_new:
-        route_name = row['route_name']
-        stop_name = row['stop_name']
-        print(route_name)
-        planner_transfer_station.append(stop_name)
-
-
-#find trip that contains transfer station
-planner_station_times = pd.DataFrame()
-transfer_time = ''
-
-#TODO: loop for all transfer stations
-
-for index, row in planner_trips.iterrows():
-    trip_id = row['trip_id']
-    planner_next_stations = find_correct_trip(trip_id, planner_start_station, planner_transfer_station[-0])
-    
-    #if data frame is empty
-    if planner_next_stations.empty:
-        pass
-    else:  
-        planner_station_times = planner_station_times.append(planner_next_stations)
-        transfer_time = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[0]]['departure_time'].values[0]
-        print("appended")
-        break
-
-
-
-
-#find trip that contains final station
-planner_trips = get_all_trips_from_station(planner_transfer_station[-1], transfer_time)
-
-for index, row in planner_trips.iterrows():
-    trip_id = row['trip_id']
-    planner_next_stations = find_correct_trip(trip_id, planner_transfer_station[-1], planner_end_station)
-    
-    #if data frame is empty
-    if planner_next_stations.empty:
-        pass
-    else:  
-        planner_station_times = planner_station_times.append(planner_next_stations)
-        transfer_time = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[0]]['departure_time'].values[0]
-        print("appended")
-        break
 
 
 

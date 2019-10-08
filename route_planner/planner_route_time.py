@@ -5,9 +5,31 @@ Created on Tue Oct  8 12:10:27 2019
 @author: David
 """
 
+import pandas as pd
+from sqlalchemy import create_engine
+
+
+engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')
+print(engine.table_names())      
+
+
+sql = '''
+SELECT * FROM lines
+'''
+df = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
+
+'''
+import importlib.util
+spec = importlib.util.spec_from_file_location("module.name", r'C:\Users\David\Dropbox\Code\config.py')
+config = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(config)
+DB_CREDENTIALS = config.sqlalchemy_DATASTIG_TEST
 
 from sqlalchemy import create_engine
-engine = create_engine('mysql+mysqldb://datastig_admin:v8fLxLatu9Qc8TY@68.66.248.12/datastig_test')
+engine = create_engine(DB_CREDENTIALS)
+'''
+
+
 
 def get_all_trips_from_station(station, time):
     
@@ -132,8 +154,6 @@ for index, row in planner_trips.iterrows():
         break
 
 
-
-
 #find trip that contains final station
 planner_trips = get_all_trips_from_station(planner_transfer_station[-1], transfer_time)
 
@@ -149,3 +169,7 @@ for index, row in planner_trips.iterrows():
         transfer_time = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[-1]]['departure_time'].values[0]
         print("appended")
         break
+    
+    
+#https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html    
+json_planner = planner_station_times.to_json(orient='split')
