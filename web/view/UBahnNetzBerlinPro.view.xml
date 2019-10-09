@@ -12,30 +12,11 @@
 		<content>
 			<VBox>
 				<!-- Form zur User Eingabe -->
-				<!--<HBox>
-					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMLocationSearch" type="XML"/>
-					<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMFuzzySearchDB" type="XML"/>
-				</HBox>-->
-				<List headerText="Aufgabe 4: ">
-					<InputListItem label="Start:">
-						<Input id="address_start" placeholder="Adresse" value="alex"/>
-					</InputListItem>
-					<InputListItem label="Ziel:">
-						<Input id="address_target" placeholder="Adresse" value="Güntzelstr. 10, Berlin"/>
-					</InputListItem>
-					<InputListItem label="Typ der Suche">
-						<Select id="searchType">
-							<core:Item key="lessChange" text="am wenigsten Umstiege"/>
-							<core:Item key="fastestPath" text="kürzeste Zeit"/>
-							<core:Item key="lessHops" text="am wenigsten Stationen"/>
-						</Select>
-					</InputListItem>
-					<InputListItem label="Suche">
-						<Button text="Suchen" press="runFuzzySearch"/>
-					</InputListItem>
-				</List>
+				<HBox>
+				<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMLocationSearch" type="XML"/>
+				<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMFuzzySearchDB" type="XML"/>
+				</HBox>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
-				<Button text="CurrentLocation" press="moveMapToCurrentLocation"/>
 				<!-- Here Map Container -->
 				<Panel id="pan" >
 				<HBox id="map" fitContainer="true" height="500px" />

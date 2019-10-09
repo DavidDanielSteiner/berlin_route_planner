@@ -16,11 +16,22 @@
 		},
 		"dataSources": {
 			"orderMan": {
-				"uri": "https://hanaicla3.f4.htw-berlin.de:51071/odata/orderman/",
+				"uri": "https://hanaicla.f4.htw-berlin.de:51071/odata/orderman/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "4.0"
 				}
+			},
+			"searchList": {
+				"uri": "https://hanaicla.f4.htw-berlin.de:51102/xsodata/search.xsodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"searchResult": {
+				"uri": "https://hanaicla.f4.htw-berlin.de:51098/xsjs/hdb.xsjs",
+				"type": "JSON"
 			}
 		}
 	},
@@ -60,7 +71,10 @@
 				"sap.ushell": {},
 				"sap.collaboration": {},
 				"sap.ui.comp": {},
-				"sap.uxap": {}
+				"sap.uxap": {},
+				"sap.ui.table": {},
+				"sap.ui.unified": {}
+
 			}
 		},
 		"contentDensities": {
@@ -80,6 +94,20 @@
 				"settings": {
 					"synchronizationMode": "None"
 				}
+			},
+			"searchList": {
+				"dataSource": "searchList",
+				"type":"sap.ui.model.odata.v2.ODataModel",
+				"preload": true,
+				"settings": {
+					"useBatch": false,
+					"json":true,
+					"synchronizationMode": "None"
+				}
+			},
+			"searchResult":{
+				"dataSource": "searchResult",
+				"type":"sap.ui.model.json.JSONModel"
 			}
 		},
 		"routing": {
