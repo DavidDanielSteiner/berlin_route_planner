@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Panel headerText="Suchmaske" class="sapUiResponsiveMargin" width="auto">
+		<content>
+		<Label text="Start:" labelFor="address_start"/>
+		<Input id="address_start" type="Text" placeholder="Straße eingeben...." showSuggestion="true" suggest="handleSuggest" suggestionItems="{searchList>/STREET}" valueLiveUpdate="true" value="{s>/Start}">
+
+				<suggestionItems>
+
+							<core:Item text="{searchList>STREET_NAME}" />
+
+				</suggestionItems>
+
+		</Input>
+		<Label text="Ziel:" labelFor="address_target"/>
+		<Input id="address_target" type="Text" placeholder="Straße eingeben...." showSuggestion="true" suggest="handleSuggest" suggestionItems="{searchList>/STREET}" value="{s>/Target}">
+
+				<suggestionItems>
+
+							<core:Item text="{searchList>STREET_NAME}" />
+
+				</suggestionItems>
+
+		</Input>
+		<InputListItem label="Typ der Suche">
+						<Select id="searchType">
+							<core:Item key="lessChange" text="am wenigsten Umstiege"/>
+							<core:Item key="fastestPath" text="kürzeste Zeit"/>
+							<core:Item key="lessHops" text="am wenigsten Stationen"/>
+						</Select>
+		</InputListItem>
+		<Button text="Suchen" press="onSearch"/>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

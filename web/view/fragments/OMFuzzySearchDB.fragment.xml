@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Panel headerText="Stationen in der Nähe" class="sapUiResponsiveMargin" width="auto">
+    <content>
+    <Table id="searchTable" inset="false" growingThreshold="4" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+        <columns>
+          <Column>
+            <Label text ="km"/>
+          </Column>
+          <Column>
+            <Label text ="Name"/>
+          </Column>
+        </columns>
+      </Table>
+    </content>
+  </Panel>
+</core:FragmentDefinition>

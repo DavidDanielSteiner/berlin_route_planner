@@ -8,6 +8,9 @@
     "web": "node web/http.js",
     "srv": "node srv/srv.js"
   },
+  "devDependencies": {
+		"cors-anywhere": "^0.4.1"
+	},
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -15,6 +18,7 @@
     "@sap/textanalysis": "^1.1.0",
     "@sap/textmining": "^1.1.6",
     "async": "^3.1.0",
+    "cors": "^2.8.5",
     "csv-parse": "^4.4.1",
     "express": "^4.17.0",
     "install": "^0.12.2",
