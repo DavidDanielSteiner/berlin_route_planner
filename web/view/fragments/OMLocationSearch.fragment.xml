@@ -2,7 +2,7 @@
 	<Panel headerText="Suchmaske" class="sapUiResponsiveMargin" width="auto">
 		<content>
 		<Label text="Start:" labelFor="address_start"/>
-		<Input id="address_start" type="Text" placeholder="Straße eingeben...." showSuggestion="true" suggest="handleSuggest" suggestionItems="{searchList>/STREET}" valueLiveUpdate="true" value="{s>/Start}">
+		<Input id="address_start" type="Text" placeholder="Straße eingeben...." showSuggestion="true" suggest="handleSuggest" suggestionItems="{ path:'searchList>/STREET'}" valueLiveUpdate="true" value="{s>/Start}" submit="onPressEnterFrom">
 
 				<suggestionItems>
 

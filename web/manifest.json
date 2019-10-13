@@ -23,15 +23,11 @@
 				}
 			},
 			"searchList": {
-				"uri": "https://hanaicla.f4.htw-berlin.de:51102/xsodata/search.xsodata/",
+				"uri": "https://hanaicla2.f4.htw-berlin.de:51026/xsodata/search.xsodata/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0"
 				}
-			},
-			"searchResult": {
-				"uri": "https://hanaicla.f4.htw-berlin.de:51098/xsjs/hdb.xsjs",
-				"type": "JSON"
 			}
 		}
 	},
@@ -104,10 +100,6 @@
 					"json":true,
 					"synchronizationMode": "None"
 				}
-			},
-			"searchResult":{
-				"dataSource": "searchResult",
-				"type":"sap.ui.model.json.JSONModel"
 			}
 		},
 		"routing": {

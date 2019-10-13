@@ -9,6 +9,12 @@
           <Column>
             <Label text ="Name"/>
           </Column>
+          <Column>
+            <Label text ="LAT"/>
+          </Column>
+          <Column>
+            <Label text ="LNG"/>
+          </Column>
         </columns>
       </Table>
     </content>

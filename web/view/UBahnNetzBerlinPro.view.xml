@@ -3,7 +3,8 @@
 	xmlns:l="sap.ui.layout" 
 	xmlns:c="sap.ui.commons"
 	xmlns:mvc="sap.ui.core.mvc" 
-	xmlns:core="sap.ui.core">
+	xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="unetzPro" 
 		title="{i18n>unetzProTitle}" 
 		class="sapUiResponsiveContentPadding" 
@@ -16,9 +17,10 @@
 				<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMLocationSearch" type="XML"/>
 				<core:Fragment fragmentName="de.htwberlin.adbkt.basic1.view.fragments.OMFuzzySearchDB" type="XML"/>
 				</HBox>
+				<core:HTML id="idHTMLContent"/>
 				<TextArea id="log" value="leer" width="10cm" rows="8"/>
 				<!-- Here Map Container -->
-				<Panel id="pan" >
+			<Panel id="pan" >
 				<HBox id="map" fitContainer="true" height="500px" />
 			</Panel>
 			</VBox>
