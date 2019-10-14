@@ -275,16 +275,13 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			this.oAdressFromLanLon = await this.getLanLng(oSearchFrom.Start);
 			this.oAdressToLanLon = await this.getLanLng(oSearchFrom.Target);
 		
-			console.log (this.oAdressFromLanLon,this.oAdressToLanLon);
+			//console.log (this.oAdressFromLanLon,this.oAdressToLanLon);
 
 			oModelResultsFrom.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ this.oAdressFromLanLon.LAT+ "&lon="+this.oAdressFromLanLon.LNG,true, "GET", false, true, oHeaders);
 			oModelResultsFrom.attachRequestCompleted(function() {
 				oModelResultsTo.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ that.oAdressToLanLon.LAT+ "&lon="+that.oAdressToLanLon.LNG,true, "GET", false, true, oHeaders);
 				oModelResultsTo.attachRequestCompleted(function() {
-					console.log(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
-					that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
-
-
+	
 					// am wenigsten Stationen
 					if (sSelection =="lessHops"){
 						that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
@@ -295,23 +292,24 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 					}// kürzeste Zeit
 					else if (sSelection =="fastestPath"){
+						/**$.ajax({
+							type: "POST",
+							url: "~/route_planner/planner_route_time_v2.py",
+							data: { time: that.getView().byId('timePicker').getValue() ,
+								start: oModelResultsFrom.getData()[0].STATION_NAME,
+								end: oModelResultsTo.getData()[0].STATION_NAME,
+			
+							}
+						}).done(function( o ) {
+							// do something
+						})*/
 						console.log(sSelection);
 
 					}else{
 						console.log("neee...");
 					}
+					console.log(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
 
-					/**$.ajax({
-						type: "POST",
-						url: "~/route_planner/planner_route_time_v2.py",
-						data: { time: that.getView().byId('timePicker').getValue() ,
-							start: oModelResultsFrom.getData()[0].STATION_NAME,
-							end: oModelResultsTo.getData()[0].STATION_NAME,
-		
-						}
-					  }).done(function( o ) {
-						 // do something
-					  })*/
 
 				});
 				
