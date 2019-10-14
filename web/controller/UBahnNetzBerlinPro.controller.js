@@ -11,7 +11,16 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				"Target": ""
 			});
 			this.setModel(oSearchModel, "s");
-		
+			var oModel = this.getOwnerComponent().getModel("searchList");
+			var oInputStart =this.getView().byId('address_start');
+			/**oModel.read("/STREET",{
+				method:"GET",
+				success: function(data){
+					console.log(data.results);
+					console.log('finished')
+				}
+			});*/
+			oModel.setSizeLimit(10729);
 		},
 /**
  * ===========================================================================
@@ -31,7 +40,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			//oStart: {},
 			//oEnd: {}
 		},
-
 
 /**
  * ===========================================================================
@@ -100,6 +108,17 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			var sAdress= await this.reverseGeocoding(lat,lng);
 			start.setValue(sAdress);
 			this.onPressEnterFrom();
+		},
+		handleSuggest: function(oEvent) {
+			var oInput = oEvent.getSource();
+			if (!oInput.getSuggestionItems().length) {
+				oInput.bindAggregation("suggestionItems", {
+					path: "search>/STREET",
+					template: new sap.ui.core.Item({
+						text: "{STREET_NAME}"
+					})
+				});
+			}
 		},
 
 		onSelectionChange: function(){
