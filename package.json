@@ -6,11 +6,12 @@
   "scripts": {
     "tst": "node srv/test.js",
     "web": "node web/http.js",
-    "srv": "node srv/srv.js"
+    "srv": "node srv/srv.js",
+    "proxy": "node srv/proxy.js"
   },
   "devDependencies": {
-		"cors-anywhere": "^0.4.1"
-	},
+    "cors-anywhere": "^0.4.1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

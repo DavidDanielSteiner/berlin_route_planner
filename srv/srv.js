@@ -179,7 +179,7 @@ app.get('/short_path', (req, res, next) => {
     var sStart = req.query.start;
     var sEnd= req.query.end;
     //Define SQL Statement
-    const sSQLStatement = "CALL U556741.NEAREST_WAY( STARTV => ?, ENDV => ?, ROUTING => ?);";
+    const sSQLStatement = "CALL U556741.NEAREST_WAY_S+U( STARTV => ?, ENDV => ?, ROUTING => ?);";
     
     var params_daten =[];
     
