@@ -17,7 +17,7 @@
 						<Button text="Search" press="onFindButtonPress"/>
 					</InputListItem>
 				</List>
-				<TextArea id="log" value="leer" width="10cm" rows="16"/>
+				<TextArea id="log" value="leer" width="10" rows="16"/>
 
 			</VBox>
 				<Panel id="pan" >

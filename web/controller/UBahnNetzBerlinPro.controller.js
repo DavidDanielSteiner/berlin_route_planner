@@ -12,14 +12,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			});
 			this.setModel(oSearchModel, "s");
 			var oModel = this.getOwnerComponent().getModel("searchList");
-			var oInputStart =this.getView().byId('address_start');
-			/**oModel.read("/STREET",{
-				method:"GET",
-				success: function(data){
-					console.log(data.results);
-					console.log('finished')
-				}
-			});*/
 			oModel.setSizeLimit(10729);
 		},
 /**
@@ -32,14 +24,9 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		oMapPlatform: {},
 		oMapRouteInstructionsContainer:{},
 		oAdressToNearestStationLanLon:{},
+		sAdressToNearestStation:String,
 		oAdressFromLanLon:{},
 		oAdressToLanLon:{},
-		oCoordinates: {
-			LAN: null,
-			LAT: null
-			//oStart: {},
-			//oEnd: {}
-		},
 
 /**
  * ===========================================================================
@@ -122,23 +109,39 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		},
 
 		onSelectionChange: function(){
+			var oSearchFrom = this.getModel("s").getData();
 			var oSelected = this.byId("searchTable").getSelectedItem();
-			var oToLatLng ={};
+
 			if (oSelected) {
 				var aCells = oSelected.getCells();
-				oToLatLng['LAT'] = aCells[2].getText();
-				oToLatLng['LNG'] = aCells[3].getText();
-				this.oAdressToNearestStationLanLon = oToLatLng;
+
+				this.sAdressToNearestStation = aCells[1].getText();
+				console.log(this.sAdressToNearestStation);
+
+				this.oAdressToNearestStationLanLon['LAT'] = aCells[2].getText();
+				this.oAdressToNearestStationLanLon['LNG'] = aCells[3].getText();
+				console.log(this.oAdressToNearestStationLanLon);
+
 				console.log(this.oAdressFromLanLon.LAT +","+ this.oAdressFromLanLon.LNG +"->"+this.oAdressToNearestStationLanLon.LAT +","+this.oAdressToNearestStationLanLon.LNG);
-				//this.oMap.removeObjects(this.oMap.getObjects(this.oMapPedestrianRouteGroup));
-				//this.oMap.removeObjects(this.oMap.getObjects());
+				
 				this.drawPedestrianRouteFromAtoB(this.oAdressFromLanLon,this.oAdressToNearestStationLanLon);
+				//this.oAdressFromLanLon=this.oAdressToLanLon;
+				
+				if(oSearchFrom.Target!=""){
+					this.onSearch();
+				}
+
+
 			}
 
 		},
 
 		onPressEnterFrom: async function(){
 			var oSearchFrom = this.getModel("s").getData();
+			var log = this.getView().byId("log");
+			this.sAdressToNearestStation ="";
+			this.oAdressToNearestStationLanLon={};
+			log.setValue("");
 			this.oAdressFromLanLon = await this.getLanLng(oSearchFrom.Start);
 			var oTable=this.getView().byId("searchTable");
 			var serviceUrlJSON="https://hanaicla2.f4.htw-berlin.de:51026/xsjs/hdb.xsjs";
@@ -148,6 +151,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				password : "Bcdefgh12"
 		   };
 			var oModelResults = new sap.ui.model.json.JSONModel();
+			
 			
 			oModelResults.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ this.oAdressFromLanLon.LAT+ "&lon="+this.oAdressFromLanLon.LNG,true, "GET", false, true, oHeaders);
 			oTable.setModel(oModelResults);
@@ -189,11 +193,10 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 		},
 
-		moveMapToLatLng: function (map, lat, lng) {
+		moveMapToLatLng: function (lat, lng) {
 			//sap.m.MessageToast.show('begin');
 			var coords = {
 				lat: lat,
-
 				lng: lng
 			};
 			var marker = new H.map.Marker(coords);
@@ -207,6 +210,88 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				lng: lng
 			});
 			this.oMap.addObject(oMarker);
+		},
+
+		drawTransportRouteFromAtoB: function(oFromLatLng,oToLatLng){
+			//var routeInstructionsContainer2 = document.getElementById('__component0---unetzPro--idHTMLContent');
+			var routeInstructionsContainer = this.getView().byId('idHTMLContent');
+			var map=this.oMap;
+			var platform= this.oMapPlatform;
+			var ui = this.oMapUI;
+			var bubble;
+			  
+			var router = platform.getRoutingService(),
+				  routeRequestParams = {
+					mode: 'fastest;publicTransport',
+					representation: 'display',
+					waypoint0: oFromLatLng.LAT +","+oFromLatLng.LNG,
+					waypoint1: oToLatLng.LAT +","+oToLatLng.LNG,  
+					routeattributes: 'waypoints,summary,shape,legs',
+					maneuverattributes: 'direction,action'
+				  };
+			  
+			  
+				router.calculateRoute(
+				  routeRequestParams,
+				  onSuccess,
+				  onError
+				);
+			  
+			  function onSuccess(result) {
+				var route = result.response.route[0];
+				map.removeObjects(map.getObjects());
+
+				addRouteShapeToMap(route);
+				addManueversToMap(route);
+			  }
+			  
+			  function onError(error) {
+				alert('Can\'t reach the remote server');
+			  }
+
+			  
+			  function addRouteShapeToMap(route){
+				var lineString = new H.geo.LineString(),
+				  routeShape = route.shape,
+				  polyline;
+			  
+				routeShape.forEach(function(point) {
+				  var parts = point.split(',');
+				  lineString.pushLatLngAlt(parts[0], parts[1]);
+				});
+			  
+				polyline = new H.map.Polyline(lineString, {
+				  style: {
+					lineWidth: 4,
+					strokeColor: 'rgba(0, 128, 255, 0.7)'
+				  }
+				});
+				// Add the polyline to the map
+				map.addObject(polyline);
+				// And zoom to its bounding rectangle
+				
+			  }
+			  
+			  function addManueversToMap(route){
+				var i;
+				var j;
+			  
+				// Add a marker for each maneuver
+				for (i = 0;  i < route.leg.length; i += 1) {
+				  for (j = 0;  j < route.leg[i].maneuver.length; j += 1) {
+					// Get the next maneuver.
+					var maneuver = route.leg[i].maneuver[j];
+					// Add a marker to the maneuvers group
+					var marker =  new H.map.Marker({
+					  lat: maneuver.position.latitude,
+					  lng: maneuver.position.longitude});
+					marker.instruction = maneuver.instruction;
+					map.addObject(marker);
+				  }
+				}
+			
+			  }
+
 		},
 	
 		drawPedestrianRouteFromAtoB: function(oFromLatLng,oToLatLng){
@@ -222,18 +307,10 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				maneuverattributes: 'direction,action'
 			  };
 
-			var group  = new  H.map.Group();
-			var markerFrom =  new H.map.Marker({
-				lat: oFromLatLng.LAT,
-				lng: oFromLatLng.LNG});
-			var markerTo =  new H.map.Marker({
-				lat: oToLatLng.LAT,
-				lng: oToLatLng.LNG});
-			group.addObject(markerFrom);
-			group.addObject(markerTo);
-			this.oMap.addObject(group);
+			this.setMarker(oFromLatLng.LAT,oFromLatLng.LNG);
+			this.setMarker(oToLatLng.LAT,oToLatLng.LNG);
 
-			  router.calculateRoute(
+			router.calculateRoute(
 				routeRequestParams,
 				data => {
 					if(data.response.route.length>0){
@@ -254,7 +331,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				},
 				error=>{
 					console.error(error);
-
 				}
 			  );
 
@@ -263,6 +339,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		onSearch: async function(oEvent){
 			var that = this;
 			var oSearchFrom = this.getModel("s").getData();
+			var sNearestSt= this.sAdressToNearestStation;
 			var sSelection = that.getView().byId('searchType').getSelectedKey();
 			var serviceUrlJSON="https://hanaicla2.f4.htw-berlin.de:51026/xsjs/hdb.xsjs";
 			var oHeaders ={
@@ -274,8 +351,10 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 			this.oAdressFromLanLon = await this.getLanLng(oSearchFrom.Start);
 			this.oAdressToLanLon = await this.getLanLng(oSearchFrom.Target);
+			//this.drawTransportRouteFromAtoB(this.oAdressFromLanLon,this.oAdressToLanLon);
 		
-			//console.log (this.oAdressFromLanLon,this.oAdressToLanLon);
+			console.log (this.oAdressFromLanLon,this.oAdressToLanLon);
+			console.log(sNearestSt);
 
 			oModelResultsFrom.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ this.oAdressFromLanLon.LAT+ "&lon="+this.oAdressFromLanLon.LNG,true, "GET", false, true, oHeaders);
 			oModelResultsFrom.attachRequestCompleted(function() {
@@ -284,7 +363,11 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 	
 					// am wenigsten Stationen
 					if (sSelection =="lessHops"){
-						that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
+						if (sNearestSt!=""){
+
+							that.requestShortestPathFromHDB(sNearestSt,oModelResultsTo.getData()[0].STATION_NAME);
+
+						}else that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
 
 					} // am wenigsten Umstiege
 					else if (sSelection =="lessChange"){
@@ -314,12 +397,6 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				});
 				
 			});
-			
-			
-		//	this.getView().setModel(oModelResultsFrom,"from");
-		//	this.getView().setModel(oModelResultsTo,"to");
-		//	console.log("test data", this.getModel('from').getData());
-		//	
 		},
 
 		
