@@ -31,8 +31,8 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 		oMapUI:{},
 		oMapPlatform: {},
 		oMapRouteInstructionsContainer:{},
-		oAdressFromLanLon:{},
 		oAdressToNearestStationLanLon:{},
+		oAdressFromLanLon:{},
 		oAdressToLanLon:{},
 		oCoordinates: {
 			LAN: null,
@@ -189,6 +189,18 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 		},
 
+		moveMapToLatLng: function (map, lat, lng) {
+			//sap.m.MessageToast.show('begin');
+			var coords = {
+				lat: lat,
+
+				lng: lng
+			};
+			var marker = new H.map.Marker(coords);
+			this.oMap.addObject(marker);
+			this.oMap.setCenter(coords);
+		},
+
 		setMarker: function(lat, lng){
 			var oMarker = new H.map.Marker({
 				lat: lat,
@@ -246,6 +258,70 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 				}
 			  );
 
+		},
+
+		onSearch: async function(oEvent){
+			var that = this;
+			var oSearchFrom = this.getModel("s").getData();
+			var sSelection = that.getView().byId('searchType').getSelectedKey();
+			var serviceUrlJSON="https://hanaicla2.f4.htw-berlin.de:51026/xsjs/hdb.xsjs";
+			var oHeaders ={
+				user : "u553419",
+				password : "Bcdefgh12"
+		   };
+			var oModelResultsFrom = new sap.ui.model.json.JSONModel();
+			var oModelResultsTo = new sap.ui.model.json.JSONModel();
+
+			this.oAdressFromLanLon = await this.getLanLng(oSearchFrom.Start);
+			this.oAdressToLanLon = await this.getLanLng(oSearchFrom.Target);
+		
+			console.log (this.oAdressFromLanLon,this.oAdressToLanLon);
+
+			oModelResultsFrom.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ this.oAdressFromLanLon.LAT+ "&lon="+this.oAdressFromLanLon.LNG,true, "GET", false, true, oHeaders);
+			oModelResultsFrom.attachRequestCompleted(function() {
+				oModelResultsTo.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ that.oAdressToLanLon.LAT+ "&lon="+that.oAdressToLanLon.LNG,true, "GET", false, true, oHeaders);
+				oModelResultsTo.attachRequestCompleted(function() {
+					console.log(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
+					that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
+
+
+					// am wenigsten Stationen
+					if (sSelection =="lessHops"){
+						that.requestShortestPathFromHDB(oModelResultsFrom.getData()[0].STATION_NAME,oModelResultsTo.getData()[0].STATION_NAME);
+
+					} // am wenigsten Umstiege
+					else if (sSelection =="lessChange"){
+						console.log(sSelection);
+
+					}// kürzeste Zeit
+					else if (sSelection =="fastestPath"){
+						console.log(sSelection);
+
+					}else{
+						console.log("neee...");
+					}
+
+					/**$.ajax({
+						type: "POST",
+						url: "~/route_planner/planner_route_time_v2.py",
+						data: { time: that.getView().byId('timePicker').getValue() ,
+							start: oModelResultsFrom.getData()[0].STATION_NAME,
+							end: oModelResultsTo.getData()[0].STATION_NAME,
+		
+						}
+					  }).done(function( o ) {
+						 // do something
+					  })*/
+
+				});
+				
+			});
+			
+			
+		//	this.getView().setModel(oModelResultsFrom,"from");
+		//	this.getView().setModel(oModelResultsTo,"to");
+		//	console.log("test data", this.getModel('from').getData());
+		//	
 		},
 
 		
@@ -350,9 +426,42 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
  */
 		
 
-		onFindButtonPress_Re: function (oEvent) {
-			sap.m.MessageToast.show('Die Umkreissuche wird durchgeführt.. ');
+
+requestShortestPathFromHDB: function (sStart, sEnd) {
+	self = this;
+	$.ajax({
+		url: 'http://localhost:3000/short_path_su',
+		type: 'GET',
+		data: {
+			start: sStart, //'Deutsche Oper',
+			end: sEnd //'Jakob-Kaiser-Platz',
 		},
+		success: function (data) {
+			var oLogArrea = self.getView().byId('log');
+			var sLog = "Einsteigen \n";
+			for (var i = 1; i < data.length; i++) {
+				sLog = sLog + data[i - 1].SEGMENT + ":   " + data[i - 1].route_name + " - " + data[i - 1].from_stop_name + " \n";
+				if (data[i].route_name !== data[i - 1].route_name) {
+					
+					sLog = sLog + data[i].SEGMENT + ":   " + data[i - 1].route_name + " - " + data[i].from_stop_name + " \n";
+					sLog = sLog + "Umsteigen\n";
+				}
+				if (i === (data.length - 1)) {
+					var endsegment = data.length + 1;
+					sLog = sLog + data[i].SEGMENT + ":   " + data[i].route_name + " - " + data[i].from_stop_name + " \n";
+					sLog = sLog + endsegment + ":   " + data[i].route_name + " - " + data[i].to_stop_name + " \n";
+					sLog = sLog + "Ziel ist erreicht!\n"
+				}
+			}
+			oLogArrea.setValue(sLog);
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
+			return;
+		}
+	});
+
+}
 
 		
 	});

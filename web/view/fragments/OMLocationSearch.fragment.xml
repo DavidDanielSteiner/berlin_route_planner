@@ -21,6 +21,7 @@
 				</suggestionItems>
 
 		</Input>
+		<VBox>
 		<InputListItem label="Typ der Suche">
 						<Select id="searchType">
 							<core:Item key="lessChange" text="am wenigsten Umstiege"/>
@@ -28,7 +29,15 @@
 							<core:Item key="lessHops" text="am wenigsten Stationen"/>
 						</Select>
 		</InputListItem>
+		<TimePicker
+			id="timePicker"
+			width="100%"
+			valueFormat="HH:mm:ss" 
+			placeholder="Enter Time ..."
+			class="sapUiSmallMarginBottom" />
+
 		<Button text="Suchen" press="onSearch"/>
+		</VBox>
 		</content>
 	</Panel>
 </core:FragmentDefinition>

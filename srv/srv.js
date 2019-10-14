@@ -179,7 +179,7 @@ app.get('/short_path', (req, res, next) => {
     var sStart = req.query.start;
     var sEnd= req.query.end;
     //Define SQL Statement
-    const sSQLStatement = "CALL U556741.NEAREST_WAY_S+U( STARTV => ?, ENDV => ?, ROUTING => ?);";
+    const sSQLStatement = "CALL U556741.NEAREST_WAY( STARTV => ?, ENDV => ?, ROUTING => ?);";
     
     var params_daten =[];
     
@@ -197,6 +197,32 @@ app.get('/short_path', (req, res, next) => {
         rows => res.type('application/json').send(rows),
         info => console.log(info));
 });
+
+app.get('/short_path_su', (req, res, next) => {
+   
+    //Get data from form
+    var sStart = req.query.start;
+    var sEnd= req.query.end;
+    //Define SQL Statement
+    const sSQLStatement = 'CALL U556741."NEAREST_WAY_S+U"( STARTV => ?, ENDV => ?, ROUTING => ?);';
+    
+    var params_daten =[];
+    
+    //Fill in required data for sql statement
+    params_daten.push(sStart);
+    params_daten.push(sEnd);
+    
+    console.log(params_daten);
+
+    // run sql statement and send rows to view
+    db.readFromHdb(
+        config.hdb,
+        sSQLStatement,
+        params_daten,
+        rows => res.type('application/json').send(rows),
+        info => console.log(info));
+});
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
