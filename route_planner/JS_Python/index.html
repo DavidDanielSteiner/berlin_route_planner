@@ -1,0 +1,24 @@
+<button id='target'>Click me</button>
+
+
+<script>
+$("#target").click(function(){
+    window.alert("clicked")
+ 
+    $.ajax({
+         type:'get',
+         url:'http://127.0.0.1:5000/',
+         cache:false,
+         async:'asynchronous',
+         dataType:'json',
+         success: function(data) {
+            window.alert("success")
+           console.log(JSON.stringify(data))
+         },
+         error: function(request, status, error) {
+           console.log("Error: " + error)
+           window.alert("fail")
+         }
+      });
+   });
+</script>

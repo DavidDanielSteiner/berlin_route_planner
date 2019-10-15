@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    //window.alert("clicked")
+
+    postdata = {name: "Donald Duck",
+                city: "Duckburg"};
+
+    $.ajax({
+         type:'POST',
+         url:'http://127.0.0.1:5000/test',
+         data: postdata,
+         dataType: "json",
+         //async:'asynchronous',
+         success: function(response) {
+            window.alert("success")
+           console.log(JSON.stringify(response))
+         },
+         error: function(request, status, error) {
+           console.log("Error: " + error)
+           window.alert("fail")
+         }
+      });
+
+
+
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Click me</button>
+
+</body>
+</html>
