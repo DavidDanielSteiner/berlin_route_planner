@@ -17,30 +17,28 @@ from sqlalchemy import create_engine
 
 
 def get_all_trips_from_station(station, time):
+    #station = 'S+U Bundesplatz '
+    #station= 'S+U Alexanderplatz'
     
-    sql = '''
-    SELECT DISTINCT st.departure_time, t.trip_id, t.trip_headsign, t.direction_id
-    FROM 
-    'stop_times'      INNER JOIN 'stops'.'stop_name' = 'stop_times'.'stop_name'  
-                    INNER JOIN trips on stop_times.'trip_id' = trips.'trip_id'
-    
-    WHERE
-    s.stop_name = "''' + station + '''" AND
-    st.departure_time > "''' + time + '''" AND
-    st.departure_time> "00:00:00" AND st.departure_time < "23:59:59" 
-    GROUP BY
-    st.departure_time
-    ORDER BY 
-    st.departure_time ASC
-    LIMIT 15
-    '''
+    sql = """
+        SELECT st."departure_time", t."trip_id", t."trip_headsign", t."direction_id"
+        FROM 
+        U556741."STOP_TIMES" AS st      INNER JOIN U556741."STOPS" AS s on st."stop_name" = s."stop_name"  
+                        		INNER JOIN U556741."TRIPS" AS t on st."trip_id" = t."trip_id"
+        
+        WHERE
+        s."stop_name" =  '""" + station + """'  AND
+        st."departure_time" > '""" + time + """'  AND
+        st."departure_time" > '00:00:00' AND st."departure_time" < '23:59:59'
+        ORDER BY 
+        st."departure_time" ASC
+        LIMIT 15
+        """
+
     df = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
     return df
 
-planner_trips = get_all_trips_from_station(planner_start_station, '16:00:00')
 
-  
-    
 def get_all_stations_from_trip(trip_id):
     
     params = {'trip_id': trip_id}
@@ -86,13 +84,13 @@ def find_correct_trip(trip_id, start_station, end_station):
         return empty   
 
  
-engine = create_engine('hana://u556741:Bcdefgh2@hanaicla.f4.htw-berlin.de:39013/HXE')
+engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')A
 print(engine.table_names())      
 
 sql = '''
 CALL "U556741"."NEAREST_WAY_S+U"(
-        STARTV => 'S+U Alexanderplatz',
-        ENDV => 'U Jakob-Kaiser-Platz ',
+        STARTV => 'U Jakob-Kaiser-Platz ',
+        ENDV => 'U Tierpark ',
         ROUTING => ?
         );
 '''
@@ -102,7 +100,6 @@ planner_stations = planner_stations.rename(columns={"from_stop_name": "stop_name
 planner_stations = planner_stations[['segment', 'route_id', 'route_name', 'stop_name']]
 planner_start_station = planner_stations.iloc[0]['stop_name']
 planner_end_station = planner_stations.iloc[-1]['stop_name']
-
 
 
 #get all trips that depart from given station at given time
