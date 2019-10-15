@@ -13,12 +13,6 @@ from flask import Flask, jsonify, request, render_template
 app = Flask(__name__)
 
 
-    
-#sql = '''SELECT * FROM stops'''
-#df = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
-    
-
-
 def get_all_trips_from_station(station, time):
 
     sql = """
@@ -69,9 +63,6 @@ def find_correct_trip(trip_id, start_station, end_station):
             print("found matching trip")
             idx_end = planner_next_stations[planner_next_stations['stop_name'] == end_station].index.values.astype(int)[0]
             planner_next_stations = planner_trip.loc[idx:idx_end]
-            #planner_station_times = planner_station_times.append(planner_next_stations)
-            #transfer_time = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[0]]['departure_time'].values[0]
-            #break
             return planner_next_stations
         else:
             print("doesn't contain transfer station")
@@ -86,14 +77,14 @@ engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/
 #print(engine.table_names())      
 
 
-@app.route('/test', methods=['POST'])
-def test():
-
+@app.route('/routing_time', methods=['POST'])
+def get_planner_station_times():
 
     print('Incoming..')
-    #print(request.POST.get('city'))
-    name = request.form.get('name')        
-    print(name)
+    start = request.form.get('start')   
+    end = request.form.get('end')      
+    time = request.form.get('time')  
+    print(start, end, time, sep="/")
 
     
     sql = '''
@@ -158,6 +149,8 @@ def test():
                 transfer_time = planner_next_stations[planner_next_stations['stop_name'] == transfer_station]['departure_time'].values[0]
                 print("appended")
                 break
+            
+    print("Done!")
         
     df = planner_station_times.reset_index(drop=True)    
     df = df.drop('stop_sequence', 1)
