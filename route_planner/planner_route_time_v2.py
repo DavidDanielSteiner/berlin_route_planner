@@ -27,9 +27,8 @@ def get_all_trips_from_station(station, time):
         st."departure_time" > '00:00:00' AND st."departure_time" < '23:59:59'
         ORDER BY 
         st."departure_time" ASC
-        LIMIT 15
+        LIMIT 50
         """
-
     df = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
     return df
 
@@ -55,7 +54,6 @@ def find_correct_trip(trip_id, start_station, end_station):
     try:
         planner_trip = get_all_stations_from_trip(trip_id)
         idx = planner_trip[planner_trip['stop_name'] == start_station].index.values.astype(int)[0]
-        #idx_end = planner_next_stations[planner_next_stations['stop_name'] == planner_transfer_station[i]].index.values.astype(int)[0]
         planner_next_stations = planner_trip.loc[idx:]
         tmp = pd.Series(planner_next_stations['stop_name'])
         #check if trip contains transfer_station
@@ -74,7 +72,7 @@ def find_correct_trip(trip_id, start_station, end_station):
         return empty   
  
 engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')
-#print(engine.table_names())      
+print(engine.table_names())      
 
 
 @app.route('/routing_time', methods=['POST'])
@@ -87,13 +85,13 @@ def get_planner_station_times():
     print(start, end, time, sep="/")
 
     
-    sql = '''
+    sql = """
     CALL "U556741"."NEAREST_WAY_S+U"(
-            STARTV => 'U Jakob-Kaiser-Platz ',
-            ENDV => 'U Tierpark ',
+            STARTV => '""" + start + """',
+            ENDV => '""" + end + """',
             ROUTING => ?
             );
-    '''
+    """
     planner_stations = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
     
     planner_stations = planner_stations.rename(columns={"from_stop_name": "stop_name"})
@@ -121,7 +119,7 @@ def get_planner_station_times():
     
     #find trip that contains transfer station
     planner_station_times = pd.DataFrame()
-    transfer_time = '16:00:00'
+    transfer_time = time
     
     planner_start_stations = [] 
     planner_start_stations.append(planner_start_station)
@@ -158,12 +156,11 @@ def get_planner_station_times():
     #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html    
     #UTF8 Problem : https://stackoverflow.com/questions/39612240/writing-pandas-dataframe-to-json-in-unicode
     df = df.to_json(orient='index')
-    
-    
-    #print(request.get_json())  # parse as JSON
+       
+    # parse as JSON
     response = jsonify(df)
     response.headers.add('Access-Control-Allow-Origin', '*')
-    return response  # serialize and use JSON headers
+    return response  
     
 
 if __name__ == '__main__':

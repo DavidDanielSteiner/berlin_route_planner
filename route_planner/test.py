@@ -23,7 +23,7 @@ def test():
     if request.method == 'POST':
         print('Incoming..')
         #print(request.POST.get('city'))
-        name = request.form.get('name')        
+        name = request.form.get('start')        
         print(name)
         #print(request.get_json())  # parse as JSON
         response = jsonify({'greeting':'Success'})
