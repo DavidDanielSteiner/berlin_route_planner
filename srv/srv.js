@@ -248,6 +248,55 @@ app.get('/short_time_su', (req, res, next) => {
         info => console.log(info));
 });
 
+app.get('/get_changes_su', (req, res, next) => {
+   
+    //Get data from form
+    var sStart = req.query.start;
+    console.log(sStart);
+
+    var sEnd= req.query.end;
+    console.log(sEnd);
+    //Define SQL Statement
+   // const sSQLStatement = 'CALL "U556741"."GET_LESS_CHANGES_2"(from_stop_name => ?, to_stop_name => ?, TOTALCHANGES => ?,ROUTING =>?);';
+   const sSQLStatement = 'CALL "U556741"."GET_LESS_CHANGES_COUNT"(FROM_STOP_NAME => ?,TO_STOP_NAME => ?,TOTALCHANGES => ?);';
+    
+    var params_daten =[];
+    
+    //Fill in required data for sql statement
+    params_daten.push(sStart);
+    params_daten.push(sEnd);
+    
+    console.log(params_daten);
+    async function runCount () {
+        try { var data = await db.readFromHdbSync(
+                    config.hdb,
+                    sSQLStatement,
+                    params_daten,
+                    info => console.log(info)); 
+                    console.log("inside srv:",Bigint (data));
+                    res.json(data); 
+                    
+    } catch (err){
+        console.error(err.message);
+    }
+    
+    }   
+      runCount ();
+
+    /** run sql statement and send rows to view
+    db.readFromHdb(
+        config.hdb,
+        sSQLStatement,
+        params_daten,
+        rows =>
+         {
+            res.sendStatus(200).send(rows);
+            //res.send(rows);
+        },
+
+        info => console.log(info));*/
+});
+
 
 
 

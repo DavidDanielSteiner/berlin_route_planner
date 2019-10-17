@@ -359,7 +359,7 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 			oModelResultsFrom.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ this.oAdressFromLanLon.LAT+ "&lon="+this.oAdressFromLanLon.LNG,true, "GET", false, true, oHeaders);
 			oModelResultsFrom.attachRequestCompleted(function() {
 				oModelResultsTo.loadData(serviceUrlJSON, "cmd=findNearestStation&lat="+ that.oAdressToLanLon.LAT+ "&lon="+that.oAdressToLanLon.LNG,true, "GET", false, true, oHeaders);
-				oModelResultsTo.attachRequestCompleted(function() {
+				oModelResultsTo.attachRequestCompleted(async function() {
 	
 					// am wenigsten Stationen
 					if (sSelection =="lessHops"){
@@ -371,21 +371,50 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
 
 					} // am wenigsten Umstiege
 					else if (sSelection =="lessChange"){
+						var sStartStationName=oModelResultsFrom.getData()[0].STATION_NAME;
+						var changesCountMain = 0;
+						var sLessChangesStationName="";
 						console.log(sSelection);
+						
+						for(var i = 1; i < oModelResultsTo.getData().length; i++) {
+							var changesCount = await that.requestPathWithLessChangesFromHDB(sStartStationName,oModelResultsTo.getData()[i].STATION_NAME);
+							
+							if (changesCountMain==0){
+								changesCountMain=changesCount;
+								sLessChangesStationName= oModelResultsTo.getData()[i].STATION_NAME;
+								console.log(changesCountMain,sLessChangesStationName)
+							}else if (changesCountMain>changesCount){
+								changesCountMain=changesCount;
+								sLessChangesStationName= oModelResultsTo.getData()[i].STATION_NAME;
+							}else continue;
+
+						}
+						console.log("OUT of LOOP: ",changesCountMain,sLessChangesStationName)
+						that.requestShortestPathFromHDB(sStartStationName,sLessChangesStationName);
+
+
+
+
 
 					}// kürzeste Zeit
 					else if (sSelection =="fastestPath"){
-						/**$.ajax({
+						$.ajax({
 							type: "POST",
-							url: "~/route_planner/planner_route_time_v2.py",
+							url: "http://127.0.0.1:5000/routing_time",
 							data: { time: that.getView().byId('timePicker').getValue() ,
 								start: oModelResultsFrom.getData()[0].STATION_NAME,
 								end: oModelResultsTo.getData()[0].STATION_NAME,
 			
 							}
 						}).done(function( o ) {
-							// do something
-						})*/
+							var oLogArrea = that.getView().byId('log');
+							oLogArrea.setValue(JSON.stringify(o));
+							//console.log(o);
+							for (var i = 0; i < o.length; i++){
+								console.log(o[i].from_stop_name);
+							}
+
+						});
 						console.log(sSelection);
 
 					}else{
@@ -500,7 +529,30 @@ sap.ui.define(["de/htwberlin/adbkt/basic1/controller/BaseController",
  * ===========================================================================
  */
 		
+requestPathWithLessChangesFromHDB: async function (sStart, sEnd) {
+	self = this;
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: 'http://localhost:3000/get_changes_su',
+			type: 'GET',
+			data: {
+				start: sStart, //'Deutsche Oper',
+				end: sEnd //'Jakob-Kaiser-Platz',
+			},
+			success: function (data) {
+				console.log(data);
+				var count= data.totalChanges;
+				console.log("COUNT: ",count)
+				resolve(count);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				sap.m.MessageToast.show(textStatus + '\n' + JSON.stringify(jqXHR) + '\n' + JSON.stringify(errorThrown));
+				return;
+			}
+		});
+	});
 
+},
 
 requestShortestPathFromHDB: function (sStart, sEnd) {
 	self = this;
