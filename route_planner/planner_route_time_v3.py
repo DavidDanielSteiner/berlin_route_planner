@@ -8,6 +8,7 @@ Created on Tue Oct  8 12:10:27 2019
 import pandas as pd
 from sqlalchemy import create_engine
 from flask import Flask, jsonify, request, render_template
+import networkx as nx  #https://networkx.github.io/documentation/networkx-1.8.1/ 
 
 
 app = Flask(__name__)
@@ -71,35 +72,35 @@ def find_correct_trip(trip_id, start_station, end_station):
         empty = pd.DataFrame()
         return empty   
  
-engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')
-print(engine.table_names())      
-
-#sql = 'SELECT * FROM stops'
-#tmp = pd.read_sql_query(sql, engine)
 
 
 @app.route('/routing_time', methods=['POST'])
 def get_planner_station_times():
 
-    try:
-        print('Incoming..')
-        start = request.form.get('start')   
-        end = request.form.get('end')      
-        time = request.form.get('time')  
-        print(start, end, time, sep="/")
-        
-        start= "S Mahlow"
-        end= "U Alt-Tegel "
-        time= "20:00:00"
-        
-        sql = """
-        CALL "U556741"."NEAREST_WAY_S+U"(
-                STARTV => '""" + start + """',
-                ENDV => '""" + end + """',
-                ROUTING => ?
-                );
-        """
-        planner_stations = pd.read_sql_query(sql, engine, parse_dates=None, chunksize=None)
+
+    #start = request.form.get('start')   
+    #end = request.form.get('end')      
+    #time = request.form.get('time')  
+    start = "U Rudow "
+    end = "S Westkreuz "
+    time= "20:00:00"
+    print(start, end, time, sep="/")
+    
+    engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')
+    print(engine.table_names())  
+    sql = 'SELECT * FROM transfer_new'
+    planner_stations = pd.read_sql_query(sql, engine)
+    
+
+    G = nx.Graph()
+    for index, station in planner_stations.iterrows():
+        G.add_edge(station['from_stop_name'], station['to_stop_name'])
+    
+    all_shortest_paths = [p for p in nx.all_shortest_paths(G,source=start,target=end)]
+
+
+    #all_stations_with_time = []
+    for planner_stations in all_shortest_paths:
         
         planner_stations = planner_stations.rename(columns={"from_stop_name": "stop_name"})
         planner_stations = planner_stations[['segment', 'route_id', 'route_name', 'stop_name']]
@@ -156,24 +157,19 @@ def get_planner_station_times():
                     break
                 
         print("Done!")
-            
-        df = planner_station_times.reset_index(drop=True)    
-        df = df.drop('stop_sequence', 1)
-            
-        #https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html    
-        #UTF8 Problem : https://stackoverflow.com/questions/39612240/writing-pandas-dataframe-to-json-in-unicode
-        df = df.to_json(orient='index')
-           
-        # parse as JSON
-        response = jsonify(df)
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response  
-    except Exception as e:
-        print(e)
-        response = {'error': str(e)}
-        response = jsonify(response)
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response 
+                        
+
+        
+        
+    df = planner_station_times.reset_index(drop=True)    
+    df = df.drop('stop_sequence', 1)
+    
+    df = df.to_json(orient='index')
+       
+    # parse as JSON
+    response = jsonify(df)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response  
     
     
 
