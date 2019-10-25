@@ -72,8 +72,8 @@ def find_correct_trip(trip_id, start_station, end_station):
         return empty   
  
 engine = create_engine('hana://u556741:Bcdefgh1@hanaicla.f4.htw-berlin.de:39013/HXE')
-print(engine.table_names())      
 
+#print(engine.table_names())      
 #sql = 'SELECT * FROM stops'
 #tmp = pd.read_sql_query(sql, engine)
 
