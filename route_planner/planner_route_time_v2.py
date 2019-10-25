@@ -88,9 +88,9 @@ def get_planner_station_times():
         time = request.form.get('time')  
         print(start, end, time, sep="/")
         
-        start= "S Mahlow"
-        end= "U Alt-Tegel "
-        time= "20:00:00"
+        #start= "S Mahlow"
+        #end= "U Alt-Tegel "
+        #time= "20:00:00"
         
         sql = """
         CALL "U556741"."NEAREST_WAY_S+U"(
