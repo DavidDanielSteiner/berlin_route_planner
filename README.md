@@ -1,41 +1,24 @@
-# hanabasic-local
-SAP Hana UI5 Project HTW Berlin Datenbankkonzepte
+# Berlin Public Transport Route Planner
 
+Route Planner for "Ubahn" and "Sbahn" in Berlin.
 
-Aufgabe 3
-Algorithmus
+User can input departure time, start location and final destination and select between following options.
+1. Fastest route
+2. Least transfers
+3. Least stations
 
-1. Geodaten der Ubahnstationen in DB einfügen
-1.1 Geodaten in Graph umwandeln
+The programm will then find the closest start and end public transport station and the best route based on the users input. 
 
-1. Text Mining
--"Ich will von der Treskovallee in die Friedrichsstraße"
-1.1 Start und Zieladresse als String extrahieren
+## Used Technology
+SAP Hana
+1. Text mining
+2. Graph
 
+Python
 
-2. Spatial Distance (wie in Outbound)
-2.1 String in Geodaten umwandeln
-2.2 Geodaten in Sptaial Daten umwandeln
-2.3 Nächstliegende Ubahn Stationen finden
+Node.js
 
-3. Graph Ubahn Stationen Verbindung funden / Kürzester Weg ermitteln
-3.1 Ergebnis in View ausgeben mit Json
+## Used Dataset
+GTFS Dataset (https://daten.berlin.de/datensaetze/vbb-fahrplandaten-gtfs)
 
-
---Aufgabenverteilung--
-
-[x] 1. Webscraping Ubahndaten und als CSV ausgeben [David]
-
-[] 2. Datenbankstruktur erstellen und Daten importieren von CSV [Arthur und David] (key: auto increment; id: unique)
-
-[] 3. Graph erstellen [Arthur]
-
-[] 4. Neue App/View erstellen (UI) / Userinterface erstellen [Arthur]
-
-[] 5. Textmining [Hanna]
-
-[] 6. Spatial Distance zur Ubahn Station (wie in Outbound) [David]
-
-[] 7. Output ausgeben [Hanna]
-
-
+Berlin Street Dataset (https://www.datendieter.de/item/Liste_von_deutschen_Strassennamen_.csv)
