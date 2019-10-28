@@ -5,6 +5,10 @@ Created on Tue Oct  8 12:10:27 2019
 @author: David
 """
 
+#pip install sqlalchemy-
+#pip install hdbcli
+
+
 import pandas as pd
 from sqlalchemy import create_engine
 from flask import Flask, jsonify, request, render_template
