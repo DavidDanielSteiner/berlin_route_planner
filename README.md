@@ -7,18 +7,13 @@ User can input departure time, start location and final destination and select b
 2. Least transfers
 3. Least stations
 
-The programm will then find the closest start and end public transport station and the best route based on the users input. 
+The programm will calculate the closest start and end public transport station and the best route based on the given input. 
 
-## Used Technology
+## Techstack
 SAP Hana
-1. Text mining
-2. Graph
-
 Python
-
 Node.js
 
-## Used Dataset
+## Data
 GTFS Dataset (https://daten.berlin.de/datensaetze/vbb-fahrplandaten-gtfs)
-
 Berlin Street Dataset (https://www.datendieter.de/item/Liste_von_deutschen_Strassennamen_.csv)
