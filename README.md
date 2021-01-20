@@ -11,7 +11,9 @@ The programm will calculate the closest start and end public transport station a
 
 ## Techstack
 SAP Hana
+
 Python
+
 Node.js
 
 ## Data
